@@ -19,5 +19,6 @@ public class Comic {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "publisher_id")
     private Publisher publisher;
+
     private Set<Character> protagonists;
 }

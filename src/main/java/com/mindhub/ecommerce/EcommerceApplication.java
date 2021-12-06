@@ -19,7 +19,7 @@ public class EcommerceApplication {
 	@Bean
 	public CommandLineRunner initData(AuthorRepository authorRepository){
 		return args -> {
-			Author author1 = new Author("Alan", "Moore", LocalDate.of(1953, 11, 18));
+			Author author1 = new Author("Alan", "Moore", LocalDate.of(1953, 11, 18), "Northampton, United Kingdom");
 			authorRepository.save(author1);
 		};
 	}

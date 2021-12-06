@@ -16,6 +16,7 @@ public class Author {
     private String firstName;
     private String lastName;
     private LocalDate birthDate;
+    private String birthPlace;
     @OneToMany(mappedBy = "author", fetch = FetchType.EAGER)
     private Set<Comic> works = new HashSet<>();
 
@@ -23,10 +24,11 @@ public class Author {
 
     }
 
-    public Author(String firstName, String lastName, LocalDate birthDate){
+    public Author(String firstName, String lastName, LocalDate birthDate, String birthPlace){
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthDate = birthDate;
+        this.birthPlace = birthPlace;
     }
 
     public String getFirstName() {
@@ -51,6 +53,14 @@ public class Author {
 
     public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
+    }
+
+    public String getBirthPlace(){
+        return birthPlace;
+    }
+
+    public void setBirthPlace(String birthPlace) {
+        this.birthPlace = birthPlace;
     }
 
     @Override
