@@ -19,6 +19,8 @@ public class Author {
     private String birthPlace;
     @OneToMany(mappedBy = "author", fetch = FetchType.EAGER)
     private Set<Comic> works = new HashSet<>();
+    @OneToMany(mappedBy = "creator", fetch = FetchType.EAGER)
+    private Set<Character> inventedCharacters = new HashSet<>();
 
     public Author(){
 
@@ -63,6 +65,22 @@ public class Author {
         this.birthPlace = birthPlace;
     }
 
+    public Set<Comic> getWorks() {
+        return works;
+    }
+
+    public void addWork(Comic comic) {
+        this.works.add(comic);
+    }
+
+    public Set<Character> getInventedCharacters() {
+        return inventedCharacters;
+    }
+
+    public void addInventedCharacter(Character character){
+        this.inventedCharacters.add(character);
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Author{");
@@ -70,6 +88,9 @@ public class Author {
         sb.append(", firstName='").append(firstName).append('\'');
         sb.append(", lastName='").append(lastName).append('\'');
         sb.append(", birthDate=").append(birthDate);
+        sb.append(", birthPlace='").append(birthPlace).append('\'');
+        sb.append(", works=").append(works);
+        sb.append(", inventedCharacters=").append(inventedCharacters);
         sb.append('}');
         return sb.toString();
     }
