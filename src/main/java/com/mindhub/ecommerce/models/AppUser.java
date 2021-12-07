@@ -2,11 +2,12 @@ package com.mindhub.ecommerce.models;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
+@Entity
 public class AppUser {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
@@ -19,6 +20,8 @@ public class AppUser {
     private String lastName;
     private LocalDate birthDate;
     private boolean admin;
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    private Set<Purchase> purchases = new HashSet<>();
 
     public AppUser(){
 
@@ -94,6 +97,14 @@ public class AppUser {
         this.admin = admin;
     }
 
+    public Set<Purchase> getPurchases() {
+        return purchases;
+    }
+
+    public void addPurchases(Purchase purchase) {
+        this.purchases.add(purchase);
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("AppUser{");
@@ -105,6 +116,7 @@ public class AppUser {
         sb.append(", lastName='").append(lastName).append('\'');
         sb.append(", birthDate=").append(birthDate);
         sb.append(", admin").append(admin);
+        sb.append(", purchases").append(purchases);
         sb.append('}');
         return sb.toString();
     }

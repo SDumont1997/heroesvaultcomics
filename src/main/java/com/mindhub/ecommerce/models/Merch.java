@@ -20,7 +20,11 @@ public class Merch {
     private Double price;
     private Integer stock;
     private String imgUrl;
-    @ManyToMany(mappedBy = "merch", fetch = FetchType.EAGER)
+    @ManyToMany
+    @JoinTable(
+            name = "merchPurchase",
+            joinColumns = @JoinColumn(name = "merch_id"),
+            inverseJoinColumns = @JoinColumn(name = "purchase_id"))
     private Set<Purchase> purchases = new HashSet<>();
 
     public Merch() {

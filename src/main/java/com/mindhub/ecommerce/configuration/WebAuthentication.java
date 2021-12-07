@@ -3,7 +3,7 @@ package com.mindhub.ecommerce.configuration;
 import com.mindhub.ecommerce.models.AppUser;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.userdetails.User;
-import com.mindhub.ecommerce.repositories.UserRepository;
+import com.mindhub.ecommerce.repositories.AppUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -17,12 +17,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class WebAuthentication extends GlobalAuthenticationConfigurerAdapter {
 
     @Autowired
-    UserRepository userRepository;
+    AppUserRepository appUserRepository;
 
     @Override
     public void init(AuthenticationManagerBuilder auth) throws Exception{
         auth.userDetailsService(inputName->{
-            AppUser appUser = userRepository.findByEmail(inputName);
+            AppUser appUser = appUserRepository.findByEmail(inputName);
 
             if(appUser != null){
                 if (appUser.isAdmin()){

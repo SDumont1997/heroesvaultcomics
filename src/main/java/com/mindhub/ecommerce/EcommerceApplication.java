@@ -3,22 +3,29 @@ package com.mindhub.ecommerce;
 import com.mindhub.ecommerce.models.*;
 import com.mindhub.ecommerce.models.Character;
 import com.mindhub.ecommerce.repositories.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @SpringBootApplication
 public class EcommerceApplication {
+
+	@Autowired
+	PasswordEncoder passwordEncoder;
 
 	public static void main(String[] args) {
 		SpringApplication.run(EcommerceApplication.class, args);
 	}
 
 	@Bean
-	public CommandLineRunner initData(PublisherRepository publisherRepository, AuthorRepository authorRepository, CharacterRepository characterRepository, ComicRepository comicRepository, MerchRepository merchRepository){
+	public CommandLineRunner initData(PublisherRepository publisherRepository, AuthorRepository authorRepository, CharacterRepository characterRepository, ComicRepository comicRepository, MerchRepository merchRepository, AppUserRepository appUserRepository, PurchaseRepository purchaseRepository){
 		return args -> {
 			Publisher publisher1 = new Publisher("Marvel Comics", LocalDate.of(1939, 1, 10));
 			publisherRepository.save(publisher1);
@@ -68,6 +75,21 @@ public class EcommerceApplication {
 			Merch merch3 = new Merch("Iron Spider Funko Pop", MerchType.TOY, character1, 25.00, 12);
 			merch3.setImgUrl("https://m.media-amazon.com/images/I/7187N5hjBoL._AC_SX522_.jpg");
 			merchRepository.save(merch3);
+
+
+			AppUser appUser1 = new AppUser("SDumont", "sdumont@gmail.com", passwordEncoder.encode("santiago1234"), "Santiago", "Dumont", LocalDate.of(1997, 3, 30), true);
+			appUserRepository.save(appUser1);
+
+
+			Set<Comic> comics1 = new HashSet<>();
+			comics1.add(comic1);
+			comics1.add(comic2);
+			Set<Merch> purchaseMerch1 = new HashSet<>();
+			purchaseMerch1.add(merch2);
+			purchaseMerch1.add(merch3);
+			Double amount1 = comic1.getPrice() + comic2.getPrice() + merch2.getPrice() + merch3.getPrice();
+			Purchase purchase1 = new Purchase(appUser1, comics1, purchaseMerch1, amount1, PaymentOption.CASH);
+			purchaseRepository.save(purchase1);
 		};
 	}
 

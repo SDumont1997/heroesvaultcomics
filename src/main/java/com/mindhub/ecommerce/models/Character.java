@@ -23,7 +23,11 @@ public class Character {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "publisher_id")
     private Publisher publisher;
-    @ManyToMany(mappedBy = "protagonists", fetch = FetchType.EAGER)
+    @ManyToMany
+    @JoinTable(
+            name = "characterAppearance",
+            joinColumns = @JoinColumn(name = "character_id"),
+            inverseJoinColumns = @JoinColumn(name = "comic_id"))
     private Set<Comic> appearances = new HashSet<>();
     @OneToMany(mappedBy = "character", fetch = FetchType.EAGER)
     private Set<Merch> merch = new HashSet<>();

@@ -27,7 +27,11 @@ public class Comic {
     private Double price;
     private Integer stock;
     private String coverImgUrl;
-    @ManyToMany(mappedBy = "comics", fetch = FetchType.EAGER)
+    @ManyToMany
+    @JoinTable(
+            name = "comicPurchase",
+            joinColumns = @JoinColumn(name = "comic_id"),
+            inverseJoinColumns = @JoinColumn(name = "purchase_id"))
     private Set<Purchase> purchases = new HashSet<>();
 
     public Comic(){
