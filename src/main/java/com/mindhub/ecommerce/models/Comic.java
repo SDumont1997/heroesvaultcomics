@@ -25,18 +25,19 @@ public class Comic {
     @OneToMany(mappedBy = "comic", fetch = FetchType.EAGER)
     private Set<ComicCharacter> protagonists = new HashSet<>();
     private Double price;
-    private Integer stock = 0;
+    private Integer stock;
 
     public Comic(){
 
     }
 
-    public Comic(String title, Author author, LocalDate publicationDate, Publisher publisher, Double price){
+    public Comic(String title, Author author, LocalDate publicationDate, Publisher publisher, Double price, Integer stock){
         this.title = title;
         this.author = author;
         this.publicationDate = publicationDate;
         this.publisher = publisher;
         this.price = price;
+        this.stock = stock;
     }
 
     public Long getId() {

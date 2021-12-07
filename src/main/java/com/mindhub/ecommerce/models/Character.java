@@ -25,6 +25,8 @@ public class Character {
     private Publisher publisher;
     @OneToMany(mappedBy = "character", fetch = FetchType.EAGER)
     private Set<ComicCharacter> appearances = new HashSet<>();
+    @OneToMany(mappedBy = "character", fetch = FetchType.EAGER)
+    private Set<Merch> merch = new HashSet<>();
 
     public Character(){
 
@@ -103,6 +105,14 @@ public class Character {
         this.appearances.add(comicCharacter);
     }
 
+    public Set<Merch> getMerch() {
+        return merch;
+    }
+
+    public void addMerch(Merch merch) {
+        this.merch.add(merch);
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Character{");
@@ -114,6 +124,7 @@ public class Character {
         sb.append(", creator=").append(creator);
         sb.append(", publisher=").append(publisher);
         sb.append(", appearances=").append(appearances);
+        sb.append(", merch=").append(merch);
         sb.append('}');
         return sb.toString();
     }
