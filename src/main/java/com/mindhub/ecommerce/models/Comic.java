@@ -24,16 +24,19 @@ public class Comic {
     private Publisher publisher;
     @OneToMany(mappedBy = "comic", fetch = FetchType.EAGER)
     private Set<ComicCharacter> protagonists = new HashSet<>();
+    private Double price;
+    private Integer stock = 0;
 
     public Comic(){
 
     }
 
-    public Comic(String title, Author author, LocalDate publicationDate, Publisher publisher){
+    public Comic(String title, Author author, LocalDate publicationDate, Publisher publisher, Double price){
         this.title = title;
         this.author = author;
         this.publicationDate = publicationDate;
         this.publisher = publisher;
+        this.price = price;
     }
 
     public Long getId() {
@@ -80,6 +83,22 @@ public class Comic {
         this.protagonists.add(comicCharacter);
     }
 
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public Integer getStock() {
+        return stock;
+    }
+
+    public void setStock(Integer stock) {
+        this.stock = stock;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Comic{");
@@ -89,6 +108,8 @@ public class Comic {
         sb.append(", publicationDate=").append(publicationDate);
         sb.append(", publisher=").append(publisher);
         sb.append(", protagonists=").append(protagonists);
+        sb.append(", price=").append(price);
+        sb.append(", stock=").append(stock);
         sb.append('}');
         return sb.toString();
     }

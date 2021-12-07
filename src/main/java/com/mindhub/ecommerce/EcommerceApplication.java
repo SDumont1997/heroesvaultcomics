@@ -26,7 +26,7 @@ public class EcommerceApplication {
 			authorRepository.save(author1);
 			Character character1 = new Character("Peter Benjamin Parker", "Spiderman", "Amazing Fantasy #15", "New York, United States of America", author1, publisher1);
 			characterRepository.save(character1);
-			Comic comic1 = new Comic("Amazing Fantasy #15", author1, LocalDate.of(1962, 8, 10), publisher1);
+			Comic comic1 = new Comic("Amazing Fantasy #15", author1, LocalDate.of(1962, 8, 10), publisher1, 1500.50);
 			comicRepository.save(comic1);
 			ComicCharacter comicCharacter1 = new ComicCharacter(comic1, character1);
 			comicCharacterRepository.save(comicCharacter1);
