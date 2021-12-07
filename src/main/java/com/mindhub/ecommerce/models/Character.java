@@ -27,6 +27,7 @@ public class Character {
     private Set<ComicCharacter> appearances = new HashSet<>();
     @OneToMany(mappedBy = "character", fetch = FetchType.EAGER)
     private Set<Merch> merch = new HashSet<>();
+    private String imgUrl;
 
     public Character(){
 
@@ -113,6 +114,14 @@ public class Character {
         this.merch.add(merch);
     }
 
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Character{");
@@ -125,6 +134,7 @@ public class Character {
         sb.append(", publisher=").append(publisher);
         sb.append(", appearances=").append(appearances);
         sb.append(", merch=").append(merch);
+        sb.append(", imgUrl=").append(imgUrl);
         sb.append('}');
         return sb.toString();
     }

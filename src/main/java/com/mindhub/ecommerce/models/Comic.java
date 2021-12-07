@@ -26,6 +26,7 @@ public class Comic {
     private Set<ComicCharacter> protagonists = new HashSet<>();
     private Double price;
     private Integer stock;
+    private String coverImgUrl;
 
     public Comic(){
 
@@ -100,6 +101,14 @@ public class Comic {
         this.stock = stock;
     }
 
+    public String getCoverImgUrl() {
+        return coverImgUrl;
+    }
+
+    public void setCoverImgUrl(String coverImgUrl) {
+        this.coverImgUrl = coverImgUrl;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Comic{");
@@ -111,6 +120,7 @@ public class Comic {
         sb.append(", protagonists=").append(protagonists);
         sb.append(", price=").append(price);
         sb.append(", stock=").append(stock);
+        sb.append(", coverImgUrl='").append(coverImgUrl).append('\'');
         sb.append('}');
         return sb.toString();
     }
