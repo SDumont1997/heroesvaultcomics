@@ -22,11 +22,13 @@ public class Comic {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "publisher_id")
     private Publisher publisher;
-    @OneToMany(mappedBy = "comic", fetch = FetchType.EAGER)
-    private Set<ComicCharacter> protagonists = new HashSet<>();
+    @ManyToMany(mappedBy = "appearances", fetch = FetchType.EAGER)
+    private Set<Character> protagonists = new HashSet<>();
     private Double price;
     private Integer stock;
     private String coverImgUrl;
+    @ManyToMany(mappedBy = "comics", fetch = FetchType.EAGER)
+    private Set<Purchase> purchases = new HashSet<>();
 
     public Comic(){
 
@@ -77,12 +79,13 @@ public class Comic {
         this.publisher = publisher;
     }
 
-    public Set<ComicCharacter> getProtagonists() {
+    public Set<Character> getProtagonists() {
         return protagonists;
     }
 
-    public void addProtagonist(ComicCharacter comicCharacter) {
-        this.protagonists.add(comicCharacter);
+    public void addProtagonist(Character character) {
+        this.protagonists.add(character);
+        character.addAppearance(this);
     }
 
     public Double getPrice() {
@@ -109,6 +112,14 @@ public class Comic {
         this.coverImgUrl = coverImgUrl;
     }
 
+    public Set<Purchase> getPurchases() {
+        return purchases;
+    }
+
+    public void addPurchases(Purchase purchase) {
+        this.purchases.add(purchase);
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Comic{");
@@ -121,6 +132,7 @@ public class Comic {
         sb.append(", price=").append(price);
         sb.append(", stock=").append(stock);
         sb.append(", coverImgUrl='").append(coverImgUrl).append('\'');
+        sb.append(", purchases").append(purchases);
         sb.append('}');
         return sb.toString();
     }

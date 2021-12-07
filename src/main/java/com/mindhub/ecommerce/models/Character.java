@@ -23,8 +23,8 @@ public class Character {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "publisher_id")
     private Publisher publisher;
-    @OneToMany(mappedBy = "character", fetch = FetchType.EAGER)
-    private Set<ComicCharacter> appearances = new HashSet<>();
+    @ManyToMany(mappedBy = "protagonists", fetch = FetchType.EAGER)
+    private Set<Comic> appearances = new HashSet<>();
     @OneToMany(mappedBy = "character", fetch = FetchType.EAGER)
     private Set<Merch> merch = new HashSet<>();
     private String imgUrl;
@@ -98,12 +98,12 @@ public class Character {
         publisher.addCharacter(this);
     }
 
-    public Set<ComicCharacter> getAppearances() {
+    public Set<Comic> getAppearances() {
         return appearances;
     }
 
-    public void addAppearance(ComicCharacter comicCharacter) {
-        this.appearances.add(comicCharacter);
+    public void addAppearance(Comic comic) {
+        this.appearances.add(comic);
     }
 
     public Set<Merch> getMerch() {

@@ -3,6 +3,8 @@ package com.mindhub.ecommerce.models;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Merch {
@@ -18,6 +20,8 @@ public class Merch {
     private Double price;
     private Integer stock;
     private String imgUrl;
+    @ManyToMany(mappedBy = "merch", fetch = FetchType.EAGER)
+    private Set<Purchase> purchases = new HashSet<>();
 
     public Merch() {
 
@@ -84,6 +88,14 @@ public class Merch {
         this.imgUrl = imgUrl;
     }
 
+    public Set<Purchase> getPurchases() {
+        return purchases;
+    }
+
+    public void addPurchases(Purchase purchase) {
+        this.purchases.add(purchase);
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Merch{");
@@ -94,6 +106,7 @@ public class Merch {
         sb.append(", price=").append(price);
         sb.append(", stock=").append(stock);
         sb.append(", imgUrl=").append(imgUrl);
+        sb.append(", purchases").append(purchases);
         sb.append('}');
         return sb.toString();
     }
