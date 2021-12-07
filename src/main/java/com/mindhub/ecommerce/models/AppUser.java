@@ -7,7 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.time.LocalDate;
 
-public class User {
+public class AppUser {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
@@ -18,18 +18,20 @@ public class User {
     private String firstName;
     private String lastName;
     private LocalDate birthDate;
+    private boolean admin;
 
-    public User(){
+    public AppUser(){
 
     }
 
-    public User(String username, String email, String password, String firstName, String lastName, LocalDate birthDate){
+    public AppUser(String username, String email, String password, String firstName, String lastName, LocalDate birthDate, boolean admin){
         this.username = username;
         this.email = email;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthDate = birthDate;
+        this.admin = admin;
     }
 
     public Long getId() {
@@ -84,9 +86,17 @@ public class User {
         this.birthDate = birthDate;
     }
 
+    public boolean isAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(boolean admin){
+        this.admin = admin;
+    }
+
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("User{");
+        final StringBuilder sb = new StringBuilder("AppUser{");
         sb.append("id=").append(id);
         sb.append(", username='").append(username).append('\'');
         sb.append(", email='").append(email).append('\'');
@@ -94,6 +104,7 @@ public class User {
         sb.append(", firstName='").append(firstName).append('\'');
         sb.append(", lastName='").append(lastName).append('\'');
         sb.append(", birthDate=").append(birthDate);
+        sb.append(", admin").append(admin);
         sb.append('}');
         return sb.toString();
     }

@@ -14,7 +14,7 @@ public class Purchase {
     private Long id;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
-    private User user;
+    private AppUser user;
     @ManyToMany(mappedBy = "purchases", fetch = FetchType.EAGER)
     private Set<Comic> comics = new HashSet<>();
     @ManyToMany(mappedBy = "purchases", fetch = FetchType.EAGER)
@@ -27,7 +27,7 @@ public class Purchase {
 
     }
 
-    public Purchase(User user, Set<Comic> comics, Set<Merch> merch, Double amount, PaymentOption paymentOption) {
+    public Purchase(AppUser user, Set<Comic> comics, Set<Merch> merch, Double amount, PaymentOption paymentOption) {
         this.user = user;
         this.comics = comics;
         this.merch = merch;
@@ -35,7 +35,7 @@ public class Purchase {
         this.paymentOption = paymentOption;
     }
 
-    public Purchase(User user, Set<Comic> comics, Set<Merch> merch, Double amount, PaymentOption paymentOption, String cardNumber){
+    public Purchase(AppUser user, Set<Comic> comics, Set<Merch> merch, Double amount, PaymentOption paymentOption, String cardNumber){
         this.user = user;
         this.comics = comics;
         this.merch = merch;
@@ -48,11 +48,11 @@ public class Purchase {
         return id;
     }
 
-    public User getUser() {
+    public AppUser getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(AppUser user) {
         this.user = user;
     }
 
