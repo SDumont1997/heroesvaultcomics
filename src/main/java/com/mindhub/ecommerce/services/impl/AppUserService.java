@@ -2,12 +2,12 @@ package com.mindhub.ecommerce.services.impl;
 
 import com.mindhub.ecommerce.models.AppUser;
 import com.mindhub.ecommerce.repositories.AppUserRepository;
-import com.mindhub.ecommerce.services.AppUserService;
+import com.mindhub.ecommerce.services.IAppUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-public class AppUserServiceImpl implements AppUserService {
+public class AppUserService implements IAppUserService {
 
     @Autowired
     AppUserRepository appUserRepository;

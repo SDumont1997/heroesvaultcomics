@@ -2,12 +2,12 @@ package com.mindhub.ecommerce.services.impl;
 
 import com.mindhub.ecommerce.models.Publisher;
 import com.mindhub.ecommerce.repositories.PublisherRepository;
-import com.mindhub.ecommerce.services.PublisherService;
+import com.mindhub.ecommerce.services.IPublisherService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-public class PublisherServiceImpl implements PublisherService {
+public class PublisherService implements IPublisherService {
 
     @Autowired
     PublisherRepository publisherRepository;

@@ -4,7 +4,7 @@ import com.mindhub.ecommerce.models.Publisher;
 
 import java.util.List;
 
-public interface PublisherService {
+public interface IPublisherService {
 
     public List<Publisher> getAll();
     public Publisher getById(Long id);

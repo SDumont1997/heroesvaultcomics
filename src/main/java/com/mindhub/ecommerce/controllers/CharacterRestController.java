@@ -2,7 +2,7 @@ package com.mindhub.ecommerce.controllers;
 
 
 import com.mindhub.ecommerce.dtos.CharacterDTO;
-import com.mindhub.ecommerce.services.CharacterService;
+import com.mindhub.ecommerce.services.ICharacterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +18,7 @@ import static java.util.stream.Collectors.toSet;
 public class CharacterRestController {
 
     @Autowired
-    private CharacterService characterService;
+    private ICharacterService characterService;
 
     @GetMapping("/characters")
     public Set<CharacterDTO> getCharacters(){

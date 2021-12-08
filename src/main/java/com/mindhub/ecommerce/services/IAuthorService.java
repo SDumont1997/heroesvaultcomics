@@ -4,7 +4,7 @@ import com.mindhub.ecommerce.models.Author;
 
 import java.util.List;
 
-public interface AuthorService {
+public interface IAuthorService {
 
     public List<Author> getAll();
     public Author getById(Long id);

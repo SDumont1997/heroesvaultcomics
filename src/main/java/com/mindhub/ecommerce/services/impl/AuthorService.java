@@ -2,14 +2,14 @@ package com.mindhub.ecommerce.services.impl;
 
 import com.mindhub.ecommerce.models.Author;
 import com.mindhub.ecommerce.repositories.AuthorRepository;
-import com.mindhub.ecommerce.services.AuthorService;
+import com.mindhub.ecommerce.services.IAuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class AuthorServiceImpl implements AuthorService {
+public class AuthorService implements IAuthorService {
 
     @Autowired
     AuthorRepository authorRepository;

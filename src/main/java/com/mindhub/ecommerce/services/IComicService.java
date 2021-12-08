@@ -4,7 +4,7 @@ import com.mindhub.ecommerce.models.Comic;
 
 import java.util.List;
 
-public interface ComicService {
+public interface IComicService {
 
     public List<Comic> getAll();
     public Comic getById(Long id);

@@ -2,12 +2,12 @@ package com.mindhub.ecommerce.services.impl;
 
 import com.mindhub.ecommerce.models.Comic;
 import com.mindhub.ecommerce.repositories.ComicRepository;
-import com.mindhub.ecommerce.services.ComicService;
+import com.mindhub.ecommerce.services.IComicService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-public class ComicServiceImpl implements ComicService {
+public class ComicService implements IComicService {
 
     @Autowired
     ComicRepository comicRepository;

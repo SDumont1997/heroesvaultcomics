@@ -2,12 +2,12 @@ package com.mindhub.ecommerce.services.impl;
 
 import com.mindhub.ecommerce.models.Merch;
 import com.mindhub.ecommerce.repositories.MerchRepository;
-import com.mindhub.ecommerce.services.MerchService;
+import com.mindhub.ecommerce.services.IMerchService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-public class MerchServiceImpl implements MerchService {
+public class MerchService implements IMerchService {
 
     @Autowired
     MerchRepository merchRepository;

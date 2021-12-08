@@ -2,12 +2,12 @@ package com.mindhub.ecommerce.services.impl;
 
 import com.mindhub.ecommerce.models.Purchase;
 import com.mindhub.ecommerce.repositories.PurchaseRepository;
-import com.mindhub.ecommerce.services.PurchaseService;
+import com.mindhub.ecommerce.services.IPurchaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-public class PurchaseServiceImpl implements PurchaseService {
+public class PurchaseService implements IPurchaseService {
 
     @Autowired
     PurchaseRepository purchaseRepository;

@@ -19,7 +19,7 @@ public class AppUser {
     private String firstName;
     private String lastName;
     private LocalDate birthDate;
-    private boolean admin;
+    private boolean isAdmin;
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     private Set<Purchase> purchases = new HashSet<>();
 
@@ -27,14 +27,14 @@ public class AppUser {
 
     }
 
-    public AppUser(String username, String email, String password, String firstName, String lastName, LocalDate birthDate, boolean admin){
+    public AppUser(String username, String email, String password, String firstName, String lastName, LocalDate birthDate, boolean isAdmin){
         this.username = username;
         this.email = email;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthDate = birthDate;
-        this.admin = admin;
+        this.isAdmin = isAdmin;
     }
 
     public Long getId() {
@@ -90,11 +90,11 @@ public class AppUser {
     }
 
     public boolean isAdmin() {
-        return admin;
+        return isAdmin;
     }
 
     public void setAdmin(boolean admin){
-        this.admin = admin;
+        this.isAdmin = admin;
     }
 
     public Set<Purchase> getPurchases() {
@@ -115,7 +115,7 @@ public class AppUser {
         sb.append(", firstName='").append(firstName).append('\'');
         sb.append(", lastName='").append(lastName).append('\'');
         sb.append(", birthDate=").append(birthDate);
-        sb.append(", admin").append(admin);
+        sb.append(", admin").append(isAdmin);
         sb.append(", purchases").append(purchases);
         sb.append('}');
         return sb.toString();

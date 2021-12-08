@@ -4,7 +4,7 @@ import com.mindhub.ecommerce.models.Merch;
 
 import java.util.List;
 
-public interface MerchService {
+public interface IMerchService {
     public List<Merch> getAll();
     public Merch getById(Long id);
     public Merch save(Merch merch);

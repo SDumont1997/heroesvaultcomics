@@ -2,14 +2,14 @@ package com.mindhub.ecommerce.services.impl;
 
 import com.mindhub.ecommerce.models.Character;
 import com.mindhub.ecommerce.repositories.CharacterRepository;
-import com.mindhub.ecommerce.services.CharacterService;
+import com.mindhub.ecommerce.services.ICharacterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class CharacterServiceImpl implements CharacterService {
+public class CharacterService implements ICharacterService {
 
     @Autowired
     CharacterRepository characterRepository;

@@ -4,7 +4,7 @@ import com.mindhub.ecommerce.models.Character;
 
 import java.util.List;
 
-public interface CharacterService {
+public interface ICharacterService {
 
     public List<Character> getAll();
     public Character getById(Long id);
