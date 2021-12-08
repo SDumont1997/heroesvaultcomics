@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-public class AppAppUserServiceImpl implements AppUserService {
+public class AppUserServiceImpl implements AppUserService {
 
     @Autowired
     AppUserRepository appUserRepository;
@@ -20,6 +20,16 @@ public class AppAppUserServiceImpl implements AppUserService {
     @Override
     public AppUser getById(Long id) {
         return appUserRepository.findById(id).get();
+    }
+
+    @Override
+    public AppUser getByUsername(String username){
+        return appUserRepository.findByUsername(username);
+    }
+
+    @Override
+    public AppUser getByEmail(String email){
+        return appUserRepository.findByEmail(email);
     }
 
     @Override

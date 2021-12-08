@@ -7,5 +7,7 @@ import java.util.List;
 public interface AppUserService {
     public List<AppUser> getAll();
     public AppUser getById(Long id);
+    public AppUser getByUsername(String username);
+    public AppUser getByEmail(String email);
     public AppUser save(AppUser appUser);
 }
