@@ -120,7 +120,7 @@ public class Comic {
         return purchases;
     }
 
-    public void addPurchases(Purchase purchase) {
+    public void addPurchase(Purchase purchase) {
         this.purchases.add(purchase);
     }
 

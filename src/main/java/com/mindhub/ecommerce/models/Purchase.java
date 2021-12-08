@@ -33,6 +33,8 @@ public class Purchase {
         this.merch = merch;
         this.amount = amount;
         this.paymentOption = paymentOption;
+        comics.forEach(comic -> comic.addPurchase(this));
+        merch.forEach(merch1 -> merch1.addPurchase(this));
     }
 
     public Purchase(AppUser user, Set<Comic> comics, Set<Merch> merch, Double amount, PaymentOption paymentOption, String cardNumber){
@@ -42,6 +44,8 @@ public class Purchase {
         this.amount = amount;
         this.paymentOption = paymentOption;
         this.cardNumber = cardNumber;
+        comics.forEach(comic -> comic.addPurchase(this));
+        merch.forEach(merch1 -> merch1.addPurchase(this));
     }
 
     public Long getId() {
@@ -62,10 +66,12 @@ public class Purchase {
 
     public void setComics(Set<Comic> comics) {
         this.comics = comics;
+        comics.forEach(comic -> comic.addPurchase(this));
     }
 
     public void addComics(Comic comic){
         this.comics.add(comic);
+        comic.addPurchase(this);
     }
 
     public Set<Merch> getMerch() {
@@ -74,10 +80,12 @@ public class Purchase {
 
     public void setMerch(Set<Merch> merch) {
         this.merch = merch;
+        merch.forEach(merch1 -> merch1.addPurchase(this));
     }
 
     public void addMerch(Merch merch){
         this.merch.add(merch);
+        merch.addPurchase(this);
     }
 
     public Double getAmount() {

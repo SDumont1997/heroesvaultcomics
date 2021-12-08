@@ -10,8 +10,8 @@ import static java.util.stream.Collectors.toSet;
 public class PurchaseDTO {
     private Long id;
     private String username;
-    private Set<ComicDTO> comics;
-    private Set<MerchDTO> merch;
+    private Set<String> comics;
+    private Set<String> merch;
     private Double amount;
     private PaymentOption paymentOption;
     private String cardNumber;
@@ -23,8 +23,8 @@ public class PurchaseDTO {
     public PurchaseDTO(Purchase purchase) {
         this.id = purchase.getId();
         this.username = purchase.getUser().getUsername();
-        this.comics = purchase.getComics().stream().map(ComicDTO::new).collect(toSet());
-        this.merch = purchase.getMerch().stream().map(MerchDTO::new).collect(toSet());
+        this.comics = purchase.getComics().stream().map(comic -> comic.getTitle() + " - $" + comic.getPrice()).collect(toSet());
+        this.merch = purchase.getMerch().stream().map(merch1 -> merch1.getName() + " - $" + merch1.getPrice()).collect(toSet());
         this.amount = purchase.getAmount();
         this.paymentOption = purchase.getPaymentOption();
         this.cardNumber = purchase.getCardNumber();
@@ -46,19 +46,19 @@ public class PurchaseDTO {
         this.username = username;
     }
 
-    public Set<ComicDTO> getComics() {
+    public Set<String> getComics() {
         return comics;
     }
 
-    public void setComics(Set<ComicDTO> comics) {
+    public void setComics(Set<String> comics) {
         this.comics = comics;
     }
 
-    public Set<MerchDTO> getMerch() {
+    public Set<String> getMerch() {
         return merch;
     }
 
-    public void setMerch(Set<MerchDTO> merch) {
+    public void setMerch(Set<String> merch) {
         this.merch = merch;
     }
 

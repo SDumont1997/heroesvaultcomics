@@ -1,5 +1,6 @@
 package com.mindhub.ecommerce.dtos;
 
+import com.mindhub.ecommerce.models.Character;
 import com.mindhub.ecommerce.models.Comic;
 
 import java.time.LocalDate;
@@ -13,7 +14,7 @@ public class ComicDTO {
     private String authorName;
     private LocalDate publicationDate;
     private String publisherName;
-    private Set<CharacterDTO> protagonists;
+    private Set<String> protagonists;
     private Double price;
     private Integer stock;
     private String coverImgUrl;
@@ -29,7 +30,7 @@ public class ComicDTO {
         this.authorName = comic.getAuthor().getFirstName() + " " + comic.getAuthor().getLastName();
         this.publicationDate = comic.getPublicationDate();
         this.publisherName = comic.getPublisher().getName();
-        this.protagonists = comic.getProtagonists().stream().map(CharacterDTO::new).collect(toSet());
+        this.protagonists = comic.getProtagonists().stream().map(Character::getAlias).collect(toSet());
         this.price = comic.getPrice();
         this.stock = comic.getStock();
         this.coverImgUrl = comic.getCoverImgUrl();
@@ -76,11 +77,11 @@ public class ComicDTO {
         this.publisherName = publisherName;
     }
 
-    public Set<CharacterDTO> getProtagonists() {
+    public Set<String> getProtagonists() {
         return protagonists;
     }
 
-    public void setProtagonists(Set<CharacterDTO> protagonists) {
+    public void setProtagonists(Set<String> protagonists) {
         this.protagonists = protagonists;
     }
 
