@@ -43,8 +43,8 @@ public class Character {
         this.firstAppearance = firstAppearance;
         this.birthPlace = birthPlace;
         this.creator = creator;
-        creator.addInventedCharacter(this);
         this.publisher = publisher;
+        creator.addInventedCharacter(this);
         publisher.addCharacter(this);
     }
 

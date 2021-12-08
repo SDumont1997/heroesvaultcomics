@@ -1,40 +1,41 @@
-package com.mindhub.ecommerce.models;
+package com.mindhub.ecommerce.dtos;
 
-import org.hibernate.annotations.GenericGenerator;
+import com.mindhub.ecommerce.models.Author;
 
-import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.HashSet;
 import java.util.Set;
 
-@Entity
-public class Author {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
-    @GenericGenerator(name = "native", strategy = "native")
+import static java.util.stream.Collectors.toSet;
+
+public class AuthorDTO {
     private Long id;
     private String firstName;
     private String lastName;
     private LocalDate birthDate;
     private String birthPlace;
-    @OneToMany(mappedBy = "author", fetch = FetchType.EAGER)
-    private Set<Comic> works = new HashSet<>();
-    @OneToMany(mappedBy = "creator", fetch = FetchType.EAGER)
-    private Set<Character> inventedCharacters = new HashSet<>();
+    private Set<ComicDTO> works;
+    private Set<CharacterDTO> inventedCharacters;
 
-    public Author(){
+    public AuthorDTO(){
 
     }
 
-    public Author(String firstName, String lastName, LocalDate birthDate, String birthPlace){
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.birthDate = birthDate;
-        this.birthPlace = birthPlace;
+    public AuthorDTO(Author author){
+        this.id = author.getId();
+        this.firstName = author.getFirstName();
+        this.lastName = author.getLastName();
+        this.birthDate = author.getBirthDate();
+        this.birthPlace = author.getBirthPlace();
+        this.works = author.getWorks().stream().map(ComicDTO::new).collect(toSet());
+        this.inventedCharacters = author.getInventedCharacters().stream().map(CharacterDTO::new).collect(toSet());
     }
 
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getFirstName() {
@@ -61,7 +62,7 @@ public class Author {
         this.birthDate = birthDate;
     }
 
-    public String getBirthPlace(){
+    public String getBirthPlace() {
         return birthPlace;
     }
 
@@ -69,25 +70,25 @@ public class Author {
         this.birthPlace = birthPlace;
     }
 
-    public Set<Comic> getWorks() {
+    public Set<ComicDTO> getWorks() {
         return works;
     }
 
-    public void addWork(Comic comic) {
-        this.works.add(comic);
+    public void setWorks(Set<ComicDTO> works) {
+        this.works = works;
     }
 
-    public Set<Character> getInventedCharacters() {
+    public Set<CharacterDTO> getInventedCharacters() {
         return inventedCharacters;
     }
 
-    public void addInventedCharacter(Character character){
-        this.inventedCharacters.add(character);
+    public void setInventedCharacters(Set<CharacterDTO> inventedCharacters) {
+        this.inventedCharacters = inventedCharacters;
     }
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Author{");
+        final StringBuilder sb = new StringBuilder("AuthorDTO{");
         sb.append("id=").append(id);
         sb.append(", firstName='").append(firstName).append('\'');
         sb.append(", lastName='").append(lastName).append('\'');
