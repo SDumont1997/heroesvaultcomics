@@ -4,9 +4,11 @@ import com.mindhub.ecommerce.models.AppUser;
 import com.mindhub.ecommerce.repositories.AppUserRepository;
 import com.mindhub.ecommerce.services.IAppUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class AppUserService implements IAppUserService {
 
     @Autowired

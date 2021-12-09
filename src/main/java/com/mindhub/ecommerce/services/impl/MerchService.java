@@ -4,9 +4,11 @@ import com.mindhub.ecommerce.models.Merch;
 import com.mindhub.ecommerce.repositories.MerchRepository;
 import com.mindhub.ecommerce.services.IMerchService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class MerchService implements IMerchService {
 
     @Autowired

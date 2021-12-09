@@ -4,9 +4,11 @@ import com.mindhub.ecommerce.models.Comic;
 import com.mindhub.ecommerce.repositories.ComicRepository;
 import com.mindhub.ecommerce.services.IComicService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class ComicService implements IComicService {
 
     @Autowired

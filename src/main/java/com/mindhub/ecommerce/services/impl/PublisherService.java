@@ -4,9 +4,11 @@ import com.mindhub.ecommerce.models.Publisher;
 import com.mindhub.ecommerce.repositories.PublisherRepository;
 import com.mindhub.ecommerce.services.IPublisherService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class PublisherService implements IPublisherService {
 
     @Autowired
