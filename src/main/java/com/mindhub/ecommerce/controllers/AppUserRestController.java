@@ -1,7 +1,7 @@
 package com.mindhub.ecommerce.controllers;
 
+import com.mindhub.ecommerce.dtos.AppUserCreationDTO;
 import com.mindhub.ecommerce.dtos.AppUserDTO;
-import com.mindhub.ecommerce.dtos.CharacterCreationDTO;
 import com.mindhub.ecommerce.models.AppUser;
 import com.mindhub.ecommerce.services.IAppUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.time.Period;
-import java.time.format.DateTimeFormatter;
-import java.util.List;
-import static java.util.stream.Collectors.toList;
+import java.util.Set;
+
+import static java.util.stream.Collectors.toSet;
 
 @RestController
 @RequestMapping("/api")
@@ -27,8 +27,8 @@ public class AppUserRestController {
     private PasswordEncoder passwordEncoder;
 
     @GetMapping("/appUsers")
-    public List<AppUserDTO> getAppUsers() {
-        return appUserService.getAll().stream().map(appUser -> new AppUserDTO(appUser)).collect(toList());
+    public Set<AppUserDTO> getAppUsers() {
+        return appUserService.getAll().stream().map(AppUserDTO::new).collect(toSet());
     }
     @GetMapping("/appUsers/{id}")
     public AppUserDTO getAppUser(@PathVariable Long id) {
@@ -36,24 +36,24 @@ public class AppUserRestController {
     }
 
     @PostMapping("/appUsers")
-    public ResponseEntity<Object> register (Authentication authentication, @RequestBody AppUserDTO appUserDTO ){
-        String username = appUserDTO.getUsername();
-        String email = appUserDTO.getEmail();
-        String password = appUserDTO.getPassword();
-        String firstName = appUserDTO.getFirstName();
-        String lastName = appUserDTO.getLastName();
-        LocalDate birthDate = appUserDTO.getBirthDate();
-        //boolean isAdmin = false;
+    public ResponseEntity<Object> createAppUser (Authentication authentication, @RequestBody AppUserCreationDTO appUserCreationDTO ){
+        String username = appUserCreationDTO.getUsername();
+        String email = appUserCreationDTO.getEmail();
+        String password = appUserCreationDTO.getPassword();
+        String firstName = appUserCreationDTO.getFirstName();
+        String lastName = appUserCreationDTO.getLastName();
+        LocalDate birthDate = appUserCreationDTO.getBirthDate();
         if (username.isEmpty() || email.isEmpty() || password.isEmpty() || firstName.isEmpty() || lastName.isEmpty() || birthDate == null) {
-            return new ResponseEntity<>("Missing data", HttpStatus.FORBIDDEN);
+            return new ResponseEntity<>("Missing parameters", HttpStatus.FORBIDDEN);
         }
         if (appUserService.getByUsername(username) != null) {
             return new ResponseEntity<>("Username already in use", HttpStatus.FORBIDDEN);
         }
         if (!IsValidAge(birthDate)){
-            return new ResponseEntity<>("User must be older than fourteen years old", HttpStatus.FORBIDDEN);
+            return new ResponseEntity<>("User must be at least fourteen years old", HttpStatus.FORBIDDEN);
         }
-        appUserService.save(new AppUser(username, email, passwordEncoder.encode(password), firstName, lastName, birthDate, false));
+        AppUser newAppUser = new AppUser(username, email, passwordEncoder.encode(password), firstName, lastName, birthDate, false);
+        appUserService.save(newAppUser);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
@@ -66,6 +66,40 @@ public class AppUserRestController {
     @GetMapping("/appUsers/current")
     public AppUserDTO getCurrent(Authentication authentication) {
         return new AppUserDTO(appUserService.getByEmail(authentication.getName()));
+    }
+
+    @PostMapping("/appUsers/setAdmin")
+    public ResponseEntity<Object> setAdmin(Authentication authentication, @RequestParam Long id){
+        if (!appUserService.getByEmail(authentication.getName()).isAdmin()){
+            return new ResponseEntity<>("User does not have authorization for this action", HttpStatus.UNAUTHORIZED);
+        }
+        if (appUserService.getById(id) == null){
+            return new ResponseEntity<>("Target user does not exist", HttpStatus.FORBIDDEN);
+        }
+        if (appUserService.getById(id).isAdmin()){
+            return new ResponseEntity<>("User already has administrator privileges", HttpStatus.ALREADY_REPORTED);
+        }
+        AppUser user = appUserService.getById(id);
+        user.setAdmin(true);
+        appUserService.save(user);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @PostMapping("/appUsers/revokeAdmin")
+    public ResponseEntity<Object> revokeAdmin(Authentication authentication, @RequestParam Long id){
+        if (!appUserService.getByEmail(authentication.getName()).isAdmin()){
+            return new ResponseEntity<>("User does not have authorization for this action", HttpStatus.UNAUTHORIZED);
+        }
+        if (appUserService.getById(id) == null){
+            return new ResponseEntity<>("Target user does not exist", HttpStatus.FORBIDDEN);
+        }
+        if (!appUserService.getById(id).isAdmin()){
+            return new ResponseEntity<>("User does not have administrator privileges", HttpStatus.ALREADY_REPORTED);
+        }
+        AppUser user = appUserService.getById(id);
+        user.setAdmin(false);
+        appUserService.save(user);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 }
