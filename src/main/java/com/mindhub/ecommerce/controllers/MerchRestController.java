@@ -5,6 +5,8 @@ import com.mindhub.ecommerce.dtos.MerchDTO;
 import com.mindhub.ecommerce.models.Character;
 import com.mindhub.ecommerce.models.Merch;
 import com.mindhub.ecommerce.models.MerchType;
+import com.mindhub.ecommerce.services.IAppUserService;
+import com.mindhub.ecommerce.services.ICharacterService;
 import com.mindhub.ecommerce.services.IMerchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,25 +24,37 @@ public class MerchRestController {
     @Autowired
     private IMerchService merchService;
 
-    @GetMapping("/merchs")
-    public Set<MerchDTO> getMerchs(){
+    @Autowired
+    private ICharacterService characterService;
+
+    @Autowired
+    private IAppUserService appUserService;
+
+    @GetMapping("/merch")
+    public Set<MerchDTO> getMerch(){
         return merchService.getAll().stream().map(MerchDTO::new).collect(toSet());
     }
 
-    @GetMapping("/merchs/{id}")
+    @GetMapping("/merch/{id}")
     public MerchDTO getMerchById(@PathVariable Long id){
         return new MerchDTO(merchService.getById(id));
     }
 
-    @PostMapping("/merchs")
+    @PostMapping("/merch")
     public ResponseEntity<Object> createMerch(Authentication authentication, @RequestBody MerchCreationDTO merchCreationDTO){
         String name = merchCreationDTO.getName();
         MerchType merchType = merchCreationDTO.getMerchType();
-        Character character = merchCreationDTO.getCharacter();
+        Character character = characterService.getById(merchCreationDTO.getCharacterId());
         Double price = merchCreationDTO.getPrice();
         Integer stock = merchCreationDTO.getStock();
-        if (name.isEmpty() || merchType == null || character == null || price <= 0 || stock <= 0){
+        if (!appUserService.getByEmail(authentication.getName()).isAdmin()){
+            return new ResponseEntity<>("User does not have authorization for this action", HttpStatus.UNAUTHORIZED);
+        }
+        if (name.isEmpty() || merchType == null || price <= 0 || stock <= 0){
             return new ResponseEntity<>("Missing parameters", HttpStatus.BAD_REQUEST);
+        }
+        if (character == null ){
+            return new ResponseEntity<>("Invalid character id", HttpStatus.BAD_REQUEST);
         }
         Merch newMerch = new Merch(name, merchType, character, price, stock);
         merchService.save(newMerch);

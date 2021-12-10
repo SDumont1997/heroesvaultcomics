@@ -6,17 +6,17 @@ import com.mindhub.ecommerce.models.MerchType;
 public class MerchCreationDTO {
     private String name;
     private MerchType merchType;
-    private Character character;
+    private Long characterId;
     private Double price;
     private Integer stock;
 
     public MerchCreationDTO() {
     }
 
-    public MerchCreationDTO(String name, MerchType merchType, Character character, Double price, Integer stock) {
+    public MerchCreationDTO(String name, MerchType merchType, Long characterId, Double price, Integer stock) {
         this.name = name;
         this.merchType = merchType;
-        this.character = character;
+        this.characterId = characterId;
         this.price = price;
         this.stock = stock;
     }
@@ -37,12 +37,12 @@ public class MerchCreationDTO {
         this.merchType = merchType;
     }
 
-    public Character getCharacter() {
-        return character;
+    public Long getCharacterId() {
+        return characterId;
     }
 
-    public void setCharacter(Character character) {
-        this.character = character;
+    public void setCharacter(Long characterId) {
+        this.characterId = characterId;
     }
 
     public Double getPrice() {
@@ -63,12 +63,13 @@ public class MerchCreationDTO {
 
     @Override
     public String toString() {
-        return "MerchCreationDTO{" +
-                "name='" + name + '\'' +
-                ", merchType=" + merchType +
-                ", character=" + character +
-                ", price=" + price +
-                ", stock=" + stock +
-                '}';
+        final StringBuilder sb = new StringBuilder("MerchCreationDTO{");
+        sb.append("name='").append(name).append('\'');
+        sb.append(", merchType=").append(merchType);
+        sb.append(", characterId=").append(characterId);
+        sb.append(", price=").append(price);
+        sb.append(", stock=").append(stock);
+        sb.append('}');
+        return sb.toString();
     }
 }

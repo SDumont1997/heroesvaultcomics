@@ -7,20 +7,20 @@ import java.time.LocalDate;
 
 public class ComicCreationDTO {
     private String title;
-    private Author author;
+    private Long authorId;
     private LocalDate publicationDate;
-    private Publisher publisher;
+    private Long publisherId;
     private Double price;
     private Integer stock;
 
     public ComicCreationDTO() {
     }
 
-    public ComicCreationDTO(String title, Author author, LocalDate publicationDate, Publisher publisher, Double price, Integer stock) {
+    public ComicCreationDTO(String title, Long authorId, LocalDate publicationDate, Long publisherId, Double price, Integer stock) {
         this.title = title;
-        this.author = author;
+        this.authorId = authorId;
         this.publicationDate = publicationDate;
-        this.publisher = publisher;
+        this.publisherId = publisherId;
         this.price = price;
         this.stock = stock;
     }
@@ -33,12 +33,12 @@ public class ComicCreationDTO {
         this.title = title;
     }
 
-    public Author getAuthor() {
-        return author;
+    public Long getAuthorId() {
+        return authorId;
     }
 
-    public void setAuthor(Author author) {
-        this.author = author;
+    public void setAuthorId(Long authorId) {
+        this.authorId = authorId;
     }
 
     public LocalDate getPublicationDate() {
@@ -49,12 +49,12 @@ public class ComicCreationDTO {
         this.publicationDate = publicationDate;
     }
 
-    public Publisher getPublisher() {
-        return publisher;
+    public Long getPublisherId() {
+        return publisherId;
     }
 
-    public void setPublisher(Publisher publisher) {
-        this.publisher = publisher;
+    public void setPublisherId(Long publisherId) {
+        this.publisherId = publisherId;
     }
 
     public Double getPrice() {
@@ -77,9 +77,9 @@ public class ComicCreationDTO {
     public String toString() {
         final StringBuilder sb = new StringBuilder("ComicCreationDTO{");
         sb.append("title='").append(title).append('\'');
-        sb.append("author='").append(author).append('\'');
+        sb.append("authorId='").append(authorId).append('\'');
         sb.append("publicationDate='").append(publicationDate).append('\'');
-        sb.append("publisher='").append(publisher).append('\'');
+        sb.append("publisherId='").append(publisherId).append('\'');
         sb.append(", price='").append(price);
         sb.append(", stock=").append(stock).append('\'');
         sb.append('}');
