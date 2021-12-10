@@ -22,6 +22,7 @@ public class Purchase {
     private Double amount;
     private PaymentOption paymentOption;
     private String cardNumber;
+    private Integer cardCvv;
 
     public Purchase() {
 
@@ -37,13 +38,14 @@ public class Purchase {
         merch.forEach(merch1 -> merch1.addPurchase(this));
     }
 
-    public Purchase(AppUser user, Set<Comic> comics, Set<Merch> merch, Double amount, PaymentOption paymentOption, String cardNumber){
+    public Purchase(AppUser user, Set<Comic> comics, Set<Merch> merch, Double amount, PaymentOption paymentOption, String cardNumber, Integer cardCvv){
         this.user = user;
         this.comics = comics;
         this.merch = merch;
         this.amount = amount;
         this.paymentOption = paymentOption;
         this.cardNumber = cardNumber;
+        this.cardCvv = cardCvv;
         comics.forEach(comic -> comic.addPurchase(this));
         merch.forEach(merch1 -> merch1.addPurchase(this));
     }
@@ -112,6 +114,14 @@ public class Purchase {
         this.cardNumber = cardNumber;
     }
 
+    public Integer getCardCvv(){
+        return this.cardCvv;
+    }
+
+    public void setCardCvv(Integer cardCvv) {
+        this.cardCvv = cardCvv;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Purchase{");
@@ -122,6 +132,7 @@ public class Purchase {
         sb.append(", amount=").append(amount);
         sb.append(", paymentOption=").append(paymentOption);
         sb.append(", cardNumber='").append(cardNumber).append('\'');
+        sb.append(", cardCvv=").append(cardCvv);
         sb.append('}');
         return sb.toString();
     }

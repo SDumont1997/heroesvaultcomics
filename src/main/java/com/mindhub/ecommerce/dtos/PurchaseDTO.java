@@ -15,6 +15,7 @@ public class PurchaseDTO {
     private Double amount;
     private PaymentOption paymentOption;
     private String cardNumber;
+    private Integer cardCvv;
 
     public PurchaseDTO(){
 
@@ -28,6 +29,7 @@ public class PurchaseDTO {
         this.amount = purchase.getAmount();
         this.paymentOption = purchase.getPaymentOption();
         this.cardNumber = purchase.getCardNumber();
+        this.cardCvv = purchase.getCardCvv();
     }
 
     public Long getId() {
@@ -86,6 +88,14 @@ public class PurchaseDTO {
         this.cardNumber = cardNumber;
     }
 
+    public Integer getCardCvv() {
+        return cardCvv;
+    }
+
+    public void setCardCvv(Integer cardCvv) {
+        this.cardCvv = cardCvv;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("PurchaseDTO{");
@@ -95,7 +105,8 @@ public class PurchaseDTO {
         sb.append(", merch=").append(merch);
         sb.append(", amount=").append(amount);
         sb.append(", paymentOption=").append(paymentOption);
-        sb.append(", cardNumber='").append(cardNumber).append('\'');
+        sb.append(", cardNumber=").append(cardNumber).append('\'');
+        sb.append(", cardCvv=").append(cardCvv);
         sb.append('}');
         return sb.toString();
     }
