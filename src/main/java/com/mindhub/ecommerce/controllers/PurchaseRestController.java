@@ -7,18 +7,19 @@ import com.mindhub.ecommerce.services.IAppUserService;
 import com.mindhub.ecommerce.services.IComicService;
 import com.mindhub.ecommerce.services.IMerchService;
 import com.mindhub.ecommerce.services.IPurchaseService;
+import com.mindhub.ecommerce.services.impl.PurchaseExporter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.transaction.Transactional;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.io.IOException;
+import java.util.*;
 
+import static java.util.stream.Collectors.toList;
 import static java.util.stream.Collectors.toSet;
 
 @RestController
@@ -36,6 +37,9 @@ public class PurchaseRestController {
 
     @Autowired
     public IPurchaseService purchaseService;
+
+    @Autowired
+    public PurchaseExporter exporter;
 
     @GetMapping("/purchases")
     public Set<PurchaseDTO> getPurchases(){
@@ -92,6 +96,14 @@ public class PurchaseRestController {
             purchaseService.save(newPurchase);
         }
         return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @PostMapping("/purchases/export/pdf")
+    public ResponseEntity<Object> exportTransactionsPdf(HttpServletResponse response, Authentication authentication, @RequestParam Long purchaseId) throws IOException {
+        Purchase purchase = purchaseService.getById(purchaseId);
+        AppUser appUser = appUserService.getByEmail(authentication.getName());
+        exporter.exportToPDF(purchase, appUser, response);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 }
