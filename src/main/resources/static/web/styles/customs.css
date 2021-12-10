@@ -1,3 +1,298 @@
-body{
-    background-color: #161853;
+@import url('https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500;600&display=swap');  /*font-family: 'Maven Pro', sans-serif; (400,500,600)*/
+
+
+/* Generals styles */
+*{
+    margin:0 !important;
+    padding: 0 !important;
 }
+
+body{
+    /* background-color: #161853; */
+    color: white;
+    font-family: 'Maven pro', sans-serif;
+    font-weight: 400;
+    font-size: .7rem;
+}
+
+li{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+    transition: all 300ms;
+}
+
+a:hover{
+    color: #d54343 !important;
+}
+/* End Generals styles */
+
+
+
+/* offcanvas styles */
+.offcanvas{
+    width: 260px;
+    background-color: #151515;
+    transition-duration: .5s !important;
+}
+
+.offcanvas-header-menu{
+    border-bottom: 1px solid #ffffff85;
+    padding-bottom: 1rem !important;
+    background-color: #151515;
+}
+
+.close-canvass-btn{
+    width: 40px;
+    height: 40px;
+    position: relative;
+    left: 109px;
+    background: transparent;
+    border: none; 
+}
+
+.close-canvass-btn i{
+    font-size: 1.3rem;
+}
+
+.offcanvas-body-menu,
+.offcanvas-shopping{
+    background-image: url("../assets/background-canvas-body.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.offcanvas-shopping{
+    width: 230px;
+}
+
+.offcanvas-body > div,
+.offcanvas-shopping > div{
+    background-color: #1515159c;
+    height: 100%;
+}
+
+.nav-item{
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+ul .nav-item ~ .nav-item{
+    margin-top: 1.5rem !important;
+}
+
+.product-image {
+    width: 65px;
+    height: 65px;
+}
+
+.close-btn-shoppingCar{
+    position: relative;
+    left: 82px;
+}
+
+.accountant-product{
+    width: 25px;
+}
+
+.substract-addition-btn{
+    font-weight: 600;
+    border: none;
+    font-size: 1.7rem;
+    justify-content: center;
+    padding-bottom: 2px !important;
+    background: #ccc;
+}
+/* end off canvas styles  */
+
+
+/* Header's styles */
+header{
+    background-color: #151515;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+}
+
+.bag-store{
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.logo{
+    width: 200px;
+}
+
+.headerBtns-container{
+    width: 80%;
+}
+
+.access-btn{
+    padding: 2px 3px !important;
+    font-size: 1rem;
+    font-weight: 100;
+    letter-spacing: 2px;
+    display: inline-block;
+    cursor: pointer;
+    transition: all 300ms;
+}
+
+.access-btn:hover{
+    font-size: 1.2rem;
+    color: #4f53d4;
+}
+
+.navbar-btn{
+    width: 20px;
+    height: 20px;
+    margin-right: .4rem !important;
+    border:none;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.bars{
+    width: 100%;
+    border: 1px solid white;
+}
+
+.bar2{
+    width:80%;
+}
+
+.navbar-toggler:focus {
+    box-shadow:none !important;
+}
+/* end header's stles */
+
+
+
+/* Main's styes */
+main{
+    min-height:400px;
+    background-color: #ccc;
+}
+/*End Main's styes */
+
+
+
+
+/* Footer's styles */
+footer{
+    min-height: 300px;
+    background-color: #151515;
+}
+
+.footer-subtitle{
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.footer-references {
+    font-size: .65rem;
+    font-weight: 600;
+}
+
+.footer-items{
+    font-size: .4rem;
+}
+
+
+/* End footer's Styles */
+
+
+
+@media(min-width:768px){
+
+    body{
+        font-size: 1rem;
+    }
+
+    /* offcanvas styles */
+    .offcanvas-shopping {
+        width: 330px;
+    }
+
+    .close-btn-shoppingCar {
+        left: 180px;
+    }
+    /* end offcanvas styles */
+
+    /* header's styles */
+    header{
+        padding: 0 .5rem !important;
+        padding-top: 1.5rem !important;
+    }
+
+    .logo{
+        width: 215px;
+    }
+    /* end Header's styles */
+
+
+    /* footer's styles */
+    .footer-subtitle{
+        font-size: 1.3rem;
+    }
+
+    .footer-references{
+        font-size: .65rem;
+    }
+
+    .footer-items{
+        font-size: .7rem;
+    }
+    /* end footer's styles */
+}
+
+
+@media(min-width:992px){
+
+    /* header's styles */
+    .items-container{
+        width: auto;
+        margin: 0 auto !important;
+        display: flex;
+        justify-content: space-around;
+    }
+    
+    ul .nav-item ~ .nav-item{
+        margin-left: 1.2rem !important;
+        margin-top: 0 !important;
+    }
+
+    .nav-item{
+        font-size: .6rem;
+        font-weight: 400;
+        letter-spacing: 2px;
+    }
+    
+    .accessBtn-container{
+        width: 300px;
+    }
+
+    .access-btn {
+        padding-bottom: 7px !important;
+    }
+    /* end header's styles */
+    
+    
+    /* footer's styles */
+    .footer-references {
+        font-size: 1rem;
+    }
+    /* end footer's styles */
+}
+
+@media(min-width:1200px){
+    /* Header's styles */
+    .nav-item {
+        font-size: 1rem;
+    }
+    /* end header's styles */
+}
+

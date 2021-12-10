@@ -10,9 +10,10 @@
     <link rel="stylesheet" href="./styles/customs.css">
 </head>
 <body>
-    <div id="app" class="d-flex flex-column justify-content-between">
+    
+    <div id="app">
 
-        <!-- offcanvas and shopping car content -->
+        <!-- offcanvas and shopping cart content -->
         <div class="offcanvas offcanvas-start d-lg-none" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
 
             <div class="offcanvas-header offcanvas-header-menu d-flex flex-column align-items-center pb-3">
@@ -182,8 +183,8 @@
             <button type="button" class="pb-1 position-relative bg-transparent border-0 text-light d-lg-none" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
                 <i class="bi bi-cart bag-store d-lg-none"></i>
                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                  99+
-                  <span class="visually-hidden">unread messages</span>
+                99+
+                <span class="visually-hidden">unread messages</span>
                 </span>
             </button>
 
@@ -198,15 +199,61 @@
                 <button type="button" class="position-relative bg-transparent border-0 text-light d-md-block" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
                     <i class="bi bi-cart bag-store d-lg-block"></i>
                     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                      99+
+                    99+
                     <span class="visually-hidden">unread messages</span>
                     </span>
                 </button>
             </div>
         </header>
 
-        <main>
+        <main class="bg-transparent pb-2">
+            <section class="w-75 mx-auto my-0">
+                <!-- Cambiar contenido de acá para abajo -->
+                <h2 class="ps-2 fs-6 text-body fw-lighter border-bottom border-top mb-2">Your Rights</h2>
+                <article>
+                    <dl>
+                        <dt class="text-body mb-1">Right to Access</dt>
+                        <dd class="text-body mb-2">If you are a California resident, you have the right to request, up to two times each year, access to categories and specific pieces of personal information about you that we collect, use, disclose, and sell.</dd>
+                        <dt class="text-body mb-1">Right to Delete</dt>
+                        <dd class="text-body mb-2">If you are a California resident, you have the right to request that we delete personal information that we collect from you, subject to applicable legal exceptions.</dd>
+                        <dt class="text-body mb-1">Right to Opt Out of Sale of Personal Information</dt>
+                        <dd class="text-body mb-2">If you are a California resident, you have the right to “opt out” of the “sale” of your “personal information” to “third parties” (as those terms are defined in the CCPA)</dd>
+                        <dt class="text-body mb-1">Process to Make a CCPA Request</dt>
+                        <dd class="text-body mb-2">
+                            <p class="text-body mb-2">Making Access and Deletion Requests</p>
 
+                            <p class="text-body mb-2">To make an access or deletion request, please visit ccpa.disney.com. Before completing your request, we may need to verify your identity. We will send you a link to verify your email address and may request additional documentation or information solely for the purpose of verifying your identity.</p>
+
+                            <p class="text-body mb-2">Instructions for Authorized Agents Making Access and Deletion Requests</p>
+
+                            <p class="text-body mb-2">You may also use an authorized agent to submit an access or deletion request on your behalf.  Authorized agents may submit access and deletion requests at ccpa.disney.com/agents. An authorized agent must have your signed permission to submit a request on your behalf or provide proof that they have power of attorney in accordance with California probate law. Authorized agents that are business entities must be registered with the California Secretary of State to conduct business in California. Before completing requests from authorized agents, we may contact you directly to confirm you’ve given your permission and/or to verify your identity.</p>
+
+                            <p class="text-body mb-2">Making Requests to “Opt Out” of the “Sale” of “Personal Information”</p>
+
+                            <p class="text-body mb-2">To submit a request to opt out of the sale of your personal information, you may visit our “Do Not Sell My Personal Information” Rights page or send an email to caprivacy@twdc.com with the subject line “do not sell info.”  You may also use an authorized agent to submit a request to opt out on your behalf if you provide the authorized agent signed written permission to do so.  Authorized agents may submit requests to opt out by visiting ccpa.disney.com/agentsdnsmi. You have the right not to receive discriminatory treatment for the exercise of your privacy rights conferred by the CCPA.</p>
+                        </dd>
+                        <dt class="text-body mb-1">Shine the Light Act</dt>
+                        <dd class="text-body mb-2"> 
+                            <p class="text-body mb-2">If you are a California resident, California Civil Code Section 1798.83 permits you to request information regarding the disclosure of your personal information by certain members of The Heroes Vault Comics Family of Companies to third parties for the third parties’ direct marketing purposes. We take great pride in the relationship of trust we have built with our guests over many years and we are dedicated to treating your personal information with care and respect. Pursuant to California Civil Code Section 1798.83(c)(2), members of The Heroes Vault Comics Family of Companies do not share guests’ personal information with other member companies or others outside The Heroes Vault Comics Family of Companies for those parties’ direct marketing use unless a guest elects that we do so.</p>
+                        
+                            <p class="text-body mb-2">
+                                To make such a request, please send an email to <a href="mailto:heroes-vault@comics.com" class="text-secondary">heroes-vault@comics.com</a> or write us at: <br>
+                                CA Privacy Rights <br>
+                                Disney Interactive Media Group <br>
+                                500 South Buena Vista Street <br>
+                                Mail Code 7667 <br>
+                                Burbank, CA 91521-7667 <br>
+                            </p>
+                        </dd>  
+                        <dt class="text-body mb-1">Removal of Content</dt>  
+                        <dd>
+                            <p class="text-body mb-2">If you are a California resident under the age of 18, and a registered user of any site where this policy is posted, California Business and Professions Code Section 22581 permits you to request and obtain removal of content or information you have publicly posted.</p>
+                            <p class="text-body mb-2">To make such a request, please send an email with a detailed description of the specific content or information to <a href="mailto:privacy-heroesvault@comics.com" class="text-secondary">privacy-heroesvault@comics.com</a>. Please be aware that such a request does not ensure complete or comprehensive removal of the content or information you have posted and that there may be circumstances in which the law does not require or allow removal even if requested.</p>
+                        </dd>                        
+                    </dl>
+                    
+                </article>
+            </section>
         </main>
 
         <footer class="d-flex flex-column align-items-center justify-content-md-around py-2">
@@ -252,10 +299,9 @@
                 
             </div>
         </footer>
-
-
-
     </div>
+    
+    
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
