@@ -2,6 +2,7 @@ package com.mindhub.ecommerce.dtos;
 
 import com.mindhub.ecommerce.models.AppUser;
 
+import java.util.List;
 import java.util.Set;
 
 public class PurchaseCreationDTO {
