@@ -12,20 +12,156 @@
 <body>
     
     <div id="app">
-
-        <!-- offcanvas and shopping cart content -->
-        <div class="offcanvas offcanvas-start d-lg-none" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-
-            <div class="offcanvas-header offcanvas-header-menu d-flex flex-column align-items-center pb-3">
-                <button type="button" class="d-lg-none text-light close-canvass-btn" data-bs-dismiss="offcanvas" aria-label="Close">
-                    <i class="bi bi-x-lg"></i>
-                </button>
-                <a href="./index.html"><img src="./assets/heroes-vault-logo-3.png" class="logo" alt="logo"></a>
+        <div class="vh-100 d-flex flex-column justify-content-between">
+            <!-- offcanvas and shopping cart content -->
+            <div class="offcanvas offcanvas-start d-lg-none" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    
+                <div class="offcanvas-header offcanvas-header-menu d-flex flex-column align-items-center pb-3">
+                    <button type="button" class="d-lg-none text-light close-canvass-btn" data-bs-dismiss="offcanvas" aria-label="Close">
+                        <i class="bi bi-x-lg"></i>
+                    </button>
+                    <a href="./index.html"><img src="./assets/heroes-vault-logo-3.png" class="logo" alt="logo"></a>
+                </div>
+    
+                <div class="offcanvas-body offcanvas-body-menu">
+                    <div class="d-flex flex-column justify-content-between">
+                        <ul class="d-flex flex-column pt-3 px-2 offcanvas-body-ul"> 
+                            <li class="nav-item">
+                                <a href="#">HOME</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#">STORE</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#">NEWS</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#">REVIEWS</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#">CONTACT US</a>
+                            </li>
+                        </ul>    
+                        
+                        <div class="ms-1">
+                            <p class="access-btn">Login</p>
+                            <span class="access-btn">|</span>
+                            <p class="access-btn">Sign up</p>
+                        </div>
+                    </div>
+                    
+                </div>
             </div>
-
-            <div class="offcanvas-body offcanvas-body-menu">
-                <div class="d-flex flex-column justify-content-between">
-                    <ul class="d-flex flex-column pt-3 px-2 offcanvas-body-ul"> 
+    
+            <!-- car with products -->
+            <!-- <div class="offcanvas-shopping offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                <div>
+                    <button type="button" class="text-light close-canvass-btn" data-bs-dismiss="offcanvas" aria-label="Close">
+                        <i class="bi bi-x-lg close-btn-shoppingCar"></i>
+                    </button>
+                    <div class="offcanvas-header justify-content-center mb-2">
+                        <h5 id="offcanvasRightLabel" class="fw-normal fs-6">My shopping cart</h5> 
+                    </div>
+                    <div class="offcanvas-body">
+                        
+                        <div class="d-flex justify-content-around pt-3 border-bottom">
+                            <div class="product-image">
+                                imagen
+                            </div>
+                            <div>
+                                <div class="d-flex h-25 mb-1">
+                                    <p <p class="me-2">Cantidad</p>
+                                    <span class="d-flex">
+                                        <button type="button" class="d-flex align-items-center bg-primary text-white substract-addition-btn">-</button>
+                                        <input type="number" readonly class="d-flex align-items-center accountant-product border-0"></input>
+                                        <button type="button" class="d-flex align-items-center bg-danger text-white substract-addition-btn">+</button>
+                                    </span>
+                                </div>
+                                
+                                <p>Price:</p>
+                                
+                            </div>
+                        </div>
+    
+                        <div class="d-flex justify-content-around pt-3 border-bottom">
+                            <div class="product-image">
+                                imagen
+                            </div>
+                            <div>
+                                <div class="d-flex h-25 mb-1">
+                                    <p class="me-2">Cantidad</p>
+                                    <span class="d-flex">
+                                        <button type="button" class="d-flex align-items-center bg-primary text-white substract-addition-btn">-</button>
+                                        <input type="number" readonly class="d-flex align-items-center accountant-product border-0"></input>
+                                        <button type="button" class="d-flex align-items-center bg-danger text-white substract-addition-btn">+</button>
+                                    </span>
+                                </div>
+                                
+                                <p>Price:</p>
+                                
+                            </div>
+                        </div>
+    
+                        <div class="d-flex justify-content-around pt-3 border-bottom">
+                            <div class="product-image">
+                                imagen
+                            </div>
+                            <div>
+                                <div class="d-flex h-25 mb-1">
+                                    <p class="me-2">Cantidad</p>
+                                    <span class="d-flex">
+                                        <button type="button" class="d-flex align-items-center bg-primary text-white substract-addition-btn">-</button>
+                                        <input type="number" readonly class="d-flex align-items-center accountant-product border-0"></input>
+                                        <button type="button" class="d-flex align-items-center bg-danger text-white substract-addition-btn">+</button>
+                                    </span>
+                                </div>
+                                
+                                <p>Price:</p>
+                                
+                            </div>
+                        </div>
+    
+                        <p class="fw-bold ms-2">Subtotal:</p>
+                        <p class="fw-bold ms-2">Total:</p>
+    
+                    </div>
+                </div>
+                
+            </div> -->
+    
+            <!-- card without products -->
+            <div class="offcanvas-shopping offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                <div>
+                    <button type="button" class="text-light close-canvass-btn" data-bs-dismiss="offcanvas" aria-label="Close">
+                        <i class="bi bi-x-lg close-btn-shoppingCar"></i>
+                    </button>
+                    <div class="offcanvas-header justify-content-center mb-2">
+                        <h5 id="offcanvasRightLabel" class="fw-normal fs-6">My shopping cart</h5> 
+                    </div>
+                    <div class="offcanvas-body pt-5 text-center">
+                        <i class="bi bi-emoji-frown fs-1 mb-4"></i>
+                        <p>I'm so sorry, you don't have added any product yet!</p>
+    
+                    </div>
+                </div>
+                
+            </div>
+            <!-- end offcanvas and shooping bag content -->
+    
+            <header class="d-flex align-items-center justify-content-between py-2 px-3">
+                
+                <span class="d-flex align-items-center d-lg-none">
+                    <button class="btn navbar-btn d-lg-none " type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+                        <span class="bars bar1"></span>
+                        <span class="bars bar2"></span>
+                        <span class="bars bar3"></span>
+                    </button>
+                </span> 
+    
+                <a href="./index.html"><img src="./assets/heroes-vault-logo-3.png" class="logo" alt="logo"></a>
+    
+                <nav class="d-none d-lg-flex justify-content-center">
+                    <ul class="items-container">
                         <li class="nav-item">
                             <a href="#">HOME</a>
                         </li>
@@ -41,264 +177,126 @@
                         <li class="nav-item">
                             <a href="#">CONTACT US</a>
                         </li>
-                    </ul>    
+                    </ul>
+                </nav>
+    
+                <button type="button" class="pb-1 position-relative bg-transparent border-0 text-light d-lg-none" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                    <i class="bi bi-cart bag-store d-lg-none"></i>
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                      99+
+                      <span class="visually-hidden">unread messages</span>
+                    </span>
+                </button>
+    
+    
+                <div class="d-none d-lg-flex align-items-end pb-1 justify-content-between accessBtn-container">
                     
-                    <div class="ms-1">
-                        <p class="access-btn">Login</p>
+                    <span>
+                        <p class="access-btn">Login</p> 
                         <span class="access-btn">|</span>
                         <p class="access-btn">Sign up</p>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-
-        <!-- car with products -->
-        <!-- <div class="offcanvas-shopping offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-            <div>
-                <button type="button" class="text-light close-canvass-btn" data-bs-dismiss="offcanvas" aria-label="Close">
-                    <i class="bi bi-x-lg close-btn-shoppingCar"></i>
-                </button>
-                <div class="offcanvas-header justify-content-center mb-2">
-                    <h5 id="offcanvasRightLabel" class="fw-normal fs-6">My shopping cart</h5> 
-                </div>
-                <div class="offcanvas-body">
-                    
-                    <div class="d-flex justify-content-around pt-3 border-bottom">
-                        <div class="product-image">
-                            imagen
-                        </div>
-                        <div>
-                            <div class="d-flex h-25 mb-1">
-                                <p <p class="me-2">Cantidad</p>
-                                <span class="d-flex">
-                                    <button type="button" class="d-flex align-items-center bg-primary text-white substract-addition-btn">-</button>
-                                    <input type="number" readonly class="d-flex align-items-center accountant-product border-0"></input>
-                                    <button type="button" class="d-flex align-items-center bg-danger text-white substract-addition-btn">+</button>
-                                </span>
-                            </div>
-                            
-                            <p>Price:</p>
-                            
-                        </div>
-                    </div>
-
-                    <div class="d-flex justify-content-around pt-3 border-bottom">
-                        <div class="product-image">
-                            imagen
-                        </div>
-                        <div>
-                            <div class="d-flex h-25 mb-1">
-                                <p class="me-2">Cantidad</p>
-                                <span class="d-flex">
-                                    <button type="button" class="d-flex align-items-center bg-primary text-white substract-addition-btn">-</button>
-                                    <input type="number" readonly class="d-flex align-items-center accountant-product border-0"></input>
-                                    <button type="button" class="d-flex align-items-center bg-danger text-white substract-addition-btn">+</button>
-                                </span>
-                            </div>
-                            
-                            <p>Price:</p>
-                            
-                        </div>
-                    </div>
-
-                    <div class="d-flex justify-content-around pt-3 border-bottom">
-                        <div class="product-image">
-                            imagen
-                        </div>
-                        <div>
-                            <div class="d-flex h-25 mb-1">
-                                <p class="me-2">Cantidad</p>
-                                <span class="d-flex">
-                                    <button type="button" class="d-flex align-items-center bg-primary text-white substract-addition-btn">-</button>
-                                    <input type="number" readonly class="d-flex align-items-center accountant-product border-0"></input>
-                                    <button type="button" class="d-flex align-items-center bg-danger text-white substract-addition-btn">+</button>
-                                </span>
-                            </div>
-                            
-                            <p>Price:</p>
-                            
-                        </div>
-                    </div>
-
-                    <p class="fw-bold ms-2">Subtotal:</p>
-                    <p class="fw-bold ms-2">Total:</p>
-
-                </div>
-            </div>
-            
-        </div> -->
-
-        <!-- card without products -->
-        <div class="offcanvas-shopping offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-            <div>
-                <button type="button" class="text-light close-canvass-btn" data-bs-dismiss="offcanvas" aria-label="Close">
-                    <i class="bi bi-x-lg close-btn-shoppingCar"></i>
-                </button>
-                <div class="offcanvas-header justify-content-center mb-2">
-                    <h5 id="offcanvasRightLabel" class="fw-normal fs-6">My shopping cart</h5> 
-                </div>
-                <div class="offcanvas-body pt-5 text-center">
-                    <i class="bi bi-emoji-frown fs-1 mb-4"></i>
-                    <p>I'm so sorry, you don't have added any product yet!</p>
-
-                </div>
-            </div>
-            
-        </div>
-        <!-- end offcanvas and shooping bag content -->
-
-        <header class="d-flex align-items-center justify-content-between py-2 px-3">
-            
-            <span class="d-flex align-items-center d-lg-none">
-                <button class="btn navbar-btn d-lg-none " type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-                    <span class="bars bar1"></span>
-                    <span class="bars bar2"></span>
-                    <span class="bars bar3"></span>
-                </button>
-            </span> 
-
-            <a href="./index.html"><img src="./assets/heroes-vault-logo-3.png" class="logo" alt="logo"></a>
-
-            <nav class="d-none d-lg-flex justify-content-center">
-                <ul class="items-container">
-                    <li class="nav-item">
-                        <a href="#">HOME</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#">STORE</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#">NEWS</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#">REVIEWS</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#">CONTACT US</a>
-                    </li>
-                </ul>
-            </nav>
-
-            <button type="button" class="pb-1 position-relative bg-transparent border-0 text-light d-lg-none" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-                <i class="bi bi-cart bag-store d-lg-none"></i>
-                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                99+
-                <span class="visually-hidden">unread messages</span>
-                </span>
-            </button>
-
-
-            <div class="d-none d-lg-flex align-items-end pb-1 justify-content-between accessBtn-container">
-                
-                <span>
-                    <p class="access-btn">Login</p> 
-                    <span class="access-btn">|</span>
-                    <p class="access-btn">Sign up</p>
-                </span>
-                <button type="button" class="position-relative bg-transparent border-0 text-light d-md-block" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-                    <i class="bi bi-cart bag-store d-lg-block"></i>
-                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                    99+
-                    <span class="visually-hidden">unread messages</span>
                     </span>
-                </button>
-            </div>
-        </header>
+                    <button type="button" class="position-relative bg-transparent border-0 text-light d-md-block" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                        <i class="bi bi-cart bag-store d-lg-block"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                          99+
+                        <span class="visually-hidden">unread messages</span>
+                        </span>
+                    </button>
+                </div>
+            </header>
+    
+            <main class="bg-transparent pb-2">
+                <section class="w-75 mx-auto my-0">
+                    <!-- Cambiar contenido de acá para abajo -->
+                    <h2 class="fs-2 py-4 text-body fw-lighter border-bottom border-top text-center w-75 mx-auto">Your Privacy Rights</h2>
 
-        <main class="bg-transparent pb-2">
-            <section class="w-75 mx-auto my-0">
-                <!-- Cambiar contenido de acá para abajo -->
-                <h2 class="ps-2 fs-6 text-body fw-lighter border-bottom border-top mb-2">Your Rights</h2>
-                <article>
-                    <dl>
-                        <dt class="text-body mb-1">Right to Access</dt>
-                        <dd class="text-body mb-2">If you are a California resident, you have the right to request, up to two times each year, access to categories and specific pieces of personal information about you that we collect, use, disclose, and sell.</dd>
-                        <dt class="text-body mb-1">Right to Delete</dt>
-                        <dd class="text-body mb-2">If you are a California resident, you have the right to request that we delete personal information that we collect from you, subject to applicable legal exceptions.</dd>
-                        <dt class="text-body mb-1">Right to Opt Out of Sale of Personal Information</dt>
-                        <dd class="text-body mb-2">If you are a California resident, you have the right to “opt out” of the “sale” of your “personal information” to “third parties” (as those terms are defined in the CCPA)</dd>
-                        <dt class="text-body mb-1">Process to Make a CCPA Request</dt>
-                        <dd class="text-body mb-2">
-                            <p class="text-body mb-2">Making Access and Deletion Requests</p>
-
-                            <p class="text-body mb-2">To make an access or deletion request, please visit ccpa.disney.com. Before completing your request, we may need to verify your identity. We will send you a link to verify your email address and may request additional documentation or information solely for the purpose of verifying your identity.</p>
-
-                            <p class="text-body mb-2">Instructions for Authorized Agents Making Access and Deletion Requests</p>
-
-                            <p class="text-body mb-2">You may also use an authorized agent to submit an access or deletion request on your behalf.  Authorized agents may submit access and deletion requests at ccpa.disney.com/agents. An authorized agent must have your signed permission to submit a request on your behalf or provide proof that they have power of attorney in accordance with California probate law. Authorized agents that are business entities must be registered with the California Secretary of State to conduct business in California. Before completing requests from authorized agents, we may contact you directly to confirm you’ve given your permission and/or to verify your identity.</p>
-
-                            <p class="text-body mb-2">Making Requests to “Opt Out” of the “Sale” of “Personal Information”</p>
-
-                            <p class="text-body mb-2">To submit a request to opt out of the sale of your personal information, you may visit our “Do Not Sell My Personal Information” Rights page or send an email to caprivacy@twdc.com with the subject line “do not sell info.”  You may also use an authorized agent to submit a request to opt out on your behalf if you provide the authorized agent signed written permission to do so.  Authorized agents may submit requests to opt out by visiting ccpa.disney.com/agentsdnsmi. You have the right not to receive discriminatory treatment for the exercise of your privacy rights conferred by the CCPA.</p>
-                        </dd>
-                        <dt class="text-body mb-1">Shine the Light Act</dt>
-                        <dd class="text-body mb-2"> 
-                            <p class="text-body mb-2">If you are a California resident, California Civil Code Section 1798.83 permits you to request information regarding the disclosure of your personal information by certain members of The Heroes Vault Comics Family of Companies to third parties for the third parties’ direct marketing purposes. We take great pride in the relationship of trust we have built with our guests over many years and we are dedicated to treating your personal information with care and respect. Pursuant to California Civil Code Section 1798.83(c)(2), members of The Heroes Vault Comics Family of Companies do not share guests’ personal information with other member companies or others outside The Heroes Vault Comics Family of Companies for those parties’ direct marketing use unless a guest elects that we do so.</p>
-                        
-                            <p class="text-body mb-2">
-                                To make such a request, please send an email to <a href="mailto:heroes-vault@comics.com" class="text-secondary">heroes-vault@comics.com</a> or write us at: <br>
-                                CA Privacy Rights <br>
-                                Disney Interactive Media Group <br>
-                                500 South Buena Vista Street <br>
-                                Mail Code 7667 <br>
-                                Burbank, CA 91521-7667 <br>
-                            </p>
-                        </dd>  
-                        <dt class="text-body mb-1">Removal of Content</dt>  
-                        <dd>
-                            <p class="text-body mb-2">If you are a California resident under the age of 18, and a registered user of any site where this policy is posted, California Business and Professions Code Section 22581 permits you to request and obtain removal of content or information you have publicly posted.</p>
-                            <p class="text-body mb-2">To make such a request, please send an email with a detailed description of the specific content or information to <a href="mailto:privacy-heroesvault@comics.com" class="text-secondary">privacy-heroesvault@comics.com</a>. Please be aware that such a request does not ensure complete or comprehensive removal of the content or information you have posted and that there may be circumstances in which the law does not require or allow removal even if requested.</p>
-                        </dd>                        
-                    </dl>
+                    <article>
+                        <dl>
+                            <dt class="text-body mb-1">Right to Access</dt>
+                            <dd class="text-body mb-2">If you are a California resident, you have the right to request, up to two times each year, access to categories and specific pieces of personal information about you that we collect, use, disclose, and sell.</dd>
+                            <dt class="text-body mb-1">Right to Delete</dt>
+                            <dd class="text-body mb-2">If you are a California resident, you have the right to request that we delete personal information that we collect from you, subject to applicable legal exceptions.</dd>
+                            <dt class="text-body mb-1">Right to Opt Out of Sale of Personal Information</dt>
+                            <dd class="text-body mb-2">If you are a California resident, you have the right to “opt out” of the “sale” of your “personal information” to “third parties” (as those terms are defined in the CCPA)</dd>
+                            <dt class="text-body mb-1">Process to Make a CCPA Request</dt>
+                            <dd class="text-body mb-2">
+                                <p class="text-body mb-2">Making Access and Deletion Requests</p>
+    
+                                <p class="text-body mb-2">To make an access or deletion request, please visit ccpa.disney.com. Before completing your request, we may need to verify your identity. We will send you a link to verify your email address and may request additional documentation or information solely for the purpose of verifying your identity.</p>
+    
+                                <p class="text-body mb-2">Instructions for Authorized Agents Making Access and Deletion Requests</p>
+    
+                                <p class="text-body mb-2">You may also use an authorized agent to submit an access or deletion request on your behalf.  Authorized agents may submit access and deletion requests at ccpa.disney.com/agents. An authorized agent must have your signed permission to submit a request on your behalf or provide proof that they have power of attorney in accordance with California probate law. Authorized agents that are business entities must be registered with the California Secretary of State to conduct business in California. Before completing requests from authorized agents, we may contact you directly to confirm you’ve given your permission and/or to verify your identity.</p>
+    
+                                <p class="text-body mb-2">Making Requests to “Opt Out” of the “Sale” of “Personal Information”</p>
+    
+                                <p class="text-body mb-2">To submit a request to opt out of the sale of your personal information, you may visit our “Do Not Sell My Personal Information” Rights page or send an email to caprivacy@twdc.com with the subject line “do not sell info.”  You may also use an authorized agent to submit a request to opt out on your behalf if you provide the authorized agent signed written permission to do so.  Authorized agents may submit requests to opt out by visiting ccpa.disney.com/agentsdnsmi. You have the right not to receive discriminatory treatment for the exercise of your privacy rights conferred by the CCPA.</p>
+                            </dd>
+                            <dt class="text-body mb-1">Shine the Light Act</dt>
+                            <dd class="text-body mb-2"> 
+                                <p class="text-body mb-2">If you are a California resident, California Civil Code Section 1798.83 permits you to request information regarding the disclosure of your personal information by certain members of The Heroes Vault Comics Family of Companies to third parties for the third parties’ direct marketing purposes. We take great pride in the relationship of trust we have built with our guests over many years and we are dedicated to treating your personal information with care and respect. Pursuant to California Civil Code Section 1798.83(c)(2), members of The Heroes Vault Comics Family of Companies do not share guests’ personal information with other member companies or others outside The Heroes Vault Comics Family of Companies for those parties’ direct marketing use unless a guest elects that we do so.</p>
+                            
+                                <p class="text-body mb-2">
+                                    To make such a request, please send an email to <a href="mailto:heroes-vault@comics.com" class="text-secondary">heroes-vault@comics.com</a> or write us at: <br>
+                                    CA Privacy Rights <br>
+                                    Disney Interactive Media Group <br>
+                                    500 South Buena Vista Street <br>
+                                    Mail Code 7667 <br>
+                                    Burbank, CA 91521-7667 <br>
+                                </p>
+                            </dd>  
+                            <dt class="text-body mb-1">Removal of Content</dt>  
+                            <dd>
+                                <p class="text-body mb-2">If you are a California resident under the age of 18, and a registered user of any site where this policy is posted, California Business and Professions Code Section 22581 permits you to request and obtain removal of content or information you have publicly posted.</p>
+                                <p class="text-body mb-2">To make such a request, please send an email with a detailed description of the specific content or information to <a href="mailto:privacy-heroesvault@comics.com" class="text-secondary">privacy-heroesvault@comics.com</a>. Please be aware that such a request does not ensure complete or comprehensive removal of the content or information you have posted and that there may be circumstances in which the law does not require or allow removal even if requested.</p>
+                            </dd>                        
+                        </dl>
+                    </article>
+                </section>
+            </main>
+    
+            <footer class="d-flex flex-column align-items-center justify-content-md-around pt-3">
                     
-                </article>
-            </section>
-        </main>
-
-        <footer class="d-flex flex-column align-items-center justify-content-md-around py-2">
-            
-            <div class="w-100 p-3 d-flex flex-column flex-md-row align-items-center justify-content-md-between">
-                
-                <a href="./index.html"><img src="./assets/heroes-vault-logo-3.png" class="logo" alt="logo"></a>
-                
-                <div class="mt-2 mt-md-0 d-flex justify-content-center footer-references">
-                    <ul class="d-flex">
-                        <li><a href="#">ABOUT US</a></li>
-                        <li><a href="#" class="ms-3">HELP/FAQS</a></li>
-                        <li><a href="#" class="ms-3">CONTACT US</a></li>
-                    </ul>
+                <div class="w-100 px-3 d-flex flex-column flex-md-row align-items-center justify-content-md-between">
+                    
+                    <a href="./index.html"><img src="./assets/heroes-vault-logo-3.png" class="logo" alt="logo"></a>
+                    
+                    <div class="mt-2 mt-md-0 d-flex justify-content-center footer-references">
+                        <ul class="d-flex">
+                            <li><a href="#">ABOUT US</a></li>
+                            <li><a href="#" class="ms-3">HELP/FAQS</a></li>
+                            <li><a href="#" class="ms-3">CONTACT US</a></li>
+                        </ul>
+                    </div>
+    
+                    <div class="d-flex flex-column align-items-center mt-2 mt-md-0">
+                        <p class="footer-subtitle">FOLLOW US</p>
+                        <span class="w-100 d-flex justify-content-center">
+                            <a target="_blank" title="instagram" href="https://www.instagram.com/"><i class="bi bi-instagram"></i></a>
+                            <a target="_blank" title="facebook" href="https://www.facebook.com/" class="ms-2 ms-lg-4"><i class="bi bi-facebook"></i></a>
+                            <a target="_blank" title="whatsapp" href="https://web.whatsapp.com/" class="ms-2 ms-lg-4"><i class="bi bi-whatsapp"></i></a>
+                            <a target="_blank" title="twitter" href="https://twitter.com/home" class="ms-2 ms-lg-4"><i class="bi bi-twitter"></i></a>
+                            <a target="_blank" title="twitch" href="https://www.twitch.tv/" class="ms-2 ms-lg-4"><i class="bi bi-twitch"></i></a>
+                            <a target="_blank" title="pinterest" href="https://ar.pinterest.com/" class="ms-2 ms-lg-4"><i class="bi bi-pinterest"></i></a>
+                            <a target="_blank" title="youtube" href="https://www.youtube.com/" class="ms-2 ms-lg-4"><i class="bi bi-youtube"></i></a>
+                        </span>
+    
+                    </div>
                 </div>
-
-                <div class="d-flex flex-column align-items-center mt-2 mt-md-0">
-                    <p class="footer-subtitle">FOLLOW US</p>
-                    <span class="w-100 d-flex justify-content-center">
-                        <a target="_blank" title="instagram" href="https://www.instagram.com/"><i class="bi bi-instagram"></i></a>
-                        <a target="_blank" title="facebook" href="https://www.facebook.com/" class="ms-2 ms-lg-4"><i class="bi bi-facebook"></i></a>
-                        <a target="_blank" title="whatsapp" href="https://web.whatsapp.com/" class="ms-2 ms-lg-4"><i class="bi bi-whatsapp"></i></a>
-                        <a target="_blank" title="twitter" href="https://twitter.com/home" class="ms-2 ms-lg-4"><i class="bi bi-twitter"></i></a>
-                        <a target="_blank" title="twitch" href="https://www.twitch.tv/" class="ms-2 ms-lg-4"><i class="bi bi-twitch"></i></a>
-                        <a target="_blank" title="pinterest" href="https://ar.pinterest.com/" class="ms-2 ms-lg-4"><i class="bi bi-pinterest"></i></a>
-                        <a target="_blank" title="youtube" href="https://www.youtube.com/" class="ms-2 ms-lg-4"><i class="bi bi-youtube"></i></a>
-                    </span>
-
-                </div>
-            </div>
-            
-            <div class="text-center px-lg-3">
-                <p class="text-center footer-items">
-                    <a href="./terms-of-use.html"><span>Terms of Use </span></a>
-                    <a href="./privacy-policy.html"><span class="ms-2 ms-lg-3">Privacy Policy</span></a>
-                    <a href="./your-rights.html"><span class="ms-2 ms-lg-3">Your Privacy Rights</span></a>
-                    <a href="#"><span class="ms-2 ms-lg-3">Do Not Sell My Personal Information</span></a>
-                    <a href="#"><span class="ms-2 ms-lg-3">Children's Online Privacy Policy</span></a>
-                    <a href="#"><span class="ms-2 ms-lg-3">License Agreement </span></a>
-                    <a href="#"><span class="ms-2 ms-lg-3">Interest-Based Ads</span></a>
-                    <span class="ms-2 ms-lg-3">©2021 HEROES COMICS VAULT</span>
-                </p>
                 
-            </div>
-        </footer>
+                <div class="p-lg-3 footer-items w-100 d-flex justify-content-center">
+                    <p class="text-center ">
+                        <a href="./terms-of-use.html"><span>Terms of Use </span></a>
+                        <a href="./privacy-policy.html"><span class="ms-2 ms-lg-3">Privacy Policy</span></a>
+                        <a href="./your-rights.html"><span class="ms-2 ms-lg-3 text-danger">Your Privacy Rights</span></a>
+                        <a href="./license-agreement.html"><span class="ms-2 ms-lg-3">License Agreement </span></a>
+                        <p class="ms-2 ms-lg-3">©2021 HEROES COMICS VAULT</p>
+                    </p>
+                    
+                </div>
+            </footer>
+        </div>
     </div>
     
     

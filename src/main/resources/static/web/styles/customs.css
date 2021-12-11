@@ -173,7 +173,6 @@ header{
 
 /* Main's styes */
 main{
-    min-height:400px;
     background-color: #ccc;
 }
 /*End Main's styes */
@@ -183,7 +182,6 @@ main{
 
 /* Footer's styles */
 footer{
-    min-height: 300px;
     background-color: #151515;
 }
 
