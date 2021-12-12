@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Herores Vault Comics</title>
+    <title>Heroes Vault Comics</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="./styles/customs.css">
@@ -52,8 +52,8 @@
                 </div>
             </div>
     
-            <!-- car with products -->
-            <div v-if = "cartItems.length > 0" class="offcanvas-shopping offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+            <!-- Shopping cart -->
+            <div class="offcanvas-shopping offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
                 <div>
                     <button type="button" class="text-light close-canvass-btn" data-bs-dismiss="offcanvas" aria-label="Close">
                         <i class="bi bi-x-lg close-btn-shoppingCar"></i>
@@ -61,19 +61,21 @@
                     <div class="offcanvas-header justify-content-center mb-2">
                         <h5 id="offcanvasRightLabel" class="fw-normal fs-6">My shopping cart</h5> 
                     </div>
-                    <div class="offcanvas-body">
-                        
+                    <div v-if = "cartItems.length > 0" class="offcanvas-body">
                         <div v-for = "item in cartItems" class="d-flex justify-content-around pt-3 border-bottom">
                             <div class="product-image">
                                 <img :src="item.productImg" alt="" width="80">
                             </div>
                             <div>
+                                <button v-on:click="removeCartItem(item.productId, item.productType)" type="button" class="btn btn-danger" aria-label="Remove">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
                                 <div class="d-flex h-25 mb-1">
-                                    <p class="me-2">Cantidad</p>
+                                    <p class="me-2">Quantity</p>
                                     <span class="d-flex">
-                                        <button type="button" class="d-flex align-items-center bg-primary text-white substract-addition-btn">-</button>
+                                        <button v-on:click="removeItem(item.productId, item.productType)" type="button" class="d-flex align-items-center bg-primary text-white substract-addition-btn">-</button>
                                         <input type="number" readonly class="d-flex align-items-center accountant-product border-0" :value = "item.productQuantity"></input>
-                                        <button type="button" class="d-flex align-items-center bg-danger text-white substract-addition-btn">+</button>
+                                        <button v-on:click="addItem(item.productId, item.productType)" type="button" class="d-flex align-items-center bg-danger text-white substract-addition-btn">+</button>
                                     </span>
                                 </div>
                                 
@@ -86,28 +88,15 @@
                         <p class="fw-bold ms-2">Total: ${{totalAmount}}</p>
     
                     </div>
-                </div>
-                
-            </div>
-    
-            <!-- card without products -->
-            <div v-else class="offcanvas-shopping offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-                <div>
-                    <button type="button" class="text-light close-canvass-btn" data-bs-dismiss="offcanvas" aria-label="Close">
-                        <i class="bi bi-x-lg close-btn-shoppingCar"></i>
-                    </button>
-                    <div class="offcanvas-header justify-content-center mb-2">
-                        <h5 id="offcanvasRightLabel" class="fw-normal fs-6">My shopping cart</h5> 
-                    </div>
-                    <div class="offcanvas-body pt-5 text-center">
+
+                    <div v-else class="offcanvas-body pt-5 text-center">
                         <i class="bi bi-emoji-frown fs-1 mb-4"></i>
                         <p>I'm so sorry, you don't have added any product yet!</p>
-    
                     </div>
                 </div>
                 
             </div>
-            <!-- end offcanvas and shooping bag content -->
+            <!-- end of Shopping cart -->
     
             <header class="d-flex align-items-center justify-content-between py-2 px-3">
                 
@@ -193,13 +182,14 @@
                                             <h5 v-cloak class="card-title text-light text-center">{{comic.title}}</h5>
                                             <p v-cloak hover-warning class="card-text text-light">Price: ${{comic.price}}</p>
                                             <p v-cloak hover-warning class="card-text text-light">Stock: {{comic.stock}}</p>
-                                            <form v-on:submit.prevent="addComicToCart" class="d-flex flex-column justify-content-between align-items-center">
+                                            <form v-on:submit.prevent="addProductToCart" class="d-flex flex-column justify-content-between align-items-center">
                                                 <span v-if="5 > comic.stock && comic.stock !== 0" class="text-white bg-danger mb-3 p-2 rounded">Last units</span>
                                                 <span v-if="comic.stock === 0" class="text-white bg-secondary mb-3 p-2 rounded">Sold out</span>
                                                 <label v-if="comic.stock !== 0" class="mb-3 text-light">
                                                     Quantity <input class="inputNumber" type="number" min="0" :max="comic.stock" :value="comic.stock > 0 ? 1 : 0" name="quantity">
                                                 </label>
-                                                <input :id="comic.id" name="addComicItem" type="submit" class="btn bg-warning" value="Add to cart">
+                                                <input type="hidden" value="comic" name="productType">
+                                                <input v-if="comic.stock !== 0" :id="comic.id" name="addComicItem" type="submit" class="btn bg-warning" value="Add to cart">
                                             </form>
                                         </div>
                                     </div>
@@ -218,13 +208,14 @@
                                             <h5 v-cloak class="card-title text-light text-center">{{product.name}}</h5>
                                             <p v-cloak hover-warning class="card-text text-light">Precio: ${{product.price}}</p>
                                             <p v-cloak hover-warning class="card-text text-light">Stock: {{product.stock}}</p>
-                                            <form v-on:submit.prevent="addMerchToCart" class="d-flex flex-column justify-content-between align-items-center">
+                                            <form v-on:submit.prevent="addProductToCart" class="d-flex flex-column justify-content-between align-items-center">
                                                 <span v-if="5 > product.stock && product.stock !== 0" class="text-white bg-danger mb-3 p-2 rounded">Last units</span>
                                                 <span v-if="product.stock === 0" class="text-white bg-secondary mb-3 p-2 rounded">Sold out</span>
                                                 <label  v-if="product.stock !== 0" class="mb-3 text-light">
                                                     Quantity <input class="inputNumber" type="number" min="0" :max="product.stock" :value="product.stock > 0 ? 1 : 0" name="quantity">
                                                 </label>
-                                                <input :id="product.id" name="addMerchItem" type="submit" class="btn bg-warning" value="Add to cart">
+                                                <input type="hidden" value="merch" name="productType">
+                                                <input v-if="product.stock !== 0" :id="product.id" name="addMerchItem" type="submit" class="btn bg-warning" value="Add to cart">
                                             </form>
                                         </div>
                                     </div>
