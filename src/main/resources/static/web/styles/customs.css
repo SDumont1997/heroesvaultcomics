@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500;600&display=swap');  /*font-family: 'Maven Pro', sans-serif; (400,500,600)*/
-
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 /* Generals styles */
 *{
@@ -175,6 +175,29 @@ header{
 main{
     background-color: #ccc;
 }
+
+.login-bg-img{
+    background-image: url(https://www.superherodb.com/gallery2/075/29/2989.jpg);
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: 40%;
+    overflow: hidden;
+}
+
+.signup-bg-img{
+    background-image: url(https://www.superherodb.com/gallery2/075/268/26825.jpg);
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: 30%;
+    overflow: hidden;
+}
+
+.form-title{
+    font-family: 'Bebas Neue', cursive;
+    font-size: 3rem;
+    color: rgb(0, 0, 48);
+}
+
 /*End Main's styes */
 
 
