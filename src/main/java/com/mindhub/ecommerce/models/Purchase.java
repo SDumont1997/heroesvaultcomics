@@ -1,6 +1,8 @@
 package com.mindhub.ecommerce.models;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -17,10 +19,12 @@ public class Purchase {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private AppUser user;
-    @ManyToMany(mappedBy = "purchases", fetch = FetchType.EAGER)
-    private Set<Comic> comics = new HashSet<>();
-    @ManyToMany(mappedBy = "purchases", fetch = FetchType.EAGER)
-    private Set<Merch> merch = new HashSet<>();
+    @ManyToMany(mappedBy = "purchases")
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private List<Comic> comics = new ArrayList<>();
+    @ManyToMany(mappedBy = "purchases")
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private List<Merch> merch = new ArrayList<>();
     private Double amount;
     private PaymentOption paymentOption;
     private String cardNumber;
@@ -30,7 +34,7 @@ public class Purchase {
 
     }
 
-    public Purchase(AppUser user, Set<Comic> comics, Set<Merch> merch, Double amount, PaymentOption paymentOption) {
+    public Purchase(AppUser user, List<Comic> comics, List<Merch> merch, Double amount, PaymentOption paymentOption) {
         this.user = user;
         this.comics = comics;
         this.merch = merch;
@@ -40,7 +44,7 @@ public class Purchase {
         merch.forEach(merch1 -> merch1.addPurchase(this));
     }
 
-    public Purchase(AppUser user, Set<Comic> comics, Set<Merch> merch, Double amount, PaymentOption paymentOption, String cardNumber, Integer cardCvv){
+    public Purchase(AppUser user, List<Comic> comics, List<Merch> merch, Double amount, PaymentOption paymentOption, String cardNumber, Integer cardCvv){
         this.user = user;
         this.comics = comics;
         this.merch = merch;
@@ -64,11 +68,11 @@ public class Purchase {
         this.user = user;
     }
 
-    public Set<Comic> getComics() {
+    public List<Comic> getComics() {
         return comics;
     }
 
-    public void setComics(Set<Comic> comics) {
+    public void setComics(List<Comic> comics) {
         this.comics = comics;
         comics.forEach(comic -> comic.addPurchase(this));
     }
@@ -78,11 +82,11 @@ public class Purchase {
         comic.addPurchase(this);
     }
 
-    public Set<Merch> getMerch() {
+    public List<Merch> getMerch() {
         return merch;
     }
 
-    public void setMerch(Set<Merch> merch) {
+    public void setMerch(List<Merch> merch) {
         this.merch = merch;
         merch.forEach(merch1 -> merch1.addPurchase(this));
     }

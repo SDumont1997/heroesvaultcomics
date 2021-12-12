@@ -7,8 +7,8 @@ import java.util.Set;
 
 public class PurchaseCreationDTO {
     private AppUser appUser;
-    private Set<Long> comicIds;
-    private Set<Long> merchIds;
+    private List<Long> comicIds;
+    private List<Long> merchIds;
     private Double amount;
     private String paymentOption;
     private String cardNumber;
@@ -18,7 +18,7 @@ public class PurchaseCreationDTO {
 
     }
 
-    public PurchaseCreationDTO(AppUser appUser, Set<Long> comicIds, Set<Long> merchIds, Double amount, String paymentOption, String cardNumber, Integer cardCvv){
+    public PurchaseCreationDTO(AppUser appUser, List<Long> comicIds, List<Long> merchIds, Double amount, String paymentOption, String cardNumber, Integer cardCvv){
         this.appUser = appUser;
         this.comicIds = comicIds;
         this.merchIds = merchIds;
@@ -36,19 +36,19 @@ public class PurchaseCreationDTO {
         this.appUser = appUser;
     }
 
-    public Set<Long> getComicIds() {
+    public List<Long> getComicIds() {
         return comicIds;
     }
 
-    public void setComicIds(Set<Long> comicIds) {
+    public void setComicIds(List<Long> comicIds) {
         this.comicIds = comicIds;
     }
 
-    public Set<Long> getMerchIds() {
+    public List<Long> getMerchIds() {
         return merchIds;
     }
 
-    public void setMerchIds(Set<Long> merchIds) {
+    public void setMerchIds(List<Long> merchIds) {
         this.merchIds = merchIds;
     }
 

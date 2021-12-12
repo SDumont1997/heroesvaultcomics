@@ -77,10 +77,10 @@ public class EcommerceApplication {
 			AppUser appUser1 = new AppUser("SDumont", "sdumont@gmail.com", passwordEncoder.encode("santiago1234"), "Santiago", "Dumont", LocalDate.of(1997, 3, 30), true);
 			appUserRepository.save(appUser1);
 
-			Set<Comic> comics1 = new HashSet<>();
+			List<Comic> comics1 = new ArrayList<>();
 			comics1.add(comic1);
 			comics1.add(comic2);
-			Set<Merch> purchaseMerch1 = new HashSet<>();
+			List<Merch> purchaseMerch1 = new ArrayList<>();
 			purchaseMerch1.add(merch2);
 			purchaseMerch1.add(merch3);
 			Double amount1 = comic1.getPrice() + comic2.getPrice() + merch2.getPrice() + merch3.getPrice();
