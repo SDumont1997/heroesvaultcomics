@@ -256,6 +256,28 @@ header{
     cursor: pointer;
 }
 
+.login-bg-img{
+    background-image: url(https://www.superherodb.com/gallery2/075/268/26825.jpg);
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: 30%;
+    overflow: hidden;
+}
+
+.signup-bg-img{
+    background-image: url(https://www.superherodb.com/gallery2/075/220/22026.jpg);
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: 20%;
+    overflow: hidden;
+}
+
+.form-title{
+    font-family: 'Bebas Neue', cursive;
+    font-size: 3rem;
+    color: #070f3d;
+}
+
 /*End Main's styes */
 
 
