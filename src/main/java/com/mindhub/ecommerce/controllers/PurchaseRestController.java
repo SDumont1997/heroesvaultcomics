@@ -55,9 +55,9 @@ public class PurchaseRestController {
     @PostMapping("/purchases")
     public ResponseEntity<Object> createPurchase(Authentication authentication, @RequestBody PurchaseCreationDTO purchaseCreationDTO){
         AppUser appUser = appUserService.getByEmail(authentication.getName());
-        Set<Comic> comics = new HashSet<>();
+        List<Comic> comics = new ArrayList<>();
         purchaseCreationDTO.getComicIds().forEach(id -> comics.add(comicService.getById(id)));
-        Set<Merch> merch = new HashSet<>();
+        List<Merch> merch = new ArrayList<>();
         purchaseCreationDTO.getMerchIds().forEach(id -> merch.add(merchService.getById(id)));
         Double amountCheck = 0.00;
         for (Comic comic: comics){
