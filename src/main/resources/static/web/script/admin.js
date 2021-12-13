@@ -40,7 +40,7 @@ const app = Vue.createApp({
             },
             appUserUpdateForm: {
                 userEmail: "",
-                admin: false
+                admin: ""
             },
             comicUpdateForm: {
                 comicId: "",
@@ -146,12 +146,12 @@ const app = Vue.createApp({
             })
         },
         updateComic(){
-            axios.post("api/comics/update", `id=${this.comicUpdateForm.comicId}&price=${this.merchUpdateForm.price}&stock=${this.merchUpdateForm.stock}`)
+            axios.post("/api/comics/update", `id=${this.comicUpdateForm.comicId}&characterId=${this.comicUpdateForm.addedProtagonistId}&price=${this.comicUpdateForm.price}&stock=${this.comicUpdateForm.stock}`)
             .then(response => {
                 window.location.reload()
             })
             .catch(error => {
-                console.log(error)
+                console.log(error.response)
             })
         },
         loadMerch(){
@@ -173,7 +173,7 @@ const app = Vue.createApp({
             })
         },
         updateMerch(){
-            axios.post("api/merch/update", `id=${this.merchUpdateForm.merchId}&characterId=${this.comicUpdateForm.addedProtagonistId}&price=${this.comicUpdateForm.price}&stock=${this.comicUpdateForm.stock}`)
+            axios.post("/api/merch/update", `id=${this.merchUpdateForm.merchId}&price=${this.merchUpdateForm.price}&stock=${this.merchUpdateForm.stock}`)
             .then(response => {
                 window.location.reload()
             })
