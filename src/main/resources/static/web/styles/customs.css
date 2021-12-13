@@ -32,6 +32,11 @@ a{
 a:hover{
     color: #d54343 !important;
 }
+
+a.btnComicMerch:hover{
+    color: #e2d4d4 !important;
+
+}
 /* End Generals styles */
 
 
@@ -409,6 +414,23 @@ footer{
     /* end footer's styles */
 }
 
+.textComicMerch {
+    font-size: 1.1rem;
+    font-style: oblique;
+}
+
+.btnComicMerch {
+    width: 7rem;
+    padding: 1px 2px !important;
+    font-weight: bold;
+    /* letter-spacing: 2px; */
+}
+
+.bg-img {
+    /* border: solid black; */
+    background-image: url("../assets/bgMVDC.jpg");
+    background-size: cover;
+}
 
 @media(min-width:992px){
 
@@ -443,6 +465,9 @@ footer{
         font-size: 1.2rem;
     }
 
+    .nav-link{
+        color: #ffc107;
+    }
 
     /* end main styles */
     

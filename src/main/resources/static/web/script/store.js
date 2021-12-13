@@ -1,6 +1,7 @@
 const app = Vue.createApp({
 
     created(){
+        this.loadData();
         this.loadComics();
         this.loadMerch();
     },

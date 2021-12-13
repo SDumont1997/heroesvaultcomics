@@ -2,7 +2,9 @@ const app = Vue.createApp({
     data(){
         return{
             personaje:[],
-            apariciones:[]
+            apariciones:[],
+            appUser: {},
+            loggedIn: false
         }
     },
     created(){
@@ -16,10 +18,20 @@ const app = Vue.createApp({
             this.apariciones = response.data.appearances
             console.log(response.data.appearances)
         })
-        .catch(error => console.log(error.message))
+        .catch(error => console.log(error.message));
+        this.loadData();
     },
     methods:{
-
+        loadData(){
+            axios.get("/api/appUsers/current")
+            .then(response => {
+                this.appUser = response.data
+                this.loggedIn = true
+            })
+            .catch(error => {
+                console.log("No user currently active")
+            })
+        },
     }
 })
 app.mount("#app")

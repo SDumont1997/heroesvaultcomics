@@ -142,33 +142,123 @@
                 </div>
 
                 <div v-if="adminClass === 'createPublisher'">
-                    <form>
+                    <form v-on:submit.prevent="createPublisher" class="d-flex flex-column">
                         <input type="text" placeholder="Publisher name" v-model="publisherCreationForm.name">
-                        <input type="text" onfocus="(this.type = 'date')" placeholder="Creation date" v-model="publisherCreationForm.date">
+                        <input type="text" onfocus="(this.type = 'date')" placeholder="Creation date" v-model="publisherCreationForm.creationDate">
                         <button v-on:click="changeAdminClass" value="" class="my-2 col-12 border-3 border-primary py-2 px-1">Back</button>
                         <input type="submit" class="my-2 col-12 border-3 border-primary py-2 px-1" value="Create publisher">
                     </form>
                 </div>
                 <div v-if="adminClass === 'createAuthor'">
-                    <button v-on:click="changeAdminClass" value="" class="my-2 col-12 border-3 border-primary py-2 px-1">Back</button>
+                    <form v-on:submit.prevent="createAuthor" class="d-flex flex-column">
+                        <input type="text" placeholder="First Name" v-model="authorCreationForm.firstName">
+                        <input type="text" placeholder="Last Name" v-model="authorCreationForm.lastName">
+                        <input type="text" onfocus="(this.type = 'date')" placeholder="Birth Date" v-model="authorCreationForm.birthDate">
+                        <input type="text" placeholder="Birth Place" v-model="authorCreationForm.birthPlace">
+                        <button v-on:click="changeAdminClass" value="" class="my-2 col-12 border-3 border-primary py-2 px-1">Back</button>
+                        <input type="submit" class="my-2 col-12 border-3 border-primary py-2 px-1" value="Create author">
+                    </form>
                 </div>
                 <div v-if="adminClass === 'createCharacter'">
-                    <button v-on:click="changeAdminClass" value="" class="my-2 col-12 border-3 border-primary py-2 px-1">Back</button>
+                    <form v-on:submit.prevent="createCharacter" class="d-flex flex-column">
+                        <input type="text" placeholder="Name" v-model="characterCreationForm.name">
+                        <input type="text" placeholder="Alias" v-model="characterCreationForm.alias">
+                        <input type="text" placeholder="First Appearance" v-model="characterCreationForm.firstAppearance">
+                        <input type="text" placeholder="Birth Place" v-model="characterCreationForm.birthPlace">
+                        <select name="creator" v-model="characterCreationForm.authorId">
+                            <option v-for="author in authors" :value="author.id">{{author.firstName}} {{author.lastName}}</option>
+                        </select>
+                        <select name="publisher" v-model="characterCreationForm.publisherId">
+                            <option v-for="publisher in publishers" :value="publisher.id">{{publisher.name}}</option>
+                        </select>
+                        <input type="text" placeholder="Image URL" v-model="characterCreationForm.imgUrl">
+                        <button v-on:click="changeAdminClass" value="" class="my-2 col-12 border-3 border-primary py-2 px-1">Back</button>
+                        <input type="submit" class="my-2 col-12 border-3 border-primary py-2 px-1" value="Create character">
+                    </form>
                 </div>
                 <div v-if="adminClass === 'createComic'">
-                    <button v-on:click="changeAdminClass" value="" class="my-2 col-12 border-3 border-primary py-2 px-1">Back</button>
+                    <form v-on:submit.prevent="createComic" class="d-flex flex-column">
+                        <input type="text" placeholder="Title" v-model="comicCreationForm.title">
+                        <select name="author" v-model="comicCreationForm.authorId">
+                            <option v-for="author in authors" :value="author.id">{{author.firstName}} {{author.lastName}}</option>
+                        </select>
+                        <input type="text" placeholder="Publication Date" onfocus="(this.type = 'date')" v-model="comicCreationForm.publicationDate">
+                        <select name="publisher" v-model="comicCreationForm.publisherId">
+                            <option v-for="publisher in publishers" :value="publisher.id">{{publisher.name}}</option>
+                        </select>
+                        <input type="number" step=".01" placeholder="Price" v-model="comicCreationForm.price">
+                        <input type="number" placeholder="Stock" v-model="comicCreationForm.stock">
+                        <input type="text" placeholder="Image URL" v-model="comicCreationForm.coverImgUrl">
+                        <button v-on:click="changeAdminClass" value="" class="my-2 col-12 border-3 border-primary py-2 px-1">Back</button>
+                        <input type="submit" class="my-2 col-12 border-3 border-primary py-2 px-1" value="Create comic">
+                    </form>
                 </div>
                 <div v-if="adminClass === 'createMerch'">
-                    <button v-on:click="changeAdminClass" value="" class="my-2 col-12 border-3 border-primary py-2 px-1">Back</button>
+                    <form v-on:submit.prevent="createMerch" class="d-flex flex-column">
+                        <input type="text" placeholder="Name" v-model="merchCreationForm.name">
+                        <select name="merchType" v-model="merchCreationForm.merchType">
+                            <option value="CLOTHING">Clothing</option>
+                            <option value="CUPS">Cup</option>
+                            <option value="TOY">Toy</option>
+                        </select>
+                        <select name="character" v-model="merchCreationForm.characterId">
+                            <option v-for="character in characters" :value="character.id">{{character.alias}}</option>
+                        </select>
+                        <input type="number" step=".01" placeholder="Price" v-model="merchCreationForm.price">
+                        <input type="number" placeholder="Stock" v-model="merchCreationForm.stock">
+                        <input type="text" placeholder="Image URL" v-model="merchCreationForm.imgUrl">
+                        <button v-on:click="changeAdminClass" value="" class="my-2 col-12 border-3 border-primary py-2 px-1">Back</button>
+                        <input type="submit" class="my-2 col-12 border-3 border-primary py-2 px-1" value="Create merch">
+                    </form>
                 </div>
                 <div v-if="adminClass === 'updateAppUser'">
-                    <button v-on:click="changeAdminClass" value="" class="my-2 col-12 border-3 border-primary py-2 px-1">Back</button>
+                    <form v-on:submit.prevent="updateAppUser" class="d-flex flex-column">
+                        <input type="email" v-model="appUserUpdateForm.userEmail" placeholder="User email">
+                        <label class="text-dark">
+                            Admin
+                            <input type="radio" name="admin" value="true" v-model="appUserUpdateForm.admin">
+                        </label>
+                        <label class="text-dark">
+                            Regular User
+                            <input type="radio" name="admin" value="false" v-model="appUserUpdateForm.admin">
+                        </label>
+                        <button v-on:click="changeAdminClass" value="" class="my-2 col-12 border-3 border-primary py-2 px-1">Back</button>
+                        <input type="submit" class="my-2 col-12 border-3 border-primary py-2 px-1" value="Update user">
+                    </form>
                 </div>
                 <div v-if="adminClass === 'updateComic'">
-                    <button v-on:click="changeAdminClass" value="" class="my-2 col-12 border-3 border-primary py-2 px-1">Back</button>
+                    <form v-on:submit.prevent="updateComic" class="d-flex flex-column">
+                        <label class="text-dark">
+                            Select a Comic
+                            <select name="comic" v-model="comicUpdateForm.comicId">
+                                <option v-for="comic in comics" :value="comic.id">{{comic.title}}</option>
+                            </select>
+                        </label>
+                        <label class="text-dark">
+                            Add a protagonist
+                            <select name="character" v-model="comicUpdateForm.addedProtagonistId">
+                                <option v-for="character in characters" :value="character.id">{{character.alias}}</option>
+                            </select>
+                        </label>
+                        <input type="number" v-model="comicUpdateForm.price" placeholder="Price">
+                        <input type="number" v-model="comicUpdateForm.stock" placeholder="Stock">
+                        <button v-on:click="changeAdminClass" value="" class="my-2 col-12 border-3 border-primary py-2 px-1">Back</button>
+                        <input type="submit" class="my-2 col-12 border-3 border-primary py-2 px-1" value="Update comic">
+                    </form>
                 </div>
                 <div v-if="adminClass === 'updateMerch'">
-                    <button v-on:click="changeAdminClass" value="" class="my-2 col-12 border-3 border-primary py-2 px-1">Back</button>
+                    <form v-on:submit.prevent="updateMerch" class="d-flex flex-column">
+                        <label class="text-dark">
+                            Select a Merch Item
+                            <select name="merch" v-model="merchUpdateForm.merchId">
+                                <option v-for="merchItem in merch" :value="merchItem.id">{{merchItem.name}}</option>
+                            </select>
+                        </label>
+                        <input type="number" v-model="merchUpdateForm.price" placeholder="Price">
+                        <input type="number" v-model="merchUpdateForm.stock" placeholder="Stock">
+                        <button v-on:click="changeAdminClass" value="" class="my-2 col-12 border-3 border-primary py-2 px-1">Back</button>
+                        <input type="submit" class="my-2 col-12 border-3 border-primary py-2 px-1" value="Update merch">
+                    </form>
                 </div>
                 
             </main>

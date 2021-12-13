@@ -7,18 +7,20 @@ public class CharacterCreationDTO {
     private String birthPlace;
     private Long authorId;
     private Long publisherId;
+    private String imgUrl;
 
     public CharacterCreationDTO() {
 
     }
 
-    public CharacterCreationDTO(String name, String alias, String firstAppearance, String birthPlace, Long authorId, Long publisherId) {
+    public CharacterCreationDTO(String name, String alias, String firstAppearance, String birthPlace, Long authorId, Long publisherId, String imgUrl) {
         this.name = name;
         this.alias = alias;
         this.firstAppearance = firstAppearance;
         this.birthPlace = birthPlace;
         this.authorId = authorId;
         this.publisherId = publisherId;
+        this.imgUrl = imgUrl;
     }
 
     public String getName() {
@@ -69,6 +71,14 @@ public class CharacterCreationDTO {
         this.publisherId = publisherId;
     }
 
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("CharacterCreationDTO{");
@@ -78,6 +88,7 @@ public class CharacterCreationDTO {
         sb.append(", birthPlace='").append(birthPlace).append('\'');
         sb.append(", authorId=").append(authorId);
         sb.append(", publisherId=").append(publisherId);
+        sb.append(", imgUrl=").append(imgUrl);
         sb.append('}');
         return sb.toString();
     }
