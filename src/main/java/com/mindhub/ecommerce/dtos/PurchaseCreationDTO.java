@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Set;
 
 public class PurchaseCreationDTO {
-    private AppUser appUser;
     private List<Long> comicIds;
     private List<Long> merchIds;
     private Double amount;
@@ -18,22 +17,13 @@ public class PurchaseCreationDTO {
 
     }
 
-    public PurchaseCreationDTO(AppUser appUser, List<Long> comicIds, List<Long> merchIds, Double amount, String paymentOption, String cardNumber, Integer cardCvv){
-        this.appUser = appUser;
+    public PurchaseCreationDTO(List<Long> comicIds, List<Long> merchIds, Double amount, String paymentOption, String cardNumber, Integer cardCvv){
         this.comicIds = comicIds;
         this.merchIds = merchIds;
         this.amount = amount;
         this.paymentOption = paymentOption;
         this.cardNumber = cardNumber;
         this.cardCvv = cardCvv;
-    }
-
-    public AppUser getAppUser() {
-        return appUser;
-    }
-
-    public void setAppUser(AppUser appUser) {
-        this.appUser = appUser;
     }
 
     public List<Long> getComicIds() {
@@ -87,7 +77,6 @@ public class PurchaseCreationDTO {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("PurchaseCreationDTO{");
-        sb.append("appUser=").append(appUser);
         sb.append(", comicIds=").append(comicIds);
         sb.append(", merchIds=").append(merchIds);
         sb.append(", amount=").append(amount);

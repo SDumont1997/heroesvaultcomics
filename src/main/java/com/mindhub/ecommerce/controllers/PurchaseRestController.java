@@ -56,9 +56,17 @@ public class PurchaseRestController {
     public ResponseEntity<Object> createPurchase(Authentication authentication, @RequestBody PurchaseCreationDTO purchaseCreationDTO){
         AppUser appUser = appUserService.getByEmail(authentication.getName());
         List<Comic> comics = new ArrayList<>();
-        purchaseCreationDTO.getComicIds().forEach(id -> comics.add(comicService.getById(id)));
+        purchaseCreationDTO.getComicIds().forEach(id -> {
+            Comic comicItem = comicService.getById(id);
+            comicItem.setStock(comicItem.getStock() - 1);
+            comics.add(comicItem);
+        });
         List<Merch> merch = new ArrayList<>();
-        purchaseCreationDTO.getMerchIds().forEach(id -> merch.add(merchService.getById(id)));
+        purchaseCreationDTO.getMerchIds().forEach(id -> {
+            Merch merchItem = merchService.getById(id);
+            merchItem.setStock(merchItem.getStock() - 1);
+            merch.add(merchItem);
+        });
         Double amountCheck = 0.00;
         for (Comic comic: comics){
             amountCheck += comic.getPrice();
