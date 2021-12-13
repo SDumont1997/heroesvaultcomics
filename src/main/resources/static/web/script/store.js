@@ -35,7 +35,7 @@ const app = Vue.createApp({
 
         addProductToCart(event){
             let quantity = parseInt(event.target.elements.quantity.value);
-            let productId = event.target.elements.addComicItem.id;
+            let productId = event.target.elements.addProductItem.id;
             let productType = event.target.elements.productType.value;
 
             let products = this.cartItems.filter(p => productId == p.productId && productType == p.productType);            
@@ -102,6 +102,10 @@ const app = Vue.createApp({
             this.cartItems.splice(index, 1);
             this.calculateTotals();
             this.updateStock(productId, productType, -product.productQuantity);
+        },
+        checkout(){
+            // localStorage.setItem("cartProducts", JSON.stringify(this.cartItems));
+            // window.location.replace("/web/checkout.html")
         }
     },
 
