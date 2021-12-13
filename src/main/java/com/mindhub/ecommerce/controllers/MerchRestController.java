@@ -3,6 +3,7 @@ package com.mindhub.ecommerce.controllers;
 import com.mindhub.ecommerce.dtos.MerchCreationDTO;
 import com.mindhub.ecommerce.dtos.MerchDTO;
 import com.mindhub.ecommerce.models.Character;
+import com.mindhub.ecommerce.models.Comic;
 import com.mindhub.ecommerce.models.Merch;
 import com.mindhub.ecommerce.models.MerchType;
 import com.mindhub.ecommerce.services.IAppUserService;
@@ -59,5 +60,18 @@ public class MerchRestController {
         Merch newMerch = new Merch(name, merchType, character, price, stock);
         merchService.save(newMerch);
         return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @PostMapping("/merch/update")
+    public ResponseEntity<Object> updateComic(Authentication authentication, @RequestParam Long id, @RequestParam Double price, @RequestParam Integer stock){
+        Merch merchItem = merchService.getById(id);
+        if (price != 0 && !price.toString().equals("")){
+            merchItem.setPrice(price);
+        }
+        if (stock != 0 && !stock.toString().equals("")){
+            merchItem.setStock(stock);
+        }
+        merchService.save(merchItem);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

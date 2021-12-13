@@ -12,17 +12,19 @@ public class ComicCreationDTO {
     private Long publisherId;
     private Double price;
     private Integer stock;
+    private String coverImgUrl;
 
     public ComicCreationDTO() {
     }
 
-    public ComicCreationDTO(String title, Long authorId, LocalDate publicationDate, Long publisherId, Double price, Integer stock) {
+    public ComicCreationDTO(String title, Long authorId, LocalDate publicationDate, Long publisherId, Double price, Integer stock, String coverImgUrl) {
         this.title = title;
         this.authorId = authorId;
         this.publicationDate = publicationDate;
         this.publisherId = publisherId;
         this.price = price;
         this.stock = stock;
+        this.coverImgUrl = coverImgUrl;
     }
 
     public String getTitle() {
@@ -73,6 +75,14 @@ public class ComicCreationDTO {
         this.stock = stock;
     }
 
+    public String getCoverImgUrl() {
+        return coverImgUrl;
+    }
+
+    public void setCoverImgUrl(String coverImgUrl) {
+        this.coverImgUrl = coverImgUrl;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("ComicCreationDTO{");
@@ -82,6 +92,7 @@ public class ComicCreationDTO {
         sb.append("publisherId='").append(publisherId).append('\'');
         sb.append(", price='").append(price);
         sb.append(", stock=").append(stock).append('\'');
+        sb.append(", coverImgUrl=").append(coverImgUrl);
         sb.append('}');
         return sb.toString();
     }
