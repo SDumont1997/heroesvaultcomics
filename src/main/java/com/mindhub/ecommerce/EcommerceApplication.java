@@ -53,13 +53,13 @@ public class EcommerceApplication {
 
 			Comic comic1 = new Comic("Amazing Fantasy #15", author1, LocalDate.of(1962, 8, 10), publisher1, 1500.50, 5);
 			comic1.addProtagonist(character1);
-			comic1.setCoverImgUrl("https://static.wikia.nocookie.net/spiderman/images/e/ef/Amazing_Fantasy_Vol_1_15.png/revision/latest/scale-to-width-down/337?cb=20190315162328&path-prefix=es");
+			comic1.setCoverImgUrl("https://m.media-amazon.com/images/I/81NxcSTe0FL._AC_SL1500_.jpg");
 			Comic comic2 = new Comic("Detective Comics #27", author2, LocalDate.of(1939, 3, 30), publisher2, 2300.00, 2);
 			comic2.addProtagonist(character2);
-			comic2.setCoverImgUrl("https://static.wikia.nocookie.net/comicdc/images/4/43/Detective_Comics_Vol_1_27.jpg/revision/latest/scale-to-width-down/350?cb=20151230213656&path-prefix=es");
+			comic2.setCoverImgUrl("https://m.media-amazon.com/images/I/71pfaXZseYL._AC_SL1015_.jpg");
 			Comic comic3 = new Comic("Action Comics #1", author3, LocalDate.of(1938, 4, 1), publisher2, 2350.00, 1);
 			comic3.addProtagonist(character3);
-			comic3.setCoverImgUrl("https://static.wikia.nocookie.net/superman/images/c/ce/Action_Comics_1.png/revision/latest/scale-to-width-down/300?cb=20150623162141&path-prefix=es");
+			comic3.setCoverImgUrl("https://upload.wikimedia.org/wikipedia/en/5/5a/Action_Comics_1.jpg");
 			comicRepository.save(comic1);
 			comicRepository.save(comic2);
 			comicRepository.save(comic3);
