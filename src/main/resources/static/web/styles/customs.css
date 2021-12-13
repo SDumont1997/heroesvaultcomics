@@ -524,7 +524,111 @@ footer{
     opacity: 1;
     font-size: 30px !important;
     z-index: 1;
+    background-color: transparent;
+}
+.owl-theme .owl-nav [class*=owl-]:hover {
+    background: transparent !important;
+    color: #FFF;
+    text-shadow: 1px 1px black;
+    text-decoration: none;
+}
+[v-cloak] {
+    display: none;
+}
+.owl-item .card{
+    width: 300px !important;
 }
 .owl-item .card img{
-    width:300px;
+    width:300px !important;
+    transition: transform .2s;
 }
+.owl-item .card img:hover {
+    transform: scale(1.5);
+    z-index: 3;
+}
+.wrapper{
+    font-family:sans-serif;
+    /* width: 80%; */
+    margin: 0 auto;
+    position:relative;
+    background-color:transparent;
+}
+img-overlay{
+    opacity: 1;
+    display: block;
+    width:100%;
+    height: auto;
+    transition: .5s ease;
+}
+.content{
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-transform: uppercase;
+    font-size: 25px;
+    color:white;
+    text-shadow: 1px 1px black;
+    white-space: nowrap;
+    overflow: hidden;
+}
+/* .content a{
+    font-size: 24px;
+    display: block;
+    background-color: #ff771d;
+    text-align: center;
+    padding: 10px;
+    cursor: pointer
+} */
+.overlay{
+    opacity: 0;
+}
+.wrapper:hover img{
+    opacity: .1;
+    background-color: black;
+}
+.wrapper:hover .overlay{
+    opacity: 1;
+}
+/* .card-img-overlay{
+    z-index: -1;
+} */
+/* .card-img-overlay:hover{
+    z-index: 2;
+} */
+/* .container-overlay {
+    position: relative;
+    width: 50%;
+}
+.container-overlay:hover .overlay {
+    opacity: .8;
+} */
+/* .comic {
+    display: block;
+    width: 100%;
+    height: auto;
+} */
+/* .overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: black;
+}
+.text-overlay {
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+} */
