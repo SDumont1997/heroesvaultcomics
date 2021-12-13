@@ -45,6 +45,12 @@ a:hover{
     background-color: #151515;
 }
 
+.buttonRemove {
+    width: 21px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
 .close-canvass-btn{
     width: 40px;
     height: 40px;
@@ -96,6 +102,7 @@ ul .nav-item ~ .nav-item{
 
 .accountant-product{
     width: 25px;
+    text-align: center;
 }
 
 .substract-addition-btn{

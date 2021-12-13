@@ -102,6 +102,10 @@ const app = Vue.createApp({
             this.cartItems.splice(index, 1);
             this.calculateTotals();
             this.updateStock(productId, productType, -product.productQuantity);
+        },
+        checkout(){
+            // localStorage.setItem("cartProducts", JSON.stringify(this.cartItems));
+            // window.location.replace("/web/checkout.html")
         }
     },
 
