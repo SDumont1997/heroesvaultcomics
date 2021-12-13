@@ -7,6 +7,10 @@
     padding: 0 !important;
 }
 
+[v-cloak] {
+    display: none;
+}
+
 body{
     /* background-color: #161853; */
     color: white;
@@ -174,6 +178,19 @@ header{
 .navbar-toggler:focus {
     box-shadow:none !important;
 }
+
+.username:hover{
+    color:  white!important;
+}
+
+.dropdown-menu{
+    text-align: center;
+    min-width: 6rem;
+}
+
+.dropdown-item{
+    font-size: .6rem;
+}
 /* end header's stles */
 
 
@@ -339,6 +356,10 @@ footer{
     .logo{
         width: 215px;
     }
+
+    .dropdown-item{
+        font-size: .85rem;
+    }
     /* end Header's styles */
 
     /* main's styles */
@@ -409,10 +430,7 @@ footer{
         font-weight: 400;
         letter-spacing: 2px;
     }
-    
-    .accessBtn-container{
-        width: 300px;
-    }
+
 
     .access-btn {
         padding-bottom: 7px !important;

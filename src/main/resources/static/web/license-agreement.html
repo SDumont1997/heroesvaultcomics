@@ -38,109 +38,28 @@
                             </li>
                         </ul>    
                         
-                        <div class="ms-1">
-                            <a href="./login.html"><p class="access-btn">Login</p></a>
-                                <span>|</span>
-                            <a href="./signup.html"><p class="access-btn">Sign up</p></a>
+                        <div class="ms-2 pb-3">
+                            <span v-if="!loggedIn" v-cloak>
+                                <a href="./login.html"><p class="access-btn">Login</p></a>
+                                    <span>|</span>
+                                <a href="./signup.html"><p class="access-btn">Sign up</p></a>
+                            </span>
+                            <span v-else v-cloak>
+                                <div  class="dropdown">
+                                    <a v-cloak class="username dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="bi bi-person-circle me-1"></i>{{appUser.username}}
+                                    </a>
+                                    <ul class="dropdown-menu dropdown_secondary" aria-labelledby="navbarDropdownMenuLink">
+                                        <li><a @click="logOut" class="dropdown-item" href="#"><i class="bi bi-box-arrow-left"></i> Log out</a></li>
+                                    </ul>
+                                </div>
+                            </span>
                         </div>
                     </div>
                     
                 </div>
             </div>
     
-            <!-- car with products -->
-            <!-- <div class="offcanvas-shopping offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-                <div>
-                    <button type="button" class="text-light close-canvass-btn" data-bs-dismiss="offcanvas" aria-label="Close">
-                        <i class="bi bi-x-lg close-btn-shoppingCar"></i>
-                    </button>
-                    <div class="offcanvas-header justify-content-center mb-2">
-                        <h5 id="offcanvasRightLabel" class="fw-normal fs-6">My shopping cart</h5> 
-                    </div>
-                    <div class="offcanvas-body">
-                        
-                        <div class="d-flex justify-content-around pt-3 border-bottom">
-                            <div class="product-image">
-                                imagen
-                            </div>
-                            <div>
-                                <div class="d-flex h-25 mb-1">
-                                    <p <p class="me-2">Cantidad</p>
-                                    <span class="d-flex">
-                                        <button type="button" class="d-flex align-items-center bg-primary text-white substract-addition-btn">-</button>
-                                        <input type="number" readonly class="d-flex align-items-center accountant-product border-0"></input>
-                                        <button type="button" class="d-flex align-items-center bg-danger text-white substract-addition-btn">+</button>
-                                    </span>
-                                </div>
-                                
-                                <p>Price:</p>
-                                
-                            </div>
-                        </div>
-    
-                        <div class="d-flex justify-content-around pt-3 border-bottom">
-                            <div class="product-image">
-                                imagen
-                            </div>
-                            <div>
-                                <div class="d-flex h-25 mb-1">
-                                    <p class="me-2">Cantidad</p>
-                                    <span class="d-flex">
-                                        <button type="button" class="d-flex align-items-center bg-primary text-white substract-addition-btn">-</button>
-                                        <input type="number" readonly class="d-flex align-items-center accountant-product border-0"></input>
-                                        <button type="button" class="d-flex align-items-center bg-danger text-white substract-addition-btn">+</button>
-                                    </span>
-                                </div>
-                                
-                                <p>Price:</p>
-                                
-                            </div>
-                        </div>
-    
-                        <div class="d-flex justify-content-around pt-3 border-bottom">
-                            <div class="product-image">
-                                imagen
-                            </div>
-                            <div>
-                                <div class="d-flex h-25 mb-1">
-                                    <p class="me-2">Cantidad</p>
-                                    <span class="d-flex">
-                                        <button type="button" class="d-flex align-items-center bg-primary text-white substract-addition-btn">-</button>
-                                        <input type="number" readonly class="d-flex align-items-center accountant-product border-0"></input>
-                                        <button type="button" class="d-flex align-items-center bg-danger text-white substract-addition-btn">+</button>
-                                    </span>
-                                </div>
-                                
-                                <p>Price:</p>
-                                
-                            </div>
-                        </div>
-    
-                        <p class="fw-bold ms-2">Subtotal:</p>
-                        <p class="fw-bold ms-2">Total:</p>
-    
-                    </div>
-                </div>
-                
-            </div> -->
-    
-            <!-- card without products -->
-            <div class="offcanvas-shopping offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-                <div>
-                    <button type="button" class="text-light close-canvass-btn" data-bs-dismiss="offcanvas" aria-label="Close">
-                        <i class="bi bi-x-lg close-btn-shoppingCar"></i>
-                    </button>
-                    <div class="offcanvas-header justify-content-center mb-2">
-                        <h5 id="offcanvasRightLabel" class="fw-normal fs-6">My shopping cart</h5> 
-                    </div>
-                    <div class="offcanvas-body pt-5 text-center">
-                        <i class="bi bi-emoji-frown fs-1 mb-4"></i>
-                        <p>I'm so sorry, you don't have added any product yet!</p>
-    
-                    </div>
-                </div>
-                
-            </div>
             <!-- end offcanvas and shooping bag content -->
     
             <header class="d-flex align-items-center justify-content-between py-2 px-3">
@@ -169,29 +88,24 @@
                     </ul>
                 </nav>
     
-                <button type="button" class="pb-1 position-relative bg-transparent border-0 text-light d-lg-none" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-                    <i class="bi bi-cart bag-store d-lg-none"></i>
-                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                      99+
-                      <span class="visually-hidden">unread messages</span>
-                    </span>
-                </button>
-    
     
                 <div class="d-none d-lg-flex align-items-end pb-1 justify-content-between accessBtn-container">
                     
-                    <span>
+                    <span v-if="!loggedIn" v-cloak>
                         <a href="./login.html"><p class="access-btn">Login</p></a>
                             <span>|</span>
                         <a href="./signup.html"><p class="access-btn">Sign up</p></a>
                     </span>
-                    <button type="button" class="position-relative bg-transparent border-0 text-light d-md-block" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-                        <i class="bi bi-cart bag-store d-lg-block"></i>
-                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                          99+
-                        <span class="visually-hidden">unread messages</span>
-                        </span>
-                    </button>
+                    <span v-else v-cloak>
+                        <div  class="dropdown">
+                            <a v-cloak class="username dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-person-circle me-1"></i>{{appUser.username}}
+                            </a>
+                            <ul class="dropdown-menu dropdown_secondary" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a @click="logOut" class="dropdown-item" href="#"><i class="bi bi-box-arrow-left"></i> Log out</a></li>
+                            </ul>
+                        </div>
+                    </span>
                 </div>
             </header>
     
@@ -311,6 +225,9 @@
         
 
 
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="./script/index.js"></script>
 </body>
 </html>

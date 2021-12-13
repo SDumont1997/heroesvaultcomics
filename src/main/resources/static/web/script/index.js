@@ -2,7 +2,7 @@ const app = Vue.createApp({
     data(){
         return {
             appUser: {},
-            loggenIn: false
+            loggedIn: false
         }
     },
     created(){
@@ -12,12 +12,17 @@ const app = Vue.createApp({
         loadData(){
             axios.get("/api/appUsers/current")
             .then(response => {
-                console.log(response)
-                // this.appUser = response.data
-                // this.loggedIn = true
+                this.appUser = response.data
+                this.loggedIn = true
             })
             .catch(error => {
                 console.log("No user currently active")
+            })
+        },
+        logOut(){
+            axios.post("/api/logout")
+            .then(response => {
+                window.location.replace("/web/index.html")
             })
         }
     },

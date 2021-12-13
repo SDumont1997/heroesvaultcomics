@@ -13,10 +13,22 @@ const app = Vue.createApp({
             totalItems: 0,
             cartItems: [],
             totalAmount: 0,
+            appUser: {},
+            loggedIn: false
         }
     },
 
     methods: {
+        loadData(){
+            axios.get("/api/appUsers/current")
+            .then(response => {
+                this.appUser = response.data
+                this.loggedIn = true
+            })
+            .catch(error => {
+                console.log("No user currently active")
+            })
+        },
         loadComics(){
             axios.get('/api/comics')
             .then(resp => {
@@ -106,6 +118,12 @@ const app = Vue.createApp({
         checkout(){
             // localStorage.setItem("cartProducts", JSON.stringify(this.cartItems));
             // window.location.replace("/web/checkout.html")
+        },
+        logOut(){
+            axios.post("/api/logout")
+            .then(response => {
+                window.location.replace("/web/index.html")
+            })
         }
     },
 
