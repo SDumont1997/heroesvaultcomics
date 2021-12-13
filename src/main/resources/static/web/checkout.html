@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Herores Vault Comics</title>
+    <title>Heroes Vault Comics - Checkout</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="./styles/customs.css">
 </head>
 <body>
     <div id="app">
+
         <div class="vh-100 d-flex flex-column justify-content-between">
             <!-- offcanvas and shopping car content -->
             <div class="offcanvas offcanvas-start d-lg-none" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
@@ -29,34 +30,46 @@
                                 <a href="./index.html">HOME</a>
                             </li>
                             <li class="nav-item">
-                                <a href="./store.html">STORE</a>
+                                <a href="#">STORE</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#">CHARACTERS</a>
+                                <a href="#">NEWS</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#">REVIEWS</a>
                             </li>
                         </ul>    
                         
-                        <div class="ms-2 pb-3"> 
-                            <span v-if="!loggedIn" v-cloak>
-                                <a href="./login.html"><p class="access-btn">Login</p></a>
-                                    <span>|</span>
-                                <a href="./signup.html"><p class="access-btn">Sign up</p></a>
-                            </span>
-                            <span v-else v-cloak>
-                                <div  class="dropdown">
-                                    <a v-cloak class="username dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="bi bi-person-circle me-1"></i>{{appUser.username}}
-                                    </a>
-                                    <ul class="dropdown-menu dropdown_secondary" aria-labelledby="navbarDropdownMenuLink">
-                                        <li><a @click="logOut" class="dropdown-item" href="#"><i class="bi bi-box-arrow-left"></i> Log out</a></li>
-                                    </ul>
-                                </div>
-                            </span>
+                        <div class="ms-1">
+                            <a href="./login.html"><p class="access-btn">Login</p></a>
+                                <span>|</span>
+                            <a href="./signup.html"><p class="access-btn">Sign up</p></a>
                         </div>
                     </div>
                     
                 </div>
             </div>
+    
+           
+    
+            <!-- cart without products -->
+            <div class="offcanvas-shopping offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                <div>
+                    <button type="button" class="text-light close-canvass-btn" data-bs-dismiss="offcanvas" aria-label="Close">
+                        <i class="bi bi-x-lg close-btn-shoppingCar"></i>
+                    </button>
+                    <div class="offcanvas-header justify-content-center mb-2">
+                        <h5 id="offcanvasRightLabel" class="fw-normal fs-6">My shopping cart</h5> 
+                    </div>
+                    <div class="offcanvas-body pt-5 text-center">
+                        <i class="bi bi-emoji-frown fs-1 mb-4"></i>
+                        <p>I'm so sorry, you don't have added any product yet!</p>
+    
+                    </div>
+                </div>
+                
+            </div>
+            <!-- end offcanvas and shooping bag content -->
     
             <header class="d-flex align-items-center justify-content-between py-2 px-3">
                 
@@ -76,89 +89,72 @@
                             <a href="./index.html">HOME</a>
                         </li>
                         <li class="nav-item">
-                            <a href="./store.html">STORE</a>
+                            <a href="#">STORE</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#">CHARACTERS</a>
+                            <a href="#">NEWS</a>
                         </li>
+                        <li class="nav-item">
+                            <a href="#">REVIEWS</a>
+                        </li>
+                        
                     </ul>
                 </nav>
+    
+                <button type="button" class="pb-1 position-relative bg-transparent border-0 text-light d-lg-none" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                    <i class="bi bi-cart bag-store d-lg-none"></i>
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                      99+
+                      <span class="visually-hidden">unread messages</span>
+                    </span>
+                </button>
     
     
                 <div class="d-none d-lg-flex align-items-end pb-1 justify-content-between accessBtn-container">
                     
-                    <span v-if="!loggedIn" v-cloak>
+                    <span>
                         <a href="./login.html"><p class="access-btn">Login</p></a>
-                            <span>|</span>
+                                <span>|</span>
                         <a href="./signup.html"><p class="access-btn">Sign up</p></a>
                     </span>
-                    <span v-else v-cloak>
-                        <div  class="dropdown">
-                            <a v-cloak class="username dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="bi bi-person-circle me-1"></i>{{appUser.username}}
-                            </a>
-                            <ul class="dropdown-menu dropdown_secondary" aria-labelledby="navbarDropdownMenuLink">
-                                <li><a @click="logOut" class="dropdown-item" href="#"><i class="bi bi-box-arrow-left"></i> Log out</a></li>
-                            </ul>
-                        </div>
-                    </span>
+                    <button type="button" class="position-relative bg-transparent border-0 text-light d-md-block" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                        <i class="bi bi-cart bag-store d-lg-block"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                          99+
+                        <span class="visually-hidden">unread messages</span>
+                        </span>
+                    </button>
                 </div>
             </header>
     
-            <main>
+            <main class="h-100 d-flex flex-column align-items-center">
+                <h2 class="form-title my-2">Your order</h2>
+                
+                <h2 class="form-title my-2">Payment options</h2>
 
-                <section class="d-flex introducing-box">
-                    <div class="w-50 px-1 pt-4 pt-md-5 d-flex flex-column  align-items-center position-relative">
-                        <h2 class="welcome-text">HELLO THERE, WELCOME TO HEROES VAULT COMICS!</h2> 
-                        <p class="introducing-text">Buy your favorites comics with free shipping</p>
-                    </div>
-                    <div class="w-50 img-comic-box"></div>
-                </section>
-
-                <section class="about-comics-container">
-                    <div class="py-4 text-center">
-                        <h3 class="section-subtitle">All about comics</h3>
-                        <span class="subtitle-underline"></span>
-                        <div class="px-1 items-aboutComic-container">
-                            <div class="box-items">
-                                <p class="aboutComics-item">What is a comic?</p>
-                                <p class="mb-2 text-aboutComics">The comic is a series of drawp that constitute a story, with or without text, based on Will Eisner's conception of this graphic narrative as a sequential art, juxtaposed illustrations and other sequential images with the purpose of transmitting an aesthetic comic to the reader. From Webcomics.com we provide you with access to the comics posted on the network, at no time do we assume their ownership or authorship.</dd>
-                            </div>
-
-                            <div class="box-items">
-                                <p class="aboutComics-item">Comic benefits:</p>
-                                
-                                <ul>
-                                    <li class="mb-2 text-aboutComics">- Encourage reading through comics.</li>
-                                    <li class="mb-2 text-aboutComics">- Communicate through images.</li>
-                                    <li class="mb-2 text-aboutComics">- Stimulate the methods of analysis and synthesis.</li>
-                                    <li class="mb-2 text-aboutComics">- Develop communication skills by learning the most used expressions in everyday language.</li>
-                                    <li class="mb-2 text-aboutComics">- Encourage creativity and imagination.</li>
-                                    <li class="mb-2 text-aboutComics">- Transfer thoughts and ideas to the formal structures provided by written language.</li>
-                                    <li class="mb-2 text-aboutComics">- Develop collaborative work.</li>
-                                </ul>
-                                
-                            </div>
-                        </div>
-                        
-                    </div>
-                </section>
-
-                <section class="visit-merch-container text-center py-4">
-                    <h3 class="section-subtitle">Our store</h3>
-                    <span class="subtitle-underline"></span>
-
-                    <p class="mb-2">Click here to visit our merchandising</p>
-
-                    <p class="store-btn">
-                        <a href="./store.html">Store</a>
-                    </p>
-                </section>
+                <form v-on:submit.prevent="confirmPurchase" class="d-flex flex-column align-items-center col-11 col-lg-2">
+                    <label class="text-dark col-12">
+                        Select payment method <br>
+                        <select name="paymentMethod" v-model="paymentOption" class="mt-2 border-3 border-danger pt-2 pb-2 ps-1 pe-1 col-12">
+                            <option value="CASH">Cash</option>
+                            <option value="CARD">Card</option>
+                        </select>
+                    </label>
+                    <label class="text-dark col-12" v-if="paymentOption === 'CARD'">
+                        Card number <br>
+                        <input type="text" maxlength="19" v-model="cardNumber" class="mt-2 border-3 border-danger pt-2 pb-2 ps-1 pe-1 col-12">
+                    </label>
+                    <label class="text-dark col-12" v-if="paymentOption === 'CARD'">
+                        Card CVV <br>
+                        <input type="number" min="100" max="999" v-model="cvv" class="mt-2 border-3 border-danger pt-2 pb-2 ps-1 pe-1 col-12">
+                    </label>
+                    <input type="submit" value="Confirm purchase" class="mt-3 mb-3 col-12 border-3 border-primary py-2 px-1">
+                </form>
             </main>
     
             <footer class="d-flex flex-column align-items-center justify-content-md-around pt-3">
                 
-                <div class="w-100 mb-2 px-3 d-flex flex-column flex-md-row align-items-center justify-content-md-between">
+                <div class="w-100 px-3 d-flex flex-column flex-md-row align-items-center justify-content-md-between">
                     
                     <a href="./index.html"><img src="./assets/heroes-vault-logo-3.png" class="logo" alt="logo"></a>
                     
@@ -196,12 +192,13 @@
                 </div>
             </footer>
         </div>
-    </div>
 
+    </div>
+    
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/vue@next"></script>
-    <script src="./script/index.js"></script>
+    <script src="./script/checkout.js"></script>
 </body>
 </html>

@@ -1,10 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500;600&display=swap');  /*font-family: 'Maven Pro', sans-serif; (400,500,600)*/
-
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 /* Generals styles */
 *{
     margin:0 !important;
     padding: 0 !important;
+}
+
+[v-cloak] {
+    display: none;
 }
 
 body{
@@ -43,6 +47,12 @@ a:hover{
     border-bottom: 1px solid #ffffff85;
     padding-bottom: 1rem !important;
     background-color: #151515;
+}
+
+.buttonRemove {
+    width: 21px;
+    border-radius: 20px;
+    font-size: 12px;
 }
 
 .close-canvass-btn{
@@ -96,6 +106,7 @@ ul .nav-item ~ .nav-item{
 
 .accountant-product{
     width: 25px;
+    text-align: center;
 }
 
 .substract-addition-btn{
@@ -167,14 +178,130 @@ header{
 .navbar-toggler:focus {
     box-shadow:none !important;
 }
+
+.username:hover{
+    color:  white!important;
+}
+
+.dropdown-menu{
+    text-align: center;
+    min-width: 6rem;
+}
+
+.dropdown-item{
+    font-size: .6rem;
+}
 /* end header's stles */
 
 
 
 /* Main's styes */
-main{
-    background-color: #ccc;
+.welcome-text{
+    font-size: .7rem !important;
+    text-align: left;
+    letter-spacing: 2px;
+    padding-left: 10% !important;
 }
+
+.introducing-box{
+    background-color: #070f3d;
+}
+
+.introducing-text{
+    width: 162px;
+    font-size: .45rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: right;
+    position: absolute;
+    bottom: 42px;
+    right: -5%;
+}
+
+.img-comic-box{
+    height: 200px;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 18% 100%);
+    background: #4f53d4;
+    background-image: url('../assets/comics-sales.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.section-subtitle {
+    letter-spacing: 1px;
+    font-weight: 100;
+}
+
+.subtitle-underline{
+    min-height: 1.4px;
+    background-color: white;
+    display: block;
+    width: 147px;
+    margin: 0 auto !important;
+    margin-bottom: 1rem !important;
+    
+}
+
+.about-comics-container{
+    background: #4f53d4;
+    background-image: url('../assets/about-comics-bg.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.about-comics-container > div{
+    background-color: #000000b5;
+}
+
+.box-items{
+    text-align: justify;
+}
+
+.aboutComics-item{
+    letter-spacing: 1px;
+    font-size: .9rem;
+    font-weight: 600;
+}
+
+.visit-merch-container{
+    background: #070f3d;   
+}
+
+.store-btn{
+    border: 1px solid;
+    width: 100px;
+    margin: 0 auto !important;
+    font-size: .8rem;
+    letter-spacing: 1px;
+    font-weight: 500;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.login-bg-img{
+    background-image: url(https://www.superherodb.com/gallery2/075/268/26825.jpg);
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: 30%;
+    overflow: hidden;
+}
+
+.signup-bg-img{
+    background-image: url(https://www.superherodb.com/gallery2/075/220/22026.jpg);
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: 20%;
+    overflow: hidden;
+}
+
+.form-title{
+    font-family: 'Bebas Neue', cursive;
+    font-size: 3rem;
+    color: #070f3d;
+}
+
 /*End Main's styes */
 
 
@@ -229,8 +356,43 @@ footer{
     .logo{
         width: 215px;
     }
+
+    .dropdown-item{
+        font-size: .85rem;
+    }
     /* end Header's styles */
 
+    /* main's styles */
+
+    .img-comic-box {
+        height: 350px;
+    }
+
+    .welcome-text {
+        font-size: 1.3rem !important;
+        text-align: center;
+        padding: 0 !important;
+    }
+
+    .introducing-text {
+        width: auto;
+        font-size: .85rem;
+        margin: 0 auto !important;
+        right: 0;
+        left: 11px;
+        bottom: 26%;
+        letter-spacing: 3px;
+    }
+
+    .items-aboutComic-container{
+        width: 75% ;
+        margin: 0 auto !important;
+    }
+
+    .aboutComics-item{
+        font-size: 1.2rem;
+    }
+    /* end main's styles */
 
     /* footer's styles */
     .footer-subtitle{
@@ -268,16 +430,21 @@ footer{
         font-weight: 400;
         letter-spacing: 2px;
     }
-    
-    .accessBtn-container{
-        width: 300px;
-    }
+
 
     .access-btn {
         padding-bottom: 7px !important;
     }
     /* end header's styles */
     
+    /* main styles */
+
+    .text-aboutComics{
+        font-size: 1.2rem;
+    }
+
+
+    /* end main styles */
     
     /* footer's styles */
     .footer-references {
@@ -292,6 +459,29 @@ footer{
         font-size: 1rem;
     }
     /* end header's styles */
+
+    /* main's styles */
+    .welcome-text {
+        font-size: 1.5rem !important;
+        position: absolute;
+        top: 5rem;
+        padding-right: 7%!important;
+    }
+
+    .introducing-text {
+        width: auto;
+        font-size: .85rem;
+        margin: 0 auto !important;
+        right: 0;
+        left: 0;
+        bottom: 40%;
+        letter-spacing: 3px;
+    }
+
+    .img-comic-box {
+        height: 450px;
+    }
+    /* end main's styles */
 }
 
 /* Characters.html */
