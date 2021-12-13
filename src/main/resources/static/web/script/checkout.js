@@ -8,9 +8,9 @@ const app = Vue.createApp({
            storeName: "Heroes Vault Comics",
            detail: "Purchase",
            errorMessage: "",
-           comics: [],
-           merch: [],
-           
+           comicIds: [],
+           merchIds: [],
+
         }
     },
     created(){
@@ -26,7 +26,13 @@ const app = Vue.createApp({
             })
         },
         registerPurchase(){
-            axios.post("/api/purchases")
+            axios.post("/api/purchases", {comicIds: this.comicIds, merchIds: this.merchIds, amount: this.amount, paymentOption: this.paymentOption, cardNumber: this.cardNumber, cardCvv: this.cvv})
+            .then(response => {
+                window.location.replace("./index.html")
+            })
+            .catch(error => {
+                this.errorMessage = error.response.data
+            })
         }
         
     },
