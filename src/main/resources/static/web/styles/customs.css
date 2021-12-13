@@ -294,3 +294,47 @@ footer{
     /* end header's styles */
 }
 
+/* Characters.html */
+.bg-characters{
+    background-image: url(../assets/bg-characters.jpg);
+    background-size: cover;
+}
+.bg-character{
+    background-image: url(../assets/bg-character.jpg);
+    background-size: cover;
+}
+.bg-comics{
+    background-image: url(../assets/bg-comics.jpg);
+    background-size: cover;
+}
+.char{
+    background-repeat:no-repeat;
+    display:block;
+    background-position: -150px -70px;
+    height:230px !IMPORTANT;
+    width:215px !IMPORTANT;
+    transition: transform 200ms ease;
+    transition-delay: 0s;
+}
+.char:hover{
+    transform: translateY(-10px);
+}
+.owl-nav .owl-prev {
+    position: absolute;
+    top: calc(50% - 25px);
+    left: 0;
+    opacity: 1;
+    font-size: 30px !important;
+    z-index: 1;
+  }
+.owl-nav .owl-next {
+    position: absolute;
+    top: calc(50% - 25px);
+    right: 0;
+    opacity: 1;
+    font-size: 30px !important;
+    z-index: 1;
+}
+.owl-item .card img{
+    width:300px;
+}
