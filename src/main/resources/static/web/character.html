@@ -40,10 +40,22 @@
                             </li>
                         </ul>    
                         
-                        <div class="ms-1">
-                            <p class="access-btn">Login</p>
-                            <span class="access-btn">|</span>
-                            <p class="access-btn">Sign up</p>
+                        <div class="mx-2 my-4">
+                            <span v-if="!loggedIn" v-cloak>
+                                <a href="./login.html"><p class="access-btn">Login</p></a>
+                                    <span>|</span>
+                                <a href="./signup.html"><p class="access-btn">Sign up</p></a>
+                            </span>
+                            <span v-else v-cloak>
+                                <div  class="dropdown">
+                                    <a v-cloak class="username dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="bi bi-person-circle me-1"></i>{{appUser.username}}
+                                    </a>
+                                    <ul class="dropdown-menu dropdown_secondary" aria-labelledby="navbarDropdownMenuLink">
+                                        <li><a @click="logOut" class="dropdown-item" href="#"><i class="bi bi-box-arrow-left"></i> Log out</a></li>
+                                    </ul>
+                                </div>
+                            </span>
                         </div>
                     </div>
                     
@@ -75,13 +87,22 @@
                         </li>
                     </ul>
                 </nav>
-    
+                
                 <div class="d-none d-lg-flex align-items-end pb-1 justify-content-between accessBtn-container">
-                    
-                    <span>
-                        <p class="access-btn">Login</p> 
-                        <span class="access-btn">|</span>
-                        <p class="access-btn">Sign up</p>
+                    <span v-if="!loggedIn" v-cloak>
+                        <a href="./login.html"><p class="access-btn">Login</p></a>
+                            <span>|</span>
+                        <a href="./signup.html"><p class="access-btn">Sign up</p></a>
+                    </span>
+                    <span v-else v-cloak>
+                        <div  class="dropdown">
+                            <a v-cloak class="username dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-person-circle me-1"></i>{{appUser.username}}
+                            </a>
+                            <ul class="dropdown-menu dropdown_secondary" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a @click="logOut" class="dropdown-item" href="#"><i class="bi bi-box-arrow-left"></i> Log out</a></li>
+                            </ul>
+                        </div>
                     </span>
                 </div>
             </header>
