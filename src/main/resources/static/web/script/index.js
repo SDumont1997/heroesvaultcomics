@@ -10,10 +10,11 @@ const app = Vue.createApp({
     },
     methods: {
         loadData(){
-            axios.get("/api/clients/current")
+            axios.get("/api/appUsers/current")
             .then(response => {
-                this.appUser = response.data
-                this.loggedIn = true
+                console.log(response)
+                // this.appUser = response.data
+                // this.loggedIn = true
             })
             .catch(error => {
                 console.log("No user currently active")
@@ -25,4 +26,4 @@ const app = Vue.createApp({
     }
 })
 
-app.mount("#app")
+const consola = app.mount("#app")

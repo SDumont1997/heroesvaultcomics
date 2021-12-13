@@ -29,30 +29,24 @@
                                 <a href="./index.html">HOME</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#">STORE</a>
+                                <a href="./store.html">STORE</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#">NEWS</a>
+                                <a href="#">CHARACTERS</a>
                             </li>
-                            <li class="nav-item">
-                                <a href="#">REVIEWS</a>
-                            </li>
-                            
                         </ul>    
                         
-                        <div class="ms-1">
-                            
+                        <div class="ms-1"> 
                             <a href="./login.html"><p class="access-btn">Login</p></a>
                                 <span>|</span>
                             <a href="./signup.html"><p class="access-btn">Sign up</p></a>
-                            
                         </div>
                     </div>
                     
                 </div>
             </div>
     
-            <!-- car with products -->
+            <!-- Shopping cart -->
             <!-- <div class="offcanvas-shopping offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
                 <div>
                     <button type="button" class="text-light close-canvass-btn" data-bs-dismiss="offcanvas" aria-label="Close">
@@ -61,91 +55,47 @@
                     <div class="offcanvas-header justify-content-center mb-2">
                         <h5 id="offcanvasRightLabel" class="fw-normal fs-6">My shopping cart</h5> 
                     </div>
-                    <div class="offcanvas-body">
+                    <div v-if = "cartItems.length > 0" class="offcanvas-body">
+                        <div v-for = "item in cartItems" class="d-flex justify-content-around pt-3 border-bottom">
+                            <div class="product-image">
+                                <img :src="item.productImg" alt="" width="70" height="80">
+                            </div>
+                            <div>
+                                <div class="d-flex justify-content-end mb-2">
+                                    <button v-on:click="removeCartItem(item.productId, item.productType)" type="button" class="btn bg-secondary text-white buttonRemove" aria-label="Remove">
+                                        <span aria-hidden="true">X</span>
+                                    </button>
+                                </div>
+                                <div class="d-flex h-25 mb-1">
+                                    <p class="me-2">Quantity</p>
+                                    <span class="d-flex">
+                                        <button v-on:click="removeItem(item.productId, item.productType)" type="button" class="d-flex align-items-center bg-primary text-white substract-addition-btn">-</button>
+                                        <input type="number" readonly class="d-flex align-items-center accountant-product border-0" :value = "item.productQuantity"></input>
+                                        <button v-on:click="addItem(item.productId, item.productType)" type="button" class="d-flex align-items-center bg-danger text-white substract-addition-btn">+</button>
+                                    </span>
+                                </div>
+                                
+                                <p>Price: ${{item.productPrice}}</p>
+                                
+                            </div>
+                        </div>
+                        <div class="d-flex flex-column justify-content-end">
+                            <p class="fw-bold ms-2">Items: {{totalItems}}</p>
+                            <p class="fw-bold ms-2">Total: ${{totalAmount}}</p>
+                            <button v-on:click = "checkout" class="btn bg-warning m-2 p-1">Checkout</button>
+                        </div>
                         
-                        <div class="d-flex justify-content-around pt-3 border-bottom">
-                            <div class="product-image">
-                                imagen
-                            </div>
-                            <div>
-                                <div class="d-flex h-25 mb-1">
-                                    <p <p class="me-2">Cantidad</p>
-                                    <span class="d-flex">
-                                        <button type="button" class="d-flex align-items-center bg-primary text-white substract-addition-btn">-</button>
-                                        <input type="number" readonly class="d-flex align-items-center accountant-product border-0"></input>
-                                        <button type="button" class="d-flex align-items-center bg-danger text-white substract-addition-btn">+</button>
-                                    </span>
-                                </div>
-                                
-                                <p>Price:</p>
-                                
-                            </div>
-                        </div>
     
-                        <div class="d-flex justify-content-around pt-3 border-bottom">
-                            <div class="product-image">
-                                imagen
-                            </div>
-                            <div>
-                                <div class="d-flex h-25 mb-1">
-                                    <p class="me-2">Cantidad</p>
-                                    <span class="d-flex">
-                                        <button type="button" class="d-flex align-items-center bg-primary text-white substract-addition-btn">-</button>
-                                        <input type="number" readonly class="d-flex align-items-center accountant-product border-0"></input>
-                                        <button type="button" class="d-flex align-items-center bg-danger text-white substract-addition-btn">+</button>
-                                    </span>
-                                </div>
-                                
-                                <p>Price:</p>
-                                
-                            </div>
-                        </div>
-    
-                        <div class="d-flex justify-content-around pt-3 border-bottom">
-                            <div class="product-image">
-                                imagen
-                            </div>
-                            <div>
-                                <div class="d-flex h-25 mb-1">
-                                    <p class="me-2">Cantidad</p>
-                                    <span class="d-flex">
-                                        <button type="button" class="d-flex align-items-center bg-primary text-white substract-addition-btn">-</button>
-                                        <input type="number" readonly class="d-flex align-items-center accountant-product border-0"></input>
-                                        <button type="button" class="d-flex align-items-center bg-danger text-white substract-addition-btn">+</button>
-                                    </span>
-                                </div>
-                                
-                                <p>Price:</p>
-                                
-                            </div>
-                        </div>
-    
-                        <p class="fw-bold ms-2">Subtotal:</p>
-                        <p class="fw-bold ms-2">Total:</p>
-    
+                    </div>
+
+                    <div v-else class="offcanvas-body pt-5 text-center">
+                        <i class="bi bi-emoji-frown fs-1 mb-4"></i>
+                        <p>I'm so sorry, you don't have added any product yet!</p>
                     </div>
                 </div>
                 
             </div> -->
-    
-            <!-- card without products -->
-            <div class="offcanvas-shopping offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-                <div>
-                    <button type="button" class="text-light close-canvass-btn" data-bs-dismiss="offcanvas" aria-label="Close">
-                        <i class="bi bi-x-lg close-btn-shoppingCar"></i>
-                    </button>
-                    <div class="offcanvas-header justify-content-center mb-2">
-                        <h5 id="offcanvasRightLabel" class="fw-normal fs-6">My shopping cart</h5> 
-                    </div>
-                    <div class="offcanvas-body pt-5 text-center">
-                        <i class="bi bi-emoji-frown fs-1 mb-4"></i>
-                        <p>I'm so sorry, you don't have added any product yet!</p>
-    
-                    </div>
-                </div>
-                
-            </div>
-            <!-- end offcanvas and shooping bag content -->
+            <!-- end of Shopping cart -->
     
             <header class="d-flex align-items-center justify-content-between py-2 px-3">
                 
@@ -165,24 +115,21 @@
                             <a href="./index.html">HOME</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#">STORE</a>
+                            <a href="./store.html">STORE</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#">NEWS</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#">REVIEWS</a>
+                            <a href="#">CHARACTERS</a>
                         </li>
                     </ul>
                 </nav>
     
-                <button type="button" class="pb-1 position-relative bg-transparent border-0 text-light d-lg-none" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                <!-- <button type="button" class="pb-1 position-relative bg-transparent border-0 text-light d-lg-none" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
                     <i class="bi bi-cart bag-store d-lg-none"></i>
                     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                       99+
                       <span class="visually-hidden">unread messages</span>
                     </span>
-                </button>
+                </button> -->
     
     
                 <div class="d-none d-lg-flex align-items-end pb-1 justify-content-between accessBtn-container">
@@ -197,13 +144,13 @@
                             <a href="#">My sales</a>
                         </p>
                     </span> -->
-                    <button type="button" class="position-relative bg-transparent border-0 text-light d-md-block" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                    <!-- <button type="button" class="position-relative bg-transparent border-0 text-light d-md-block" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
                         <i class="bi bi-cart bag-store d-lg-block"></i>
                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                           99+
                         <span class="visually-hidden">unread messages</span>
                         </span>
-                    </button>
+                    </button> -->
                 </div>
             </header>
     
@@ -253,7 +200,7 @@
                     <p class="mb-2">Click here to visit our merchandising</p>
 
                     <p class="store-btn">
-                        <a href="#">Store</a>
+                        <a href="./store.html">Store</a>
                     </p>
                 </section>
             </main>
