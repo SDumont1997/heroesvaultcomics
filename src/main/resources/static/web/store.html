@@ -189,7 +189,7 @@
                                                     Quantity <input class="inputNumber" type="number" min="0" :max="comic.stock" :value="comic.stock > 0 ? 1 : 0" name="quantity">
                                                 </label>
                                                 <input type="hidden" value="comic" name="productType">
-                                                <input v-if="comic.stock !== 0" :id="comic.id" name="addComicItem" type="submit" class="btn bg-warning" value="Add to cart">
+                                                <input v-if="comic.stock !== 0" :id="comic.id" name="addProductItem" type="submit" class="btn bg-warning" value="Add to cart">
                                             </form>
                                         </div>
                                     </div>
@@ -215,7 +215,7 @@
                                                     Quantity <input class="inputNumber" type="number" min="0" :max="product.stock" :value="product.stock > 0 ? 1 : 0" name="quantity">
                                                 </label>
                                                 <input type="hidden" value="merch" name="productType">
-                                                <input v-if="product.stock !== 0" :id="product.id" name="addMerchItem" type="submit" class="btn bg-warning" value="Add to cart">
+                                                <input v-if="product.stock !== 0" :id="product.id" name="addProductItem" type="submit" class="btn bg-warning" value="Add to cart">
                                             </form>
                                         </div>
                                     </div>
