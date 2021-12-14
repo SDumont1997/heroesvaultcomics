@@ -26,7 +26,7 @@ public class EcommerceApplication {
 		SpringApplication.run(EcommerceApplication.class, args);
 	}
 
-	@Bean
+	/*@Bean
 	public CommandLineRunner initData(PublisherRepository publisherRepository, AuthorRepository authorRepository, CharacterRepository characterRepository, ComicRepository comicRepository, MerchRepository merchRepository, AppUserRepository appUserRepository, PurchaseRepository purchaseRepository){
 		return args -> {
 			Publisher publisher1 = new Publisher("Marvel Comics", LocalDate.of(1939, 1, 10));
@@ -98,6 +98,6 @@ public class EcommerceApplication {
 			characterRepository.save(character2);
 			characterRepository.save(character3);
 		};
-	}
+	}*/
 
 }
