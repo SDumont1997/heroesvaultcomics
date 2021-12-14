@@ -52,7 +52,7 @@
                                         <i class="bi bi-person-circle me-1"></i>{{appUser.username}}
                                     </a>
                                     <ul class="dropdown-menu dropdown_secondary" aria-labelledby="navbarDropdownMenuLink">
-                                        <li v-if="!appUser.admin"><a class="dropdown-item" href="./my-shopping.html"><i class="bi bi-file-text"></i>My shopping</a></li>
+                                        <li><a class="dropdown-item" href="./my-shopping.html"><i class="bi bi-file-text"></i>My shopping</a></li>
                                         <li v-if="appUser.admin"><a class="dropdown-item" href="./admin.html"><i class="bi bi-file-person"></i>Admin panel</a></li>
                                         <li><a @click="logOut" class="dropdown-item" href="#"><i class="bi bi-box-arrow-left"></i> Log out</a></li>
                                     </ul>
@@ -102,7 +102,7 @@
                                 <i class="bi bi-person-circle me-1"></i>{{appUser.username}}
                             </a>
                             <ul class="dropdown-menu dropdown_secondary" aria-labelledby="navbarDropdownMenuLink">
-                                <li v-if="!appUser.admin"><a class="dropdown-item" href="./my-shopping.html"><i class="bi bi-file-text"></i>My shopping</a></li>
+                                <li><a class="dropdown-item" href="./my-shopping.html"><i class="bi bi-file-text"></i>My shopping</a></li>
                                 <li v-if="appUser.admin"><a class="dropdown-item" href="./admin.html"><i class="bi bi-file-person"></i>Admin panel</a></li>
                                 <li><a @click="logOut" class="dropdown-item" href="#"><i class="bi bi-box-arrow-left"></i> Log out</a></li>
                             </ul>
