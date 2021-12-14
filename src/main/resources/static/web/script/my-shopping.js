@@ -8,6 +8,7 @@ const app = Vue.createApp({
     },
     created(){
         this.loadData();
+        this.getPurchase();
     },
     methods: {
         loadData(){
@@ -36,7 +37,7 @@ const app = Vue.createApp({
             })
         },
         getPurchasePdf(e){
-            axios.post("/api/purchases/export/pdf", `id=${e.target.value}`, {responseType: 'blob'})
+            axios.post("/api/purchases/export/pdf", `purchaseId=${e.target.value}`, {responseType: 'blob'})
             .then(response=> {
                 let file = response.headers['content-disposition']
                 let fileName = decodeURI(file.substring(20))
@@ -53,4 +54,4 @@ const app = Vue.createApp({
     }
 })
 
-const consola = app.mount("#app")
+let asd = app.mount("#app")

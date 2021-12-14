@@ -105,16 +105,16 @@
                         <thead>
                           <tr class="pb-2">
                             <th class="text-center">PRICE</th>
-                            <th class="text-center ">DATE</th>
+                            <th class="text-center ">PAYMENT</th>
                             <th class="text-center ">VOUCHER</th>
                           </tr>
                         </thead>
 
                         <tbody v-for="purchase in purchases" >
                             <tr >
-                                <td class="pt-2 text-center">{{}}</td>
-                                <td class="pt-2 text-center">{{}}</td>
-                                <td class="pt-2 text-center" ><button @click.prevent="getPurchasePdf" :value="purchase.id"><i class="bi bi-file-earmark-pdf"></i></button></td>
+                                <td class="pt-2 text-center">{{purchase.amount}}</td>
+                                <td class="pt-2 text-center">{{purchase.paymentOption}}</td>
+                                <td class="pt-2 text-center" ><label><i class="bi bi-file-earmark-pdf"></i><input class="d-none" type="button" v-on:click="getPurchasePdf" :value="purchase.id"></input></label></td>
                             </tr>  
                         </tbody>
                     </table>    

@@ -46,7 +46,7 @@ const app = Vue.createApp({
             },
             comicUpdateForm: {
                 comicId: "",
-                addedProtagonistId: "",
+                addedProtagonistId: 0,
                 price: "",
                 stock: ""
             },

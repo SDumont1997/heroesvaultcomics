@@ -30,15 +30,12 @@
                                 <a href="./index.html">HOME</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#">STORE</a>
+                                <a href="./store.html">STORE</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#">NEWS</a>
+                                <a href="./characters.html">CHARACTERS</a>
                             </li>
-                            <li class="nav-item">
-                                <a href="#">REVIEWS</a>
-                            </li>
-                        </ul>    
+                        </ul>     
                         
                         <div class="ms-2 pb-3"> 
                             <span v-if="!loggedIn" v-cloak>
@@ -82,15 +79,11 @@
                             <a href="./index.html">HOME</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#">STORE</a>
+                            <a href="./store.html">STORE</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#">NEWS</a>
+                            <a href="./characters.html">CHARACTERS</a>
                         </li>
-                        <li class="nav-item">
-                            <a href="#">REVIEWS</a>
-                        </li>
-                        
                     </ul>
                 </nav>
     
@@ -119,8 +112,6 @@
             </header>
     
             <main class="h-100 d-flex flex-column align-items-center">
-                <h2 class="form-title my-2">Your order</h2>
-                
                 <h2 class="form-title my-2">Payment options</h2>
 
                 <form v-on:submit.prevent="confirmPurchase" class="d-flex flex-column align-items-center col-11 col-lg-2">
@@ -131,6 +122,7 @@
                             <option value="CARD">Card</option>
                         </select>
                     </label>
+                    <button v-if="paymentOption === 'CASH'" v-on:click="registerPurchase" class="mt-3 mb-3 col-12 border-3 border-primary py-2 px-1">Confirm Purchase</button>
                     <label class="text-dark col-12" v-if="paymentOption === 'CARD'">
                         Card number <br>
                         <input type="text" maxlength="19" v-model="cardNumber" class="mt-2 border-3 border-danger pt-2 pb-2 ps-1 pe-1 col-12">
@@ -139,7 +131,7 @@
                         Card CVV <br>
                         <input type="number" min="100" max="999" v-model="cvv" class="mt-2 border-3 border-danger pt-2 pb-2 ps-1 pe-1 col-12">
                     </label>
-                    <input type="submit" value="Confirm purchase" class="mt-3 mb-3 col-12 border-3 border-primary py-2 px-1">
+                    <input v-if="paymentOption === 'CARD'" type="submit" value="Confirm purchase" class="mt-3 mb-3 col-12 border-3 border-primary py-2 px-1">
                 </form>
             </main>
     

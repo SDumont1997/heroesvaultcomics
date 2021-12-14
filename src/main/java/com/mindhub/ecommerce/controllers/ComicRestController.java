@@ -74,14 +74,13 @@ public class ComicRestController {
     @PostMapping("/comics/update")
     public ResponseEntity<Object> updateComic(Authentication authentication, @RequestParam Long id, @RequestParam Long characterId, @RequestParam Double price, @RequestParam Integer stock){
         Comic comic = comicService.getById(id);
-        Character character = characterService.getById(characterId);
         if (price != 0 && !price.toString().equals("")){
             comic.setPrice(price);
         }
         if (stock != 0 && !stock.toString().equals("")) {
             comic.setStock(stock);
         }
-        if (character != null ) {
+        if (characterId != 0 ) {
             comic.addProtagonist(characterService.getById(characterId));
         }
         comicService.save(comic);

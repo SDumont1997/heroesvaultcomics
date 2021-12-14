@@ -138,8 +138,7 @@ const app = Vue.createApp({
             localStorage.setItem("cart", JSON.stringify(this.cartItems))
         },
         checkout(){
-            // localStorage.setItem("cartProducts", JSON.stringify(this.cartItems));
-            // window.location.replace("/web/checkout.html")
+            window.location.replace("/web/checkout.html")
         },
         logOut(){
             axios.post("/api/logout")
