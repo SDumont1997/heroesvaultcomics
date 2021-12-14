@@ -175,21 +175,25 @@
     
 
             <main class="h-100">
+                <nav class="nav nav-pills flex-column flex-sm-row bg-danger">
+                    <a v-on:click="showComics(true)" class="flex-sm-fill text-center nav-link" href="#" v-bind:class="comicsVisible?'active':''"><span class="textComicMerch">Comics</span></a>
+                    <a v-on:click="showComics(false)" class="flex-sm-fill text-center nav-link" href="#" v-bind:class="comicsVisible?'':'active'"><span class="textComicMerch">Merch</span></a>
+                  </nav>
+                <!-- <div class="card-header border-0 bg-danger">
+                    <ul class="nav nav-tabs justify-content-end border-0">
+                      <li class="nav-item">
+                        <a v-on:click="showComics(true)" class="nav-link btnComicMerch" href="#" v-bind:class="comicsVisible?'active':''"><span class="textComicMerch">Comics</span></a>
+                      </li>
+                      <li class="nav-item">
+                        <a v-on:click="showComics(false)" class="nav-link btnComicMerch" href="#" v-bind:class="comicsVisible?'':'active'"><span class="textComicMerch">Merch</span></a>
+                      </li>
+                    </ul>
+                </div> -->
                 <div class="card text-center border-0">
-                    <div class="card-header border-0">
-                      <ul class="nav nav-tabs justify-content-end bg-danger border-0">
-                        <li class="nav-item">
-                          <a v-on:click="showComics(true)" class="nav-link btnComicMerch" href="#" v-bind:class="comicsVisible?'active':''"><span class="textComicMerch">Comics</span></a>
-                        </li>
-                        <li class="nav-item">
-                          <a v-on:click="showComics(false)" class="nav-link btnComicMerch" href="#" v-bind:class="comicsVisible?'':'active'"><span class="textComicMerch">Merch</span></a>
-                        </li>
-                      </ul>
-                    </div>
                     <div class="card-body d-flex justify-content-center align-items-center bg-img">
                         <div v-if = "comicsVisible" class="container d-flex justify-content-center">
                             <div class="row">
-                                <div class="d-flex flex-wrap justify-content-between">
+                                <div class="d-flex flex-wrap justify-content-center">
                                     <div v-for="comic in comics" class="card m-4" style="width: 18rem;">
                                         <img class="card-img-top" :src="comic.coverImgUrl" width="400" height="300">
                                         <div class="card-body d-flex flex-column justify-content-between align-items-center bg-dark">
@@ -200,7 +204,7 @@
                                                 <span v-if="5 > comic.stock && comic.stock !== 0" class="text-white bg-danger mb-2 p-1 rounded bi bi-bell-fill">Last units!</span>
                                                 <span v-if="comic.stock === 0" class="text-white bg-secondary mb-3 p-2 rounded">Sold out</span>
                                                 <label v-if="comic.stock !== 0" class="mb-3 text-light">
-                                                    Quantity <input class="inputNumber" type="number" min="0" :max="comic.stock" :value="comic.stock > 0 ? 1 : 0" name="quantity">
+                                                    Quantity <input class="text-center" type="number" min="0" :max="comic.stock" :value="comic.stock > 0 ? 1 : 0" name="quantity">
                                                 </label>
                                                 <input type="hidden" value="comic" name="productType">
                                                 <input v-if="comic.stock !== 0" :id="comic.id" name="addProductItem" type="submit" class="btn bg-warning mb-2 p-1" value="Add to cart">
@@ -212,7 +216,7 @@
                         </div>
                         <div v-else class="container d-flex justify-content-center">
                             <div class="row">
-                                <div class="d-flex flex-wrap justify-content-between">
+                                <div class="d-flex flex-wrap justify-content-center">
                                     <div v-for="product in merch" class="card m-4" style="width: 18rem;">
                                         <img class="card-img-top" :src="product.imgUrl" width="400" height="300">
                                         <div class="card-body d-flex flex-column justify-content-between align-items-center bg-dark">
@@ -223,7 +227,7 @@
                                                 <span v-if="5 > product.stock && product.stock !== 0" class="text-white bg-danger mb-3 p-2 rounded">Last units</span>
                                                 <span v-if="product.stock === 0" class="text-white bg-secondary mb-3 p-2 rounded">Sold out</span>
                                                 <label  v-if="product.stock !== 0" class="mb-3 text-light">
-                                                    Quantity <input class="inputNumber" type="number" min="0" :max="product.stock" :value="product.stock > 0 ? 1 : 0" name="quantity">
+                                                    Quantity <input class="text-center" type="number" min="0" :max="product.stock" :value="product.stock > 0 ? 1 : 0" name="quantity">
                                                 </label>
                                                 <input type="hidden" value="merch" name="productType">
                                                 <input v-if="product.stock !== 0" :id="product.id" name="addProductItem" type="submit" class="btn bg-warning mb-2 p-1" value="Add to cart">
