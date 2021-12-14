@@ -11,8 +11,8 @@ const app = Vue.createApp({
             comics: [],
             merch: [],
             comicsVisible: true,
-            totalItems: 0,
             cartItems: [],
+            totalItems: 0,
             totalAmount: 0,
             appUser: {},
             loggedIn: false
@@ -90,7 +90,7 @@ const app = Vue.createApp({
                 let comic = this.comics.filter(c => productId == c.id)[0];
                 if(comic.stock >= 1){
                     product.productQuantity += 1;
-                    this.updateStock(productId, productType, 1);        
+                    this.updateStock(productId, productType, 1);  
                 }
             }else{
                 let merch = this.merch.filter(m => productId == m.id)[0];
@@ -115,6 +115,7 @@ const app = Vue.createApp({
             this.cartItems.splice(index, 1);
             this.calculateTotals();
             this.updateStock(productId, productType, -product.productQuantity);
+            localStorage.setItem("cart", JSON.stringify(this.cartItems))
         },
         checkout(){
             // localStorage.setItem("cartProducts", JSON.stringify(this.cartItems));
@@ -129,4 +130,4 @@ const app = Vue.createApp({
     },
 
 })
-app.mount("#app")
+let asd = app.mount("#app")
