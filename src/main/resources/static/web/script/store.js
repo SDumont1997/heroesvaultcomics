@@ -3,7 +3,6 @@ const app = Vue.createApp({
     created(){
         this.loadData();
         this.loadComics();
-        this.loadMerch();
     },
 
     data() {
@@ -20,6 +19,21 @@ const app = Vue.createApp({
     },
 
     methods: {
+        loadCartItems(){
+            let items = JSON.parse(localStorage.getItem("cart"));
+            this.cartItems = items != null ? items : [];
+            this.calculateTotals();
+            for(var i = 0; i < this.cartItems.length; i++){
+                let item = this.cartItems[i];
+                if(item.productType == 'comic'){
+                    let comic = this.comics.filter(c => c.id == item.productId);
+                    comic[0].stock -= item.productQuantity;
+                }else{
+                    this.merch.filter(m => m.id == item.productId)[0].stock -= item.productQuantity;
+                }
+            }
+        },
+
         loadData(){
             axios.get("/api/appUsers/current")
             .then(response => {
@@ -33,13 +47,15 @@ const app = Vue.createApp({
         loadComics(){
             axios.get('/api/comics')
             .then(resp => {
-                this.comics = resp.data;
+                this.comics = resp.data;          
+                this.loadMerch()      
             })
         },
         loadMerch(){
             axios.get('/api/merch')
             .then(resp => {
                 this.merch = resp.data;
+                this.loadCartItems();
             })
         },
         showComics(visible){
@@ -48,7 +64,7 @@ const app = Vue.createApp({
 
         addProductToCart(event){
             let quantity = parseInt(event.target.elements.quantity.value);
-            let productId = event.target.elements.addProductItem.id;
+            let productId = parseInt(event.target.elements.addProductItem.id);
             let productType = event.target.elements.productType.value;
 
             let products = this.cartItems.filter(p => productId == p.productId && productType == p.productType);            
@@ -72,6 +88,7 @@ const app = Vue.createApp({
 
             this.calculateTotals();
             this.updateStock(productId, productType, quantity);
+            localStorage.setItem("cart", JSON.stringify(this.cartItems))
         },
         calculateTotals(){
             this.totalAmount = this.cartItems.reduce(function(total, item){return total + item.productQuantity * item.productPrice;},0);
@@ -82,6 +99,7 @@ const app = Vue.createApp({
             if(product.productQuantity > 1){
                 product.productQuantity -= 1;
                 this.updateStock(productId, productType, -1);
+                localStorage.setItem("cart", JSON.stringify(this.cartItems));
             }
         },
         addItem(productId, productType){
@@ -91,12 +109,14 @@ const app = Vue.createApp({
                 if(comic.stock >= 1){
                     product.productQuantity += 1;
                     this.updateStock(productId, productType, 1);        
+                    localStorage.setItem("cart", JSON.stringify(this.cartItems));
                 }
             }else{
                 let merch = this.merch.filter(m => productId == m.id)[0];
                 if(merch.stock >= 1){
                     product.productQuantity += 1;
                     this.updateStock(productId, productType, 1);
+                    localStorage.setItem("cart", JSON.stringify(this.cartItems));
                 }
             }
         },
@@ -115,6 +135,7 @@ const app = Vue.createApp({
             this.cartItems.splice(index, 1);
             this.calculateTotals();
             this.updateStock(productId, productType, -product.productQuantity);
+            localStorage.setItem("cart", JSON.stringify(this.cartItems))
         },
         checkout(){
             // localStorage.setItem("cartProducts", JSON.stringify(this.cartItems));
