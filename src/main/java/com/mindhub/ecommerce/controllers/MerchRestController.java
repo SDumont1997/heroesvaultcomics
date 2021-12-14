@@ -48,6 +48,7 @@ public class MerchRestController {
         Character character = characterService.getById(merchCreationDTO.getCharacterId());
         Double price = merchCreationDTO.getPrice();
         Integer stock = merchCreationDTO.getStock();
+        String merchImgUrl = merchCreationDTO.getImgUrl();
         if (!appUserService.getByEmail(authentication.getName()).isAdmin()){
             return new ResponseEntity<>("User does not have authorization for this action", HttpStatus.UNAUTHORIZED);
         }
@@ -58,6 +59,7 @@ public class MerchRestController {
             return new ResponseEntity<>("Invalid character id", HttpStatus.BAD_REQUEST);
         }
         Merch newMerch = new Merch(name, merchType, character, price, stock);
+        newMerch.setImgUrl(merchImgUrl);
         merchService.save(newMerch);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }

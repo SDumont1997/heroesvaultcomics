@@ -9,16 +9,18 @@ public class MerchCreationDTO {
     private Long characterId;
     private Double price;
     private Integer stock;
+    private String imgUrl;
 
     public MerchCreationDTO() {
     }
 
-    public MerchCreationDTO(String name, MerchType merchType, Long characterId, Double price, Integer stock) {
+    public MerchCreationDTO(String name, MerchType merchType, Long characterId, Double price, Integer stock, String imgUrl) {
         this.name = name;
         this.merchType = merchType;
         this.characterId = characterId;
         this.price = price;
         this.stock = stock;
+        this.imgUrl = imgUrl;
     }
 
     public String getName() {
@@ -61,6 +63,14 @@ public class MerchCreationDTO {
         this.stock = stock;
     }
 
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("MerchCreationDTO{");
@@ -69,6 +79,7 @@ public class MerchCreationDTO {
         sb.append(", characterId=").append(characterId);
         sb.append(", price=").append(price);
         sb.append(", stock=").append(stock);
+        sb.append(", imgUrl=").append(imgUrl);
         sb.append('}');
         return sb.toString();
     }
