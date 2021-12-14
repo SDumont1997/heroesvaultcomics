@@ -5,10 +5,8 @@ import com.mindhub.ecommerce.dtos.ComicDTO;
 import com.mindhub.ecommerce.models.Author;
 import com.mindhub.ecommerce.models.Comic;
 import com.mindhub.ecommerce.models.Publisher;
-import com.mindhub.ecommerce.services.IAppUserService;
-import com.mindhub.ecommerce.services.IAuthorService;
-import com.mindhub.ecommerce.services.IComicService;
-import com.mindhub.ecommerce.services.IPublisherService;
+import com.mindhub.ecommerce.models.Character;
+import com.mindhub.ecommerce.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -36,6 +34,9 @@ public class ComicRestController {
     @Autowired
     private IAppUserService appUserService;
 
+    @Autowired
+    private ICharacterService characterService;
+
     @GetMapping("/comics")
     public Set<ComicDTO> getComics(){
         return comicService.getAll().stream().map(ComicDTO::new).collect(toSet());
@@ -54,6 +55,7 @@ public class ComicRestController {
         Publisher publisher = publisherService.getById(comicCreationDTO.getPublisherId());
         Double price = comicCreationDTO.getPrice();
         Integer stock = comicCreationDTO.getStock();
+        String coverImgUrl = comicCreationDTO.getCoverImgUrl();
         if (!appUserService.getByEmail(authentication.getName()).isAdmin()){
             return new ResponseEntity<>("User does not have authorization for this action", HttpStatus.UNAUTHORIZED);
         }
@@ -64,7 +66,25 @@ public class ComicRestController {
             return new ResponseEntity<>("Invalid author or publisher id", HttpStatus.BAD_REQUEST);
         }
         Comic newComic = new Comic(title, author, publicationDate, publisher, price, stock);
+        newComic.setCoverImgUrl(coverImgUrl);
         comicService.save(newComic);
         return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @PostMapping("/comics/update")
+    public ResponseEntity<Object> updateComic(Authentication authentication, @RequestParam Long id, @RequestParam Long characterId, @RequestParam Double price, @RequestParam Integer stock){
+        Comic comic = comicService.getById(id);
+        Character character = characterService.getById(characterId);
+        if (price != 0 && !price.toString().equals("")){
+            comic.setPrice(price);
+        }
+        if (stock != 0 && !stock.toString().equals("")) {
+            comic.setStock(stock);
+        }
+        if (character != null ) {
+            comic.addProtagonist(characterService.getById(characterId));
+        }
+        comicService.save(comic);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

@@ -55,6 +55,7 @@ public class CharacterRestController {
         String characterBirthPlace = characterCreationDTO.getBirthPlace();
         Author characterCreator = authorService.getById(characterCreationDTO.getAuthorId());
         Publisher characterPublisher = publisherService.getById(characterCreationDTO.getPublisherId());
+        String imgUrl = characterCreationDTO.getImgUrl();
         if (!appUserService.getByEmail(authentication.getName()).isAdmin()){
             return new ResponseEntity<>("User does not have authorization for this action", HttpStatus.FORBIDDEN);
         }
@@ -65,6 +66,7 @@ public class CharacterRestController {
             return new ResponseEntity<>("Invalid author or publisher id", HttpStatus.BAD_REQUEST);
         }
         Character newCharacter = new Character(characterName, characterAlias, characterFirstAppearance, characterBirthPlace, characterCreator, characterPublisher);
+        newCharacter.setImgUrl(imgUrl);
         characterService.save(newCharacter);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }

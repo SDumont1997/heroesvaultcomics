@@ -16,6 +16,7 @@ const app = Vue.createApp({
             this.personaje = response.data
             console.log(response.data)
             this.apariciones = response.data.appearances
+            console.log(response.data.appearances)
         })
         .catch(error => console.log(error.message));
         this.loadData();

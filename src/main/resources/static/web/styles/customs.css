@@ -550,7 +550,60 @@ footer{
     opacity: 1;
     font-size: 30px !important;
     z-index: 1;
+    background-color: transparent;
+}
+.owl-theme .owl-nav [class*=owl-]:hover {
+    background: transparent !important;
+    color: #FFF;
+    text-shadow: 1px 1px black;
+    text-decoration: none;
+}
+[v-cloak] {
+    display: none;
+}
+.owl-item .card{
+    width: 300px !important;
 }
 .owl-item .card img{
-    width:300px;
+    width:300px !important;
+    transition: transform .2s;
+}
+.owl-item .card img:hover {
+    transform: scale(1.5);
+    z-index: 3;
+}
+.wrapper{
+    font-family:sans-serif;
+    margin: 0 auto;
+    position:relative;
+    background-color:transparent;
+}
+img-overlay{
+    opacity: 1;
+    display: block;
+    width:100%;
+    height: auto;
+    transition: .5s ease;
+}
+.content{
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-transform: uppercase;
+    font-size: 25px;
+    color:white;
+    text-shadow: 1px 1px black;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.overlay{
+    opacity: 0;
+}
+.wrapper:hover img{
+    opacity: .1;
+}
+.wrapper:hover .overlay{
+    opacity: 1;
 }

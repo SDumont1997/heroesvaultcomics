@@ -69,34 +69,34 @@ public class AppUserRestController {
     }
 
     @PostMapping("/appUsers/setAdmin")
-    public ResponseEntity<Object> setAdmin(Authentication authentication, @RequestParam Long id){
+    public ResponseEntity<Object> setAdmin(Authentication authentication, @RequestParam String email){
         if (!appUserService.getByEmail(authentication.getName()).isAdmin()){
             return new ResponseEntity<>("User does not have authorization for this action", HttpStatus.UNAUTHORIZED);
         }
-        if (appUserService.getById(id) == null){
+        if (appUserService.getByEmail(email) == null){
             return new ResponseEntity<>("Target user does not exist", HttpStatus.FORBIDDEN);
         }
-        if (appUserService.getById(id).isAdmin()){
+        if (appUserService.getByEmail(email).isAdmin()){
             return new ResponseEntity<>("User already has administrator privileges", HttpStatus.ALREADY_REPORTED);
         }
-        AppUser user = appUserService.getById(id);
+        AppUser user = appUserService.getByEmail(email);
         user.setAdmin(true);
         appUserService.save(user);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PostMapping("/appUsers/revokeAdmin")
-    public ResponseEntity<Object> revokeAdmin(Authentication authentication, @RequestParam Long id){
+    public ResponseEntity<Object> revokeAdmin(Authentication authentication, @RequestParam String email){
         if (!appUserService.getByEmail(authentication.getName()).isAdmin()){
             return new ResponseEntity<>("User does not have authorization for this action", HttpStatus.UNAUTHORIZED);
         }
-        if (appUserService.getById(id) == null){
+        if (appUserService.getByEmail(email) == null){
             return new ResponseEntity<>("Target user does not exist", HttpStatus.FORBIDDEN);
         }
-        if (!appUserService.getById(id).isAdmin()){
+        if (!appUserService.getByEmail(email).isAdmin()){
             return new ResponseEntity<>("User does not have administrator privileges", HttpStatus.ALREADY_REPORTED);
         }
-        AppUser user = appUserService.getById(id);
+        AppUser user = appUserService.getByEmail(email);
         user.setAdmin(false);
         appUserService.save(user);
         return new ResponseEntity<>(HttpStatus.OK);
