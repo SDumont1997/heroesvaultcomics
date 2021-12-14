@@ -208,7 +208,8 @@ header{
     padding-left: 10% !important;
 }
 
-.introducing-box{
+.introducing-box,
+.myshopping-container{
     background-color: #070f3d;
 }
 
@@ -307,6 +308,10 @@ header{
     color: #070f3d;
 }
 
+.table-shopping-container{
+    border: 1px solid;
+    border-radius: 20px;
+}
 /*End Main's styes */
 
 

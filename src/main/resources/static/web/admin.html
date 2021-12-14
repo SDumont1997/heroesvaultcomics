@@ -30,46 +30,34 @@
                                 <a href="./index.html">HOME</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#">STORE</a>
+                                <a href="./store.html">STORE</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#">NEWS</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#">REVIEWS</a>
+                                <a href="./characters.html">CHARACTERS</a>
                             </li>
                         </ul>    
                         
-                        <div class="ms-1">
-                            <a href="./login.html"><p class="access-btn">Login</p></a>
-                                <span>|</span>
-                            <a href="./signup.html"><p class="access-btn">Sign up</p></a>
+                        <div class="ms-2 pb-3"> 
+                            <span v-if="!loggedIn" v-cloak>
+                                <a href="./login.html"><p class="access-btn">Login</p></a>
+                                    <span>|</span>
+                                <a href="./signup.html"><p class="access-btn">Sign up</p></a>
+                            </span>
+                            <span v-else v-cloak>
+                                <div  class="dropdown">
+                                    <a v-cloak class="username dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="bi bi-person-circle me-1"></i>{{appUser.username}}
+                                    </a>
+                                    <ul class="dropdown-menu dropdown_secondary" aria-labelledby="navbarDropdownMenuLink">
+                                        <li><a @click="logOut" class="dropdown-item" href="#"><i class="bi bi-box-arrow-left"></i> Log out</a></li>
+                                    </ul>
+                                </div>
+                            </span>
                         </div>
                     </div>
                     
                 </div>
             </div>
-    
-           
-    
-            <!-- cart without products -->
-            <div class="offcanvas-shopping offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-                <div>
-                    <button type="button" class="text-light close-canvass-btn" data-bs-dismiss="offcanvas" aria-label="Close">
-                        <i class="bi bi-x-lg close-btn-shoppingCar"></i>
-                    </button>
-                    <div class="offcanvas-header justify-content-center mb-2">
-                        <h5 id="offcanvasRightLabel" class="fw-normal fs-6">My shopping cart</h5> 
-                    </div>
-                    <div class="offcanvas-body pt-5 text-center">
-                        <i class="bi bi-emoji-frown fs-1 mb-4"></i>
-                        <p>I'm so sorry, you don't have added any product yet!</p>
-    
-                    </div>
-                </div>
-                
-            </div>
-            <!-- end offcanvas and shooping bag content -->
     
             <header class="d-flex align-items-center justify-content-between py-2 px-3">
                 
@@ -89,41 +77,33 @@
                             <a href="./index.html">HOME</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#">STORE</a>
+                            <a href="./store.html">STORE</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#">NEWS</a>
+                            <a href="./characters.html">CHARACTERS</a>
                         </li>
-                        <li class="nav-item">
-                            <a href="#">REVIEWS</a>
-                        </li>
-                        
                     </ul>
                 </nav>
-    
-                <button type="button" class="pb-1 position-relative bg-transparent border-0 text-light d-lg-none" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-                    <i class="bi bi-cart bag-store d-lg-none"></i>
-                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                      99+
-                      <span class="visually-hidden">unread messages</span>
-                    </span>
-                </button>
+
     
     
                 <div class="d-none d-lg-flex align-items-end pb-1 justify-content-between accessBtn-container">
                     
-                    <span>
+                    <span v-if="!loggedIn" v-cloak>
                         <a href="./login.html"><p class="access-btn">Login</p></a>
-                                <span>|</span>
+                            <span>|</span>
                         <a href="./signup.html"><p class="access-btn">Sign up</p></a>
                     </span>
-                    <button type="button" class="position-relative bg-transparent border-0 text-light d-md-block" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-                        <i class="bi bi-cart bag-store d-lg-block"></i>
-                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                          99+
-                        <span class="visually-hidden">unread messages</span>
-                        </span>
-                    </button>
+                    <span v-else v-cloak>
+                        <div  class="dropdown">
+                            <a v-cloak class="username dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-person-circle me-1"></i>{{appUser.username}}
+                            </a>
+                            <ul class="dropdown-menu dropdown_secondary" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a @click="logOut" class="dropdown-item" href="#"><i class="bi bi-box-arrow-left"></i> Log out</a></li>
+                            </ul>
+                        </div>
+                    </span>
                 </div>
             </header>
     
@@ -263,19 +243,11 @@
                 
             </main>
     
-            <footer class="d-flex flex-column align-items-center justify-content-md-around pt-3">
-                
-                <div class="w-100 px-3 d-flex flex-column flex-md-row align-items-center justify-content-md-between">
+            <footer class="d-flex flex-column align-items-center justify-content-md-around pt-3"> 
+                <div class="w-100 mb-2 px-3 d-flex flex-column flex-md-row align-items-center justify-content-md-around">
                     
                     <a href="./index.html"><img src="./assets/heroes-vault-logo-3.png" class="logo" alt="logo"></a>
-                    
-                    <div class="mt-2 mt-md-0 d-flex justify-content-center footer-references">
-                        <ul class="d-flex">
-                            <li><a href="#">ABOUT US</a></li>
-                            <li><a href="#" class="ms-3">HELP/FAQS</a></li>
-                        </ul>
-                    </div>
-    
+            
                     <div class="d-flex flex-column align-items-center mt-2 mt-md-0">
                         <p class="footer-subtitle">FOLLOW US</p>
                         <span class="w-100 d-flex justify-content-center">

@@ -10,6 +10,8 @@ const app = Vue.createApp({
            errorMessage: "",
            comicIds: [],
            merchIds: [],
+           appUser: {},
+            loggedIn: false
 
         }
     },
@@ -32,6 +34,22 @@ const app = Vue.createApp({
             })
             .catch(error => {
                 this.errorMessage = error.response.data
+            })
+        },
+        loadData(){
+            axios.get("/api/appUsers/current")
+            .then(response => {
+                this.appUser = response.data
+                this.loggedIn = true
+            })
+            .catch(error => {
+                console.log("No user currently active")
+            })
+        },
+        logOut(){
+            axios.post("/api/logout")
+            .then(response => {
+                window.location.replace("/web/index.html")
             })
         }
         
