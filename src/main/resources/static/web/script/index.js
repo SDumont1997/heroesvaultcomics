@@ -31,4 +31,4 @@ const app = Vue.createApp({
     }
 })
 
-const consola = app.mount("#app")
+app.mount("#app")

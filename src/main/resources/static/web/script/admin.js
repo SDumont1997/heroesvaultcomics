@@ -1,6 +1,8 @@
 const app = Vue.createApp({
     data(){
         return {
+            appUser: {},
+            loggedIn: false,
             adminClass: "",
             publisherCreationForm: {
                 name: "",
@@ -63,6 +65,7 @@ const app = Vue.createApp({
         }
     },
     created(){
+        this.loadData()
         this.loadPublishers()
         this.loadAuthors()
         this.loadCharacters()
@@ -72,6 +75,16 @@ const app = Vue.createApp({
     methods: {
         changeAdminClass(event){
             this.adminClass = event.target.value
+        },
+        loadData(){
+            axios.get("/api/appUsers/current")
+            .then(response => {
+                this.appUser = response.data
+                this.loggedIn = true
+            })
+            .catch(error => {
+                console.log("No user currently active")
+            })
         },
         loadPublishers(){
             axios.get("/api/publishers")
@@ -200,6 +213,12 @@ const app = Vue.createApp({
                     console.log(error)
                 })
             }
+        },
+        logOut(){
+            axios.post("/api/logout")
+            .then(response => {
+                window.location.replace("/web/index.html")
+            })
         }
         
     },

@@ -27,6 +27,12 @@ const app = Vue.createApp({
                 console.log("No user currently active")
             })
         },
+        logOut(){
+            axios.post("/api/logout")
+            .then(response => {
+                window.location.replace("/web/index.html")
+            })
+        }
     }
 })
 app.mount("#app")
